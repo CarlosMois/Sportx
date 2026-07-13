@@ -1,13 +1,12 @@
-
 USE Sportx;
-
+ 
 CREATE TABLE deportes(
     id_deporte INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL UNIQUE,
     descripcion TEXT NULL,
     icono VARCHAR(255) NULL
 );
-
+ 
 CREATE TABLE Usuarios(
     id_usuario INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL,
@@ -17,7 +16,7 @@ CREATE TABLE Usuarios(
     fecha_registro DATETIME DEFAULT CURRENT_TIMESTAMP,
     estado ENUM('activo', 'suspendido') DEFAULT 'activo'
 );
-
+ 
 CREATE TABLE intereses_usuarios(
     id_interes INT AUTO_INCREMENT PRIMARY KEY,
     id_usuario INT NOT NULL,
@@ -25,7 +24,7 @@ CREATE TABLE intereses_usuarios(
     FOREIGN KEY (id_usuario) REFERENCES Usuarios(id_usuario) ON DELETE CASCADE,
     FOREIGN KEY (id_deporte) REFERENCES deportes(id_deporte) ON DELETE CASCADE
 );
-
+ 
 CREATE TABLE centros_deportivos(
     id_centro INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(150) NOT NULL,
@@ -36,7 +35,7 @@ CREATE TABLE centros_deportivos(
     telefono VARCHAR(20),
     correo VARCHAR(150)
 );
-
+ 
 CREATE TABLE Favoritos(
     id_favorito INT AUTO_INCREMENT PRIMARY KEY,
     id_usuario INT NOT NULL,
@@ -62,7 +61,7 @@ CREATE TABLE costo_centro(
     unidad ENUM('por_hora', 'por_clase', 'mensual', 'uso de cancha') NOT NULL,
     FOREIGN KEY (id_centro_deporte) REFERENCES centro_deporte(id_centro_deporte) ON DELETE CASCADE
 );
-
+ 
 CREATE TABLE horarios(
     id_horario INT AUTO_INCREMENT PRIMARY KEY,
     id_centro INT NOT NULL,
@@ -72,8 +71,8 @@ CREATE TABLE horarios(
     FOREIGN KEY (id_centro) REFERENCES centros_deportivos(id_centro) ON DELETE CASCADE
 );
  
-CREATE TABLE imagenes(
+CREATE TABLE imagenes
     id_imagen INT AUTO_INCREMENT PRIMARY KEY,
     id_centro INT NOT NULL,
     imagen_url VARCHAR(255),
-    FOREIGN KEY (id_centro) REFERENCES centros_deportivos(
+    FOREIGN KEY (id_centro) REFERENCES centros_deportivos
