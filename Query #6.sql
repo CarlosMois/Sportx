@@ -67,6 +67,29 @@ CREATE TABLE costo_centro(
     'uso de cancha'
  ) NOT NULL
 );
+
+REATE TABLE horarios(
+id_horario INT AUTO_INCREMENT PRIMARY KEY,
+id_centro INT NOT NULL,
+dia_semana ENUM(
+    'lunes',
+    'martes',
+    'miercoles',
+    'jueves',
+    'viernes',
+    'sabado',
+    'domingo'
+)
+ 
+hora_apertura TIME
+hora_cierre TIME
+);
+ 
+CREATE TABLE imagenes(
+id_imagen INT AUTO_INCREMENT PRIMARY KEY,
+id_centro INT NOT NULL,
+imagen_url VARCHAR(255)
+)
  
 
 
