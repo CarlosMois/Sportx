@@ -42,16 +42,16 @@ CREATE TABLE Favoritos(
     id_usuario INT NOT NULL,
     id_centro INT NOT NULL,
     fecha_agregado DATETIME DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (id_usuario) REFERENCES Usuarios(id_usuario) ON DELETE CASCADE,
-    FOREIGN KEY (id_centro) REFERENCES centros_deportivos(id_centro) ON DELETE CASCADE
+    FOREIGN KEY (id_usuario) REFERENCES Usuarios(id_usuario),
+    FOREIGN KEY (id_centro) REFERENCES centros_deportivos(id_centro)
 );
  
 CREATE TABLE centro_deporte(
     id_centro_deporte INT AUTO_INCREMENT PRIMARY KEY,
     id_centro INT NOT NULL,
     id_deporte INT NOT NULL,
-    FOREIGN KEY (id_centro) REFERENCES centros_deportivos(id_centro) ON DELETE CASCADE,
-    FOREIGN KEY (id_deporte) REFERENCES deportes(id_deporte) ON DELETE CASCADE
+    FOREIGN KEY (id_centro) REFERENCES centros_deportivos(id_centro),
+    FOREIGN KEY (id_deporte) REFERENCES deportes(id_deporte)
 );
  
 CREATE TABLE costo_centro(
@@ -60,7 +60,7 @@ CREATE TABLE costo_centro(
     nombre_costo VARCHAR(150) NOT NULL,
     precio DECIMAL (10,2) NOT NULL,
     unidad ENUM('por_hora', 'por_clase', 'mensual', 'uso de cancha') NOT NULL,
-    FOREIGN KEY (id_centro_deporte) REFERENCES centro_deporte(id_centro_deporte) ON DELETE CASCADE
+    FOREIGN KEY (id_centro_deporte) REFERENCES centro_deporte(id_centro_deporte) 
 );
  
 CREATE TABLE horarios(
@@ -69,7 +69,7 @@ CREATE TABLE horarios(
     dia_semana ENUM('lunes', 'martes', 'miercoles', 'jueves', 'viernes', 'sabado', 'domingo'),
     hora_apertura TIME,
     hora_cierre TIME,
-    FOREIGN KEY (id_centro) REFERENCES centros_deportivos(id_centro) ON DELETE CASCADE
+    FOREIGN KEY (id_centro) REFERENCES centros_deportivos(id_centro) 
 );
  
 CREATE TABLE imagenes (
