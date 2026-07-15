@@ -78,3 +78,11 @@ CREATE TABLE imagenes (
     imagen_url VARCHAR(255),
     FOREIGN KEY (id_centro) REFERENCES centros_deportivos(id_centro)
     );
+    CREATE TABLE resenas(
+    id_resena INT AUTO_INCREMENT PRIMARY KEY,
+    id_usuario INT NOT NULL,
+    id_centro INT NOT NULL,
+    calificacion TINYINT NOT NULL,
+    comentario TEXT,
+    fecha DATETIME DEFAULT CURRENT_TIMESTAMP
+    );

@@ -72,8 +72,8 @@ CREATE TABLE horarios(
     FOREIGN KEY (id_centro) REFERENCES centros_deportivos(id_centro) ON DELETE CASCADE
 );
  
-CREATE TABLE imagenes(
+CREATE TABLE imagenes
     id_imagen INT AUTO_INCREMENT PRIMARY KEY,
     id_centro INT NOT NULL,
     imagen_url VARCHAR(255),
-    FOREIGN KEY (id_centro) REFERENCES centros_deportivos(
+    FOREIGN KEY (id_centro) REFERENCES centros_deportivos
