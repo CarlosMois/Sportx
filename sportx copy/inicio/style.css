@@ -176,29 +176,6 @@ body {
 
 }
 
-.remember-me {
-
-  color: var(--text-muted);
-
-  display: flex;
-
-  align-items: center;
-
-  gap: 6px;
-
-  cursor: pointer;
-
-}
-
-.forgot-password {
-
-  color: var(--secondary-blue);
-
-  text-decoration: none;
-
-  font-weight: 500;
-
-}
 
 .forgot-password:hover {
 
