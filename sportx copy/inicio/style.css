@@ -1,0 +1,276 @@
+/* Variables con la paleta de colores de SportX */
+
+:root {
+
+  --primary-blue: #0b1d3a;
+
+  --secondary-blue: #183059;
+
+  --accent-gold: #f3b023;
+
+  --accent-gold-hover: #d99a18;
+
+  --bg-light: #f4f6f9;
+
+  --text-dark: #2c3e50;
+
+  --text-muted: #6c757d;
+
+  --white: #ffffff;
+
+}
+
+* {
+
+  margin: 0;
+
+  padding: 0;
+
+  box-sizing: border-box;
+
+  font-family: 'Poppins', sans-serif;
+
+}
+
+body {
+
+  background-color: var(--bg-light);
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  min-height: 100vh;
+
+  padding: 20px;
+
+}
+
+/* Tarjeta principal de login */
+
+.login-container {
+
+  background-color: var(--white);
+
+  width: 100%;
+
+  max-width: 400px;
+
+  padding: 40px 30px;
+
+  border-radius: 16px;
+
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+
+}
+
+/* Sección del logo/marca */
+
+.brand-header {
+
+  text-align: center;
+
+  margin-bottom: 30px;
+
+}
+
+.logo-icon {
+
+  font-size: 2.5rem;
+
+  line-height: 1;
+
+  margin-bottom: 8px;
+
+}
+
+.brand-title {
+
+  color: var(--primary-blue);
+
+  font-size: 1.8rem;
+
+  font-weight: 700;
+
+  letter-spacing: 1px;
+
+}
+
+.brand-subtitle {
+
+  color: var(--text-muted);
+
+  font-size: 0.9rem;
+
+  margin-top: 4px;
+
+}
+
+/* Formulario */
+
+.login-form {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 20px;
+
+}
+
+.input-group {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 6px;
+
+}
+
+.input-group label {
+
+  color: var(--primary-blue);
+
+  font-size: 0.85rem;
+
+  font-weight: 600;
+
+}
+
+.input-group input {
+
+  padding: 12px 14px;
+
+  border: 1.5px solid #e1e5eb;
+
+  border-radius: 8px;
+
+  font-size: 0.95rem;
+
+  outline: none;
+
+  transition: border-color 0.2s ease;
+
+}
+
+.input-group input:focus {
+
+  border-color: var(--secondary-blue);
+
+}
+
+/* Opciones extras (Recordarme / Olvidé contraseña) */
+
+.form-options {
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  font-size: 0.8rem;
+
+}
+
+.remember-me {
+
+  color: var(--text-muted);
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 6px;
+
+  cursor: pointer;
+
+}
+
+.forgot-password {
+
+  color: var(--secondary-blue);
+
+  text-decoration: none;
+
+  font-weight: 500;
+
+}
+
+.forgot-password:hover {
+
+  text-decoration: underline;
+
+}
+
+/* Botón de envío */
+
+.btn-submit {
+
+  background-color: var(--accent-gold);
+
+  color: var(--primary-blue);
+
+  border: none;
+
+  padding: 14px;
+
+  border-radius: 8px;
+
+  font-size: 1rem;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: background-color 0.2s ease, transform 0.1s ease;
+
+  margin-top: 10px;
+
+}
+
+.btn-submit:hover {
+
+  background-color: var(--accent-gold-hover);
+
+}
+
+.btn-submit:active {
+
+  transform: scale(0.99);
+
+}
+
+/* Pie de página */
+
+.login-footer {
+
+  text-align: center;
+
+  margin-top: 25px;
+
+  font-size: 0.85rem;
+
+  color: var(--text-muted);
+
+}
+
+.login-footer a {
+
+  color: var(--secondary-blue);
+
+  text-decoration: none;
+
+  font-weight: 600;
+
+}
+
+.login-footer a:hover {
+
+  text-decoration: underline;
+
+}
+ 
