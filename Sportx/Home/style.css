@@ -163,6 +163,16 @@ main {
 
 .gallery-card {
     position: relative;
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    overflow: hidden;
+    border-radius: 8px;
+    transition: transform .3s;
+}
+
+.gallery-card:hover{
+    transform: scale(1.03);
 }
 
 .gallery-card img {
