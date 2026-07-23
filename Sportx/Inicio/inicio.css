@@ -1,16 +1,29 @@
-div {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center
-}
-div {
-    font-size: 5.5rem;
-    font-weight:800 ;
-    color: black;
-    text-align: center;
-}
-body {
-    background-color:#FFD32C;
+hr{
+    color: #ff751f;
 }
 
+div {
+    height: 10vh;
+    display: flex;
+    justify-content: left;
+    align-items: left;
+}
+div {
+    font-size: 7.7rem;
+    font-weight:450;
+    color: #ff751f;
+    text-align: center;
+}
+.div1{
+    height: 10px;
+
+}
+
+body{
+  background: linear-gradient(to right, #030310 0%, #16135C 60%);
+  min-height: 100vh;
+  width: 100%;
+}
+body{
+    font-family: 'Anton', sans-serif;
+}
