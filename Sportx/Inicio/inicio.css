@@ -1,0 +1,16 @@
+div {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+div {
+    font-size: 5.5rem;
+    font-weight:800 ;
+    color: black;
+    text-align: center;
+}
+body {
+    background-color:#FFD32C;
+}
+
