@@ -1,21 +1,108 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="link rel="preconnect href="https://fonts.googleapis.com">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SPORTX</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&display=swap" rel="stylesheet">"
-    <link rel= "stylesheet" href="inicio.css">
-    <title>Sportx</title>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="inicio.css">
 </head>
 <body>
-    <hr>
-<div>
-    <p><i>Sportx</i></p>
-</div>
- <div id="div1">
-        <p>more than just a game</p>
+
+  <div class="noise-overlay"></div>
+  <div class="bg-dots"></div>
+
+ 
+  <header class="header">
+    <div class="header__inner">
+      <img class="img_logo" src="../Recursos/img/Imagenes Inicio/IMG-20260529-WA0008_2_-removebg-preview.png">
+
+
+      <button class="btn btn--login">
+        Iniciar sesión
+        <svg class="btn__icon" width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M1 7H13M13 7L7.5 1.5M13 7L7.5 12.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
     </div>
+  </header>
+
+  <main class="hero">
+    <div class="hero__stripe" aria-hidden="true"></div>
+
+    <div class="hero__content">
+      <p class="hero__eyebrow">
+        <span class="dot"></span> Temporada 2026 ya disponible
+      </p>
+
+      <h1 class="hero__title">
+        SPORT<span class="hero__title-x">X</span>
+      </h1>
+
+      <div class="hero__tagline">
+        <span class="hero__tagline-bar"></span>
+        MÁS QUE UN JUEGO
+      </div>
+
+      <p class="hero__desc">
+        <strong>Sportx</strong>, el lugar donde encontrás tu próxima pasión.
+      </p>
+
+      <div class="hero__actions">
+        <button class="btn btn--primary">
+          Explorar ahora
+          <svg width="16" height="16" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1 7H13M13 7L7.5 1.5M13 7L7.5 12.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <button class="btn btn--ghost">Ver deportes</button>
+      </div>
+
+      <div class="hero__stats">
+        <div class="stat">
+          <span class="stat__num">+120</span>
+          <span class="stat__label">disciplinas</span>
+        </div>
+        <div class="stat__sep"></div>
+        <div class="stat">
+          <span class="stat__num">+50K</span>
+          <span class="stat__label">atletas activos</span>
+        </div>
+        <div class="stat__sep"></div>
+        <div class="stat">
+          <span class="stat__num">24/7</span>
+          <span class="stat__label">comunidad</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero__gallery">
+      <div class="gallery__decor gallery__decor--ring" aria-hidden="true"></div>
+      <div class="gallery__decor gallery__decor--dashes" aria-hidden="true"></div>
+      <div class="gallery__decor gallery__decor--dots" aria-hidden="true"></div>
+
+      <figure class="gallery__frame gallery__frame--main">
+        <img src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?q=80&w=1200&auto=format&fit=crop" alt="Atleta en posición de salida en pista de atletismo">
+    
+      </figure>
+
+      <figure class="gallery__frame gallery__frame--secondary">
+        <img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?q=80&w=1200&auto=format&fit=crop" alt="Balón de baloncesto entrando en el aro">
+      </figure>
+
+      <div class="gallery__badge">
+        <span class="gallery__badge-num">01</span>
+        <span class="gallery__badge-text">Atletismo &amp; Básquet</span>
+      </div>
+
+      <div class="progress">
+        <span class="progress__fill"></span>
+        <span class="progress__dot"></span>
+      </div>
+    </div>
+  </main>
+
 </body>
 </html>
