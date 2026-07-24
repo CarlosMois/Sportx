@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SportX | Voleibol</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    <!-- CSS INTERNO -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            background: #f5f7fa;
+            color: #333;
+        }
+
+        /* ===========================
+                  HERO
+        =========================== */
+
+        .hero {
+            background:
+            linear-gradient(rgba(13, 40, 96, 0.80), rgba(13, 40, 96, 0.80)),
+            url("/Sportx/img/voleibol.jpg");
+
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+
+            color: white;
+            text-align: center;
+            padding: 120px 20px;
+        }
+
+        .hero h1 {
+            font-size: 58px;
+            margin-bottom: 20px;
+            color: #FDB913;
+        }
+
+        .hero p {
+            font-size: 22px;
+            max-width: 900px;
+            margin: auto;
+            line-height: 1.8;
+        }
+
+        /* ===========================
+              INFORMACIÓN GENERAL
+        =========================== */
+
+        .info-general {
+            width: 90%;
+            max-width: 1200px;
+            margin: 60px auto;
+        }
+
+        .info-general h2 {
+            text-align: center;
+            color: #0D2860;
+            font-size: 40px;
+            margin-bottom: 45px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 30px;
+        }
+
+        .info-box {
+            background: white;
+            padding: 35px;
+            border-radius: 18px;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+            transition: .3s;
+            border-top: 4px solid #007AA2;
+        }
+
+        .info-box:hover {
+            transform: translateY(-5px);
+        }
+
+        .info-box i {
+            font-size: 45px;
+            color: #FDB913;
+            margin-bottom: 18px;
+        }
+
+        .info-box h3 {
+            color: #0D2860;
+            margin-bottom: 15px;
+            font-size: 24px;
+        }
+
+        .info-box p {
+            font-size: 18px;
+        }
+
+        /* ===========================
+                  TARJETAS
+        =========================== */
+
+        .card {
+            width: 90%;
+            max-width: 1200px;
+            margin: 55px auto;
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+            border: none;
+        }
+
+        .card h2 {
+            color: #0D2860;
+            font-size: 34px;
+            border-left: 8px solid #FDB913;
+            padding-left: 18px;
+            margin-bottom: 35px;
+        }
+
+        .card p {
+            margin: 22px 0;
+            line-height: 1.9;
+            font-size: 19px;
+        }
+
+        .card strong {
+            color: #0D2860;
+        }
+
+        .card i {
+            color: #007AA2;
+            width: 28px;
+            font-size: 20px;
+        }
+
+        /* ===========================
+                  BOTONES
+        =========================== */
+
+        .buttons {
+            margin-top: 40px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #0D2860;
+            color: white;
+            text-decoration: none;
+            padding: 15px 28px;
+            border-radius: 10px;
+            margin-right: 15px;
+            transition: .3s;
+            font-size: 18px;
+            border: none;
+        }
+
+        .btn i {
+            color: #FDB913;
+        }
+
+        .btn:hover {
+            background: #FDB913;
+            color: #0D2860;
+        }
+
+        .btn:hover i {
+            color: #0D2860;
+        }
+
+        /* ===========================
+                  FOOTER
+        =========================== */
+
+        footer {
+            background:
+            linear-gradient(rgba(13, 40, 96, 0.85), rgba(13, 40, 96, 0.85)),
+            url("/Sportx/img/voleibol.jpg");
+
+            background-size: cover;
+            background-position: center;
+
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+            margin-top: 70px;
+        }
+
+        footer p {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        /* ===========================
+                BOTÓN VOLVER
+        =========================== */
+
+        .back-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 25px auto;
+            text-align: left;
+        }
+
+        .back-btn {
+            display: inline-block;
+            background: #FDB913;
+            color: #0D2860;
+            text-decoration: none;
+            padding: 14px 24px;
+            border-radius: 12px;
+            font-weight: bold;
+            transition: .3s;
+        }
+
+        .back-btn:hover {
+            background: #007AA2;
+            color: white;
+        }
+
+        /* ===========================
+                RESPONSIVE
+        =========================== */
+
+        @media(max-width: 768px) {
+            .hero {
+                padding: 60px 20px;
+            }
+
+            .hero h1 {
+                font-size: 40px;
+            }
+
+            .hero p {
+                font-size: 18px;
+            }
+
+            .info-general h2 {
+                font-size: 32px;
+            }
+
+            .card {
+                padding: 25px;
+            }
+
+            .card h2 {
+                font-size: 28px;
+            }
+
+            .card p {
+                font-size: 17px;
+            }
+
+            .btn {
+                display: block;
+                text-align: center;
+                margin: 12px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="hero">
+
+    <div class="back-container">
+        <a href="/sportx copy/index1.html" class="back-btn">
+            <i class="fa-solid fa-arrow-left"></i>
+            Volver al menú
+        </a>
+    </div>
+
+    <div class="hero-content">
+        <h1>Voleibol</h1>
+        <p>Descubre las mejores opciones y academias para practicar voleibol de sala y de playa en El Salvador.</p>
+    </div>
+
+</header>
+
+<main>
+
+<section class="info-general">
+
+    <h2>Información General</h2>
+
+    <div class="info-grid">
+
+        <div class="info-box">
+            <i class="fa-solid fa-location-dot"></i>
+            <h3>Centros disponibles</h3>
+            <p>3 Academias</p>
+        </div>
+
+        <div class="info-box">
+            <i class="fa-solid fa-users"></i>
+            <h3>Modalidad</h3>
+            <p>Sala y Playa</p>
+        </div>
+
+        <div class="info-box">
+            <i class="fa-solid fa-dollar-sign"></i>
+            <h3>Precio</h3>
+            <p>$15 - $25 / mes</p>
+        </div>
+
+        <div class="info-box">
+            <i class="fa-solid fa-calendar-days"></i>
+            <h3>Días</h3>
+            <p>Lunes a Domingo</p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- Academia 1 -->
+
+<section class="card">
+
+<h2>Federación Salvadoreña de Voleibol (FESAVOL)</h2>
+
+<p><i class="fa-solid fa-location-dot"></i>
+<strong>Ubicación:</strong><br>
+Gimnasio Nacional Adolfo Pineda, contiguo a 6-10 Calle Pte., San Salvador.
+</p>
+
+<p><i class="fa-solid fa-dollar-sign"></i>
+<strong>Precio:</strong><br>
+• <strong>Inscripción:</strong> $10 – $15<br>
+• <strong>Mensualidad:</strong> $15 – $25 (según modalidad y categoría; juveniles suelen pagar menos que adultos).
+</p>
+
+<p><i class="fa-solid fa-volleyball"></i>
+<strong>Modalidades y Programas:</strong><br>
+• <strong>Modalidades:</strong> Voleibol Sala (6 vs 6 en cancha techada) y Voleibol Playa (2 vs 2 en arena).<br>
+• <strong>Escuela de formación inicial:</strong> Para niños desde los 8 años.<br>
+• <strong>Categorías juveniles:</strong> Sub-12, Sub-15 y Sub-18.<br>
+• <strong>Entrenamiento competitivo:</strong> Dirigido a adultos.
+</p>
+
+<p><i class="fa-solid fa-clock"></i>
+<strong>Horarios de atención:</strong><br>
+Lunes a domingo: 5:00 a.m. – 11:00 p.m.
+</p>
+
+<p><i class="fa-solid fa-phone"></i>
+<strong>Teléfono:</strong><br>
++503 2298-8701
+</p>
+
+<div class="buttons">
+
+<a href="https://maps.google.com/?q=Gimnasio+Nacional+Adolfo+Pineda+San+Salvador" target="_blank" class="btn">
+    <i class="fa-solid fa-location-dot"></i>
+    Ver ubicación
+</a>
+
+<a href="tel:+50322988701" class="btn">
+<i class="fa-solid fa-phone"></i>
+Llamar
+</a>
+
+</div>
+
+</section>
+
+<!-- Academia 2 -->
+
+<section class="card">
+
+<h2>Academia TRUCKO de Voleibol de Playa</h2>
+
+<p><i class="fa-solid fa-location-dot"></i>
+<strong>Ubicación:</strong><br>
+Universidad Evangélica de El Salvador (UEES), Prolongación Alameda Juan Pablo II, Col. Escalón Norte, San Salvador.
+</p>
+
+<p><i class="fa-solid fa-dollar-sign"></i>
+<strong>Precio:</strong><br>
+Generalmente entre $15 y $25 mensuales (varían según programa y edad; cuotas accesibles por ciclo en campamentos de verano).
+</p>
+
+<p><i class="fa-solid fa-volleyball"></i>
+<strong>Qué ofrecen y Categorías:</strong><br>
+• <strong>Exclusivamente Voleibol de Playa:</strong> Formación técnica, física y táctica en arena.<br>
+• <strong>Sub-12 (8–12 años):</strong> Enfocadas en juegos motrices y fundamentos básicos.<br>
+• <strong>Sub-18 (13–18 años):</strong> Entrenamientos de alta intensidad, técnica competitiva y preparación física.<br>
+• <strong>Adultos:</strong> Programas recreativos y competitivos.<br>
+• <strong>Competencia:</strong> Participación en torneos nacionales e internacionales (ej. Circuito NORCECA).
+</p>
+
+<p><i class="fa-solid fa-clock"></i>
+<strong>Horario de atención:</strong><br>
+• <strong>Lunes:</strong> 5:30 p.m. – 7:00 p.m.<br>
+• <strong>Martes:</strong> 3:00 p.m. – 5:00 p.m.<br>
+• <strong>Miércoles:</strong> 5:30 p.m. – 7:00 p.m.<br>
+• <strong>Jueves:</strong> 3:00 p.m. – 5:00 p.m.<br>
+• <strong>Viernes:</strong> CERRADO<br>
+• <strong>Sábado:</strong> 8:00 a.m. – 12:00 p.m. y 3:30 p.m. – 5:30 p.m.<br>
+• <strong>Domingo:</strong> 9:00 a.m. – 11:00 a.m.
+</p>
+
+<p><i class="fa-solid fa-phone"></i>
+<strong>Teléfono:</strong><br>
++503 7007-3110
+</p>
+
+<div class="buttons">
+
+<a href="https://maps.google.com/?q=Universidad+Evangelica+de+El+Salvador" target="_blank" class="btn">
+    <i class="fa-solid fa-location-dot"></i>
+    Ver ubicación
+</a>
+
+<a href="tel:+50370073110" class="btn">
+<i class="fa-solid fa-phone"></i>
+Llamar
+</a>
+
+</div>
+
+</section>
+
+<!-- Academia 3 -->
+
+<section class="card">
+
+<h2>Sports Evolution Academy (SEA)</h2>
+
+<p><i class="fa-solid fa-location-dot"></i>
+<strong>Ubicación:</strong><br>
+Centro Escolar José Simeón Cañas, San Jacinto, San Salvador.
+</p>
+
+<p><i class="fa-solid fa-dollar-sign"></i>
+<strong>Precio:</strong><br>
+• <strong>Inscripción inicial:</strong> $10 – $15<br>
+• <strong>Mensualidad:</strong> $15 – $25
+</p>
+
+<p><i class="fa-solid fa-volleyball"></i>
+<strong>Qué ofrecen:</strong><br>
+• Exclusivamente Voleibol Sala.<br>
+• Programas de formación juvenil (Sub-12, Sub-15, Sub-18).<br>
+• Entrenamiento competitivo para jóvenes y adultos.<br>
+• Preparación física, técnica y táctica.<br>
+• Convivencias deportivas y participación en torneos locales.
+</p>
+
+<p><i class="fa-solid fa-clock"></i>
+<strong>Horarios de atención:</strong><br>
+Lunes a sábado: 9:00 a.m. – 5:00 p.m.
+</p>
+
+<p><i class="fa-solid fa-phone"></i>
+<strong>Teléfono:</strong><br>
++503 7305-2616
+</p>
+
+<div class="buttons">
+
+<a href="https://maps.google.com/?q=Centro+Escolar+Jose+Simeon+Canas+San+Jacinto+San+Salvador" target="_blank" class="btn">
+    <i class="fa-solid fa-location-dot"></i>
+    Ver ubicación
+</a>
+
+<a href="tel:+50373052616" class="btn">
+<i class="fa-solid fa-phone"></i>
+Llamar
+</a>
+
+</div>
+
+</section>
+
+</main>
+
+<footer>
+
+<p>© 2026 SportX | Todos los derechos reservados.</p>
+
+</footer>
+
+<!-- Bootstrap 5 JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

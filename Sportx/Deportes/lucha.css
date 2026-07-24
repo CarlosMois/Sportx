@@ -278,9 +278,8 @@ footer p{
 .back-container{
 
     width:90%;
-
     max-width:1200px;
-
+    text-align:left;
     margin:25px auto;
 }
 
