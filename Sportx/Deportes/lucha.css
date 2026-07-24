@@ -19,13 +19,17 @@ body{
 =========================== */
 
 .hero{
-    background:linear-gradient(rgba(12,28,78,.85),rgba(12,28,78,.85)),
-    url("lucha.jpg");
+    background:
+    linear-gradient(rgba(12,28,78,.65),rgba(12,28,78,.65)),
+    url("../img/fondos/fondo\ encabezado\ lucha.jpg");
+
     background-size:cover;
     background-position:center;
+    background-repeat:no-repeat;
+
     color:white;
     text-align:center;
-    padding:90px 20px;
+    padding:120px 20px;
 }
 
 .hero h1{
@@ -77,11 +81,6 @@ body{
     transition:.3s;
 }
 
-.info-box:hover{
-
-    transform:translateY(-10px);
-}
-
 .info-box i{
 
     font-size:45px;
@@ -120,12 +119,7 @@ body{
 
     box-shadow:0 10px 25px rgba(0,0,0,.12);
 
-    transition:.3s;
-}
-
-.card:hover{
-
-    transform:translateY(-6px);
+    
 }
 
 .card h2{
@@ -207,17 +201,27 @@ body{
 
 footer{
 
-    background:#0c1c4e;
+    background:
+    linear-gradient(rgba(12,28,78,.80),rgba(12,28,78,.80)),
+    url("../img/fondos/pie\ de\ pagina\ lucha.jpg");
+
+    background-size:cover;
+    background-position:center;
 
     color:white;
 
     text-align:center;
 
-    padding:35px;
+    padding:60px 20px;
 
     margin-top:70px;
+}
 
-    font-size:18px;
+footer p{
+
+    font-size:20px;
+
+    font-weight:bold;
 }
 
 /* ===========================
@@ -269,4 +273,39 @@ footer{
 
     margin:12px 0;
 }
+}
+
+.back-container{
+
+    width:90%;
+
+    max-width:1200px;
+
+    margin:25px auto;
+}
+
+.back-btn{
+
+    display:inline-block;
+
+    background:#FFD700;
+
+    color:#0c1c4e;
+
+    text-decoration:none;
+
+    padding:14px 24px;
+
+    border-radius:12px;
+
+    font-weight:bold;
+
+    transition:.3s;
+}
+
+.back-btn:hover{
+
+    background:#0c1c4e;
+
+    color:white;
 }
