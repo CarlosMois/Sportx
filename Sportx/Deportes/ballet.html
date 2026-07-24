@@ -1,13 +1,551 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>SportX | Ballet</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    <!-- CSS INTERNO -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            background: #f5f7fa;
+            color: #333;
+        }
+
+        /* ===========================
+                  HERO
+        =========================== */
+
+        .hero {
+            background:
+            linear-gradient(rgba(13, 40, 96, 0.80), rgba(13, 40, 96, 0.80)),
+            url("../img/fondos/fondo\ encabezado\ ballet.jpg");
+
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+
+            color: white;
+            text-align: center;
+            padding: 120px 20px;
+        }
+
+        .hero h1 {
+            font-size: 58px;
+            margin-bottom: 20px;
+            color: #FDB913;
+        }
+
+        .hero p {
+            font-size: 22px;
+            max-width: 900px;
+            margin: auto;
+            line-height: 1.8;
+        }
+
+        /* ===========================
+              INFORMACIÓN GENERAL
+        =========================== */
+
+        .info-general {
+            width: 90%;
+            max-width: 1200px;
+            margin: 60px auto;
+        }
+
+        .info-general h2 {
+            text-align: center;
+            color: #0D2860;
+            font-size: 40px;
+            margin-bottom: 45px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 30px;
+        }
+
+        .info-box {
+            background: white;
+            padding: 35px;
+            border-radius: 18px;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+            transition: .3s;
+            border-top: 4px solid #007AA2;
+        }
+
+        .info-box i {
+            font-size: 45px;
+            color: #FDB913;
+            margin-bottom: 18px;
+        }
+
+        .info-box h3 {
+            color: #0D2860;
+            margin-bottom: 15px;
+            font-size: 24px;
+        }
+
+        .info-box p {
+            font-size: 18px;
+        }
+
+        /* ===========================
+                  TARJETAS
+        =========================== */
+
+        .card {
+            width: 90%;
+            max-width: 1200px;
+            margin: 55px auto;
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+            border: none;
+        }
+
+        .card h2 {
+            color: #0D2860;
+            font-size: 34px;
+            border-left: 8px solid #FDB913;
+            padding-left: 18px;
+            margin-bottom: 35px;
+        }
+
+        .card p {
+            margin: 22px 0;
+            line-height: 1.9;
+            font-size: 19px;
+        }
+
+        .card strong {
+            color: #0D2860;
+        }
+
+        .card i {
+            color: #007AA2;
+            width: 28px;
+            font-size: 20px;
+        }
+
+        /* ===========================
+                  BOTONES
+        =========================== */
+
+        .buttons {
+            margin-top: 40px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #0D2860;
+            color: white;
+            text-decoration: none;
+            padding: 15px 28px;
+            border-radius: 10px;
+            margin-right: 15px;
+            transition: .3s;
+            font-size: 18px;
+            border: none;
+        }
+
+        .btn i {
+            color: #FDB913;
+        }
+
+        .btn:hover {
+            background: #FDB913;
+            color: #0D2860;
+        }
+
+        .btn:hover i {
+            color: #0D2860;
+        }
+
+        /* ===========================
+                  FOOTER
+        =========================== */
+
+        footer {
+            background:
+            linear-gradient(rgba(13, 40, 96, 0.85), rgba(13, 40, 96, 0.85)),
+            url("../img/fondos/pie\ de\ pagina\ ballet.jpg");
+
+            background-size: cover;
+            background-position: center;
+
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+            margin-top: 70px;
+        }
+
+        footer p {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        /* ===========================
+                BOTÓN VOLVER
+        =========================== */
+
+        .back-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 25px auto;
+            text-align: left;
+        }
+
+        .back-btn {
+            display: inline-block;
+            background: #FDB913;
+            color: #0D2860;
+            text-decoration: none;
+            padding: 14px 24px;
+            border-radius: 12px;
+            font-weight: bold;
+            transition: .3s;
+        }
+
+        .back-btn:hover {
+            background: #007AA2;
+            color: white;
+        }
+
+        /* ===========================
+                RESPONSIVE
+        =========================== */
+
+        @media(max-width: 768px) {
+            .hero {
+                padding: 60px 20px;
+            }
+
+            .hero h1 {
+                font-size: 40px;
+            }
+
+            .hero p {
+                font-size: 18px;
+            }
+
+            .info-general h2 {
+                font-size: 32px;
+            }
+
+            .card {
+                padding: 25px;
+            }
+
+            .card h2 {
+                font-size: 28px;
+            }
+
+            .card p {
+                font-size: 17px;
+            }
+
+            .btn {
+                display: block;
+                text-align: center;
+                margin: 12px 0;
+            }
+        }
+    </style>
 </head>
+
 <body>
-    <div>
-        <p><strong>Lucha</strong></p>
+
+<header class="hero">
+
+    <div class="back-container">
+        <a href="/sportx copy/index1.html" class="back-btn">
+            <i class="fa-solid fa-arrow-left"></i>
+            Volver al menú
+        </a>
     </div>
+
+    <div class="hero-content">
+        <h1>Ballet</h1>
+        <p>Encuentra los mejores lugares para aprender ballet clásico, contemporáneo y danza en El Salvador.</p>
+    </div>
+
+</header>
+
+<main>
+
+<section class="info-general">
+
+    <h2>Información General</h2>
+
+    <div class="info-grid">
+
+        <div class="info-box">
+            <i class="fa-solid fa-location-dot"></i>
+            <h3>Centros disponibles</h3>
+            <p>4 Academias</p>
+        </div>
+
+        <div class="info-box">
+            <i class="fa-solid fa-users"></i>
+            <h3>Modalidad</h3>
+            <p>Infantil, Juvenil y Adultos</p>
+        </div>
+
+        <div class="info-box">
+            <i class="fa-solid fa-dollar-sign"></i>
+            <h3>Precio</h3>
+            <p>Gratis - $60</p>
+        </div>
+
+        <div class="info-box">
+            <i class="fa-solid fa-calendar-days"></i>
+            <h3>Días</h3>
+            <p>Lunes a Sábado</p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- Academia 1 -->
+
+<section class="card">
+
+<h2>Escuela Nacional de Danza Morena Celarié</h2>
+
+<p><i class="fa-solid fa-location-dot"></i>
+<strong>Ubicación:</strong><br>
+1ª Calle Poniente #1233, San Salvador.
+</p>
+
+<p><i class="fa-solid fa-dollar-sign"></i>
+<strong>Precio:</strong><br>
+Gratuito (programa del Ministerio de Cultura).
+</p>
+
+<p><i class="fa-solid fa-shoe-prints"></i>
+<strong>Oferta académica:</strong><br>
+• <strong>Ballet clásico:</strong> Dirigido a niños y adolescentes de 9 a 12 años (requiere prueba de aptitudes).<br>
+• <strong>Danza contemporánea:</strong> Para edades de 11 a 24 años, con curso propedéutico.<br>
+• <strong>Danza folklórica:</strong> Para jóvenes de 11 a 25 años.<br>
+• <strong>Cursos libres:</strong> Disponibles para niños, jóvenes y adultos, sujetos a cupo.
+</p>
+
+<p><i class="fa-solid fa-clock"></i>
+<strong>Horarios de atención:</strong><br>
+Lunes a viernes: 8:00 a.m. – 12:00 m. y 1:30 p.m. – 4:30 p.m.<br>
+Sábados: 8:00 a.m. – 12:00 m.
+</p>
+
+<p><i class="fa-solid fa-phone"></i>
+<strong>Teléfono:</strong><br>
++503 2103-1903
+</p>
+
+<div class="buttons">
+
+<a href="https://maps.google.com/?q=Escuela+Nacional+de+Danza+Morena+Celari%C3%A9,+San+Salvador" target="_blank" class="btn">
+    <i class="fa-solid fa-location-dot"></i>
+    Ver ubicación
+</a>
+
+<a href="tel:+50321031903" class="btn">
+<i class="fa-solid fa-phone"></i>
+Llamar
+</a>
+
+</div>
+
+</section>
+
+<!-- Academia 2 -->
+
+<section class="card">
+
+<h2>Academia Ballet El Salvador</h2>
+
+<p><i class="fa-solid fa-location-dot"></i>
+<strong>Ubicación:</strong><br>
+75 Avenida Norte #456, Colonia Escalón, San Salvador.
+</p>
+
+<p><i class="fa-solid fa-dollar-sign"></i>
+<strong>Precio:</strong><br>
+$35–$50 mensuales.
+</p>
+
+<p><i class="fa-solid fa-shoe-prints"></i>
+<strong>Tipo de ballet:</strong><br>
+• Ballet clásico para todas las edades.<br>
+• Técnica de puntas y repertorio clásico.<br>
+• Talleres de danza contemporánea.
+</p>
+
+<p><i class="fa-solid fa-clock"></i>
+<strong>Horarios:</strong><br>
+Lunes a viernes (tardes): Clases de ballet clásico para niños, jóvenes y adultos después de la jornada escolar (usualmente entre 4:00 p.m. y 8:00 p.m.).<br><br>
+Sábados (mañana): Sesiones de técnica de puntas, repertorio clásico y clases para principiantes (9:00 a.m. – 12:00 m.).
+</p>
+
+<p><i class="fa-solid fa-phone"></i>
+<strong>Teléfono:</strong><br>
++503 2263-4567
+</p>
+
+<div class="buttons">
+
+<a href="https://maps.google.com/?q=75+Avenida+Norte+456,+Colonia+Escalon,+San+Salvador" target="_blank" class="btn">
+    <i class="fa-solid fa-location-dot"></i>
+    Ver ubicación
+</a>
+
+<a href="tel:+50322634567" class="btn">
+<i class="fa-solid fa-phone"></i>
+Llamar
+</a>
+
+</div>
+
+</section>
+
+<!-- Academia 3 -->
+
+<section class="card">
+
+<h2>Studio Ballet Dance Center</h2>
+
+<p><i class="fa-solid fa-location-dot"></i>
+<strong>Ubicación:</strong><br>
+Calle El Mirador #321, Antiguo Cuscatlán.
+</p>
+
+<p><i class="fa-solid fa-dollar-sign"></i>
+<strong>Precio:</strong><br>
+$40–$60 mensuales.
+</p>
+
+<p><i class="fa-solid fa-shoe-prints"></i>
+<strong>Tipo de ballet:</strong><br>
+• Ballet clásico desde iniciación hasta avanzado.<br>
+• Ballet moderno y jazz.<br>
+• Preparación para presentaciones escénicas.
+</p>
+
+<p><i class="fa-solid fa-clock"></i>
+<strong>Horarios:</strong><br>
+Lunes a viernes (4:00 p.m. – 8:00 p.m.):<br>
+- Ballet clásico en niveles básico, intermedio y avanzado.<br>
+- Clases de técnica de puntas y repertorio clásico.<br>
+- Sesiones de ballet moderno y jazz.<br><br>
+Sábados (9:00 a.m. – 12:00 m.):<br>
+- Clases intensivas de ballet clásico.<br>
+- Talleres de preparación escénica y ensayos para presentaciones.
+</p>
+
+<p><i class="fa-solid fa-phone"></i>
+<strong>Teléfono:</strong><br>
++503 2520-7890
+</p>
+
+<div class="buttons">
+
+<a href="https://maps.google.com/?q=Calle+El+Mirador+321,+Antiguo+Cuscatlan" target="_blank" class="btn">
+    <i class="fa-solid fa-location-dot"></i>
+    Ver ubicación
+</a>
+
+<a href="tel:+50325207890" class="btn">
+<i class="fa-solid fa-phone"></i>
+Llamar
+</a>
+
+</div>
+
+</section>
+
+<!-- Academia 4 -->
+
+<section class="card">
+
+<h2>Academia de Danza Sol y Luna</h2>
+
+<p><i class="fa-solid fa-location-dot"></i>
+<strong>Ubicación:</strong><br>
+4ª Calle Oriente #22, Santa Tecla, La Libertad.
+</p>
+
+<p><i class="fa-solid fa-dollar-sign"></i>
+<strong>Precio:</strong><br>
+$30–$45 mensuales.
+</p>
+
+<p><i class="fa-solid fa-shoe-prints"></i>
+<strong>Tipo de ballet:</strong><br>
+• Ballet clásico infantil y juvenil.<br>
+• Ballet creativo para principiantes.<br>
+• Danza contemporánea e infantil recreativa.
+</p>
+
+<p><i class="fa-solid fa-clock"></i>
+<strong>Horarios:</strong><br>
+Lunes a viernes (tardes):<br>
+- Ballet clásico infantil y juvenil.<br>
+- Ballet creativo para principiantes.<br>
+- Danza contemporánea para jóvenes.<br><br>
+Sábados (mañana):<br>
+- Clases intensivas de ballet clásico.<br>
+- Talleres de danza infantil recreativa.<br>
+- Ensayos para presentaciones.
+</p>
+
+<p><i class="fa-solid fa-phone"></i>
+<strong>Teléfono:</strong><br>
++503 2288-1122
+</p>
+
+<div class="buttons">
+
+<a href="https://maps.google.com/?q=4a+Calle+Oriente+22,+Santa+Tecla,+La+Libertad" target="_blank" class="btn">
+    <i class="fa-solid fa-location-dot"></i>
+    Ver ubicación
+</a>
+
+<a href="tel:+50322881122" class="btn">
+<i class="fa-solid fa-phone"></i>
+Llamar
+</a>
+
+</div>
+
+</section>
+
+</main>
+
+<footer>
+
+<p>© 2026 SportX | Todos los derechos reservados.</p>
+
+</footer>
+
+<!-- Bootstrap 5 JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>
