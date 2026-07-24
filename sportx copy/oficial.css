@@ -1,0 +1,442 @@
+/* =========================
+   COLORES SPORTX
+========================= */
+
+:root {
+    --brand-dark-blue: #0D2860;
+    --brand-yellow: #FDB913;
+    --brand-teal: #007AA2;
+    --light-bg: #f4f7f9;
+}
+
+
+/* =========================
+   GENERAL
+========================= */
+
+body {
+
+    background-color: var(--light-bg);
+    color: #333;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    margin: 0;
+
+}
+
+
+
+/* =========================
+   HEADER
+========================= */
+
+
+.navbar-custom {
+
+    background-color: var(--brand-dark-blue);
+
+}
+
+
+.nav-link {
+
+    color: white !important;
+    font-weight: 500;
+    transition: .3s;
+
+}
+
+
+.nav-link:hover,
+.nav-link.active {
+
+    color: var(--brand-yellow) !important;
+
+}
+
+
+
+.user-profile {
+
+    border-left: 2px solid var(--brand-teal);
+    padding-left: 20px;
+
+}
+
+
+
+.user-avatar {
+
+    width: 45px;
+    height: 45px;
+    object-fit: cover;
+    border: 2px solid var(--brand-yellow);
+
+}
+
+
+
+
+/* =========================
+   TITULOS
+========================= */
+
+
+h2 {
+
+    color: var(--brand-dark-blue);
+
+}
+
+
+
+
+
+
+/* =========================
+   BIENVENIDA
+========================= */
+
+
+.welcome-badge {
+
+    background-color: var(--brand-teal);
+    color: white;
+
+}
+
+
+
+
+
+
+
+/* =========================
+   ACTIVIDADES DESTACADAS
+========================= */
+
+
+.activity-card {
+
+    background-color: white;
+
+    border-radius: 12px;
+
+    border-left: 5px solid var(--brand-yellow);
+
+    box-shadow: 0 4px 12px rgba(0,0,0,.08);
+
+    height: 100%;
+
+    transition: .3s;
+
+
+}
+
+
+
+.activity-card:hover {
+
+
+    transform: translateY(-7px);
+
+    box-shadow: 0 8px 18px rgba(13,40,96,.18);
+
+
+}
+
+
+
+.activity-card i {
+
+
+    font-size: 35px;
+
+    color: var(--brand-teal);
+
+    margin-bottom: 15px;
+
+
+}
+
+
+
+.activity-card h4 {
+
+
+    color: var(--brand-dark-blue);
+
+    font-size: 20px;
+
+    font-weight: bold;
+
+
+}
+
+
+
+.activity-card p {
+
+
+    color: #666;
+
+    margin-bottom: 0;
+
+
+}
+
+
+
+
+
+
+
+/* =========================
+   SOBRE SPORTX
+========================= */
+
+
+.about-sportx {
+
+
+    background-color: white;
+
+    padding: 30px;
+
+    border-radius: 12px;
+
+    box-shadow: 0 4px 12px rgba(0,0,0,.08);
+
+
+}
+
+
+
+.about-sportx p {
+
+
+    line-height: 1.8;
+
+    color: #555;
+
+    font-size: 17px;
+
+
+}
+
+
+
+
+
+
+
+/* =========================
+   GALERIA DEPORTES
+========================= */
+
+
+.gallery-card {
+
+
+    position: relative;
+
+    display: block;
+
+    height: 240px;
+
+    overflow: hidden;
+
+    border-radius: 12px;
+
+    text-decoration: none;
+
+    box-shadow: 0 4px 12px rgba(0,0,0,.15);
+
+
+}
+
+
+
+
+.gallery-card img {
+
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    transition: transform .4s;
+
+
+}
+
+
+
+
+.gallery-card:hover img {
+
+
+    transform: scale(1.1);
+
+
+}
+
+
+
+
+
+.gallery-overlay {
+
+
+    position: absolute;
+
+    inset: 0;
+
+    display: flex;
+
+    align-items: end;
+
+    padding: 20px;
+
+
+    background: linear-gradient(
+        transparent,
+        rgba(13,40,96,.9)
+    );
+
+
+}
+
+
+
+
+
+.gallery-overlay h3 {
+
+
+    color: white;
+
+    font-size: 25px;
+
+    font-weight: bold;
+
+    margin: 0;
+
+
+}
+
+
+
+
+
+
+
+/* =========================
+   FOOTER
+========================= */
+
+
+footer {
+
+
+    background-color: var(--brand-dark-blue);
+
+    color:white;
+
+
+}
+
+
+
+footer img {
+
+
+    max-width: 150px;
+
+
+}
+
+
+
+.social-icons a {
+
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    width:40px;
+
+    height:40px;
+
+    border-radius:50%;
+
+    background-color:rgba(255,255,255,.1);
+
+    color:white;
+
+    margin-left:8px;
+
+    text-decoration:none;
+
+    transition:.3s;
+
+
+}
+
+
+
+.social-icons a:hover {
+
+
+    background-color:var(--brand-yellow);
+
+    color:var(--brand-dark-blue);
+
+
+}
+
+
+
+
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+
+@media(max-width:768px){
+
+
+    .user-profile {
+
+
+        border-left:none;
+
+        border-top:2px solid var(--brand-teal);
+
+        padding-top:15px;
+
+        margin-top:15px;
+
+
+    }
+
+
+
+    .gallery-card {
+
+
+        height:220px;
+
+
+    }
+
+
+
+}
