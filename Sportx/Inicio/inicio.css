@@ -32,52 +32,17 @@ html { scroll-behavior: smooth; }
 
 body {
   font-family: var(--font-body);
-  background:
-    radial-gradient(120% 140% at 15% -10%, var(--blue-800) 0%, transparent 55%),
-    linear-gradient(160deg, var(--blue-900) 0%, var(--blue-950) 60%, #05060f 100%);
-  color: var(--white);
+  background: linear-gradient(90deg, #007AA2 0%, #0D2860 100%); width: 100%; height: 100vh;
   min-height: 100vh;
   position: relative;
   overflow-x: hidden;
 }
 
-img { display: block; max-width: 100%; }
+img { display: block; max-width: 100%;
+border: 12px solid #007AA2; }
 
 @media (prefers-reduced-motion: reduce) {
   * { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
-}
-
-/* ============================================
-   Ambient background
-   ============================================ */
-.bg-dots {
-  position: fixed;
-  inset: 0;
-  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
-  background-size: 26px 26px;
-  mask-image: radial-gradient(80% 60% at 30% 20%, black 0%, transparent 75%);
-  pointer-events: none;
-  z-index: 0;
-}
-
-.bg-glow {
-  position: fixed;
-  border-radius: 50%;
-  filter: blur(110px);
-  opacity: 0.35;
-  pointer-events: none;
-  z-index: 0;
-}
-.bg-glow--orange {
-  width: 520px; height: 520px;
-  background: var(--orange-600);
-  top: -120px; right: -140px;
-}
-.bg-glow--yellow {
-  width: 420px; height: 420px;
-  background: var(--yellow-400);
-  bottom: -160px; left: -120px;
-  opacity: 0.16;
 }
 
 .noise-overlay {
@@ -107,44 +72,12 @@ img { display: block; max-width: 100%; }
   gap: 24px;
 }
 
-.logo {
-  font-family: var(--font-display);
-  font-size: 22px;
-  letter-spacing: 0.5px;
-  color: var(--white);
-  text-decoration: none;
-  white-space: nowrap;
-}
-.logo__x { color: var(--orange-500); }
-
-.nav {
+.img_logo{
   display: flex;
-  gap: 34px;
+  align-items: center;
+  justify-content: space-between;
+  height: 150px;
 }
-.nav__link {
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--white-70);
-  text-decoration: none;
-  letter-spacing: 0.3px;
-  position: relative;
-  padding-bottom: 4px;
-  transition: color 0.2s ease;
-}
-.nav__link::after {
-  content: "";
-  position: absolute;
-  left: 0; bottom: 0;
-  width: 0;
-  height: 2px;
-  background: linear-gradient(90deg, var(--orange-500), var(--yellow-400));
-  transition: width 0.25s ease;
-}
-.nav__link:hover { color: var(--white); }
-.nav__link:hover::after { width: 100%; }
-.nav__link.is-active { color: var(--white); }
-.nav__link.is-active::after { width: 100%; }
-
 /* ============================================
    Buttons
    ============================================ */
@@ -182,6 +115,7 @@ img { display: block; max-width: 100%; }
 .btn--primary:hover { transform: translateY(-2px); box-shadow: 0 14px 30px rgba(255, 106, 0, 0.45); }
 
 .btn--ghost {
+  visibility: hidden;
   background: transparent;
   color: var(--white);
   border: 1.5px solid var(--blue-line);
@@ -207,6 +141,7 @@ img { display: block; max-width: 100%; }
 }
 
 .hero__stripe {
+  visibility: hidden;
   position: absolute;
   left: 0; right: 0; bottom: 0;
   height: 130px;
@@ -219,6 +154,7 @@ img { display: block; max-width: 100%; }
 .hero__content { position: relative; }
 
 .hero__eyebrow {
+  visibility: hidden;
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -294,6 +230,7 @@ img { display: block; max-width: 100%; }
 }
 
 .hero__stats {
+  visibility: hidden;
   display: flex;
   align-items: center;
   gap: 22px;
@@ -383,11 +320,13 @@ img { display: block; max-width: 100%; }
 }
 
 .gallery__decor {
+  visibility: hidden;
   position: absolute;
   z-index: 1;
   pointer-events: none;
 }
 .gallery__decor--ring {
+  visibility: hidden;
   width: 130px; height: 130px;
   border: 2px dashed rgba(255, 212, 0, 0.35);
   border-radius: 50%;
@@ -398,6 +337,7 @@ img { display: block; max-width: 100%; }
 @keyframes spin { to { transform: rotate(360deg); } }
 
 .gallery__decor--dashes {
+visibility: hidden;
   width: 90px;
   height: 90px;
   right: -10px;
@@ -408,6 +348,7 @@ img { display: block; max-width: 100%; }
 }
 
 .gallery__decor--dots {
+  visibility: hidden;
   width: 100px;
   height: 70px;
   left: -18px;
@@ -418,6 +359,7 @@ img { display: block; max-width: 100%; }
 }
 
 .gallery__badge {
+  visibility: hidden;
   position: absolute;
   left: -18px;
   bottom: 2%;
@@ -431,6 +373,7 @@ img { display: block; max-width: 100%; }
   box-shadow: 0 16px 34px rgba(255, 106, 0, 0.35);
 }
 .gallery__badge-num {
+  visibility: hidden;
   font-family: var(--font-display);
   font-size: 15px;
   color: rgba(6, 8, 24, 0.55);
@@ -443,6 +386,7 @@ img { display: block; max-width: 100%; }
 }
 
 .progress {
+  visibility: hidden;
   position: absolute;
   left: 4%;
   bottom: -18px;
