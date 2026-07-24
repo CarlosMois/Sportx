@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SportX - Escoge tu deporte favorito</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      width: 100%;
+      height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      color: #FFFFFF;
+      /* Background solicitado */
+      background: linear-gradient(90deg, #007AA2 0%, #0D2860 100%);
+    }
+
+    /* Fondo con imágenes de deportes y filtro con mezcla de color */
+    .bg-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      background-image: url('https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=1920&q=80');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.15;
+      mix-blend-mode: overlay;
+      pointer-events: none;
+    }
+
+    /* Encabezado / Navbar */
+    header {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 25px 80px;
+    }
+
+    .logo {
+      font-size: 2rem;
+      font-weight: 900;
+      letter-spacing: 1px;
+    }
+
+    .logo span {
+      color: #FFC700; /* Amarillo SportX */
+    }
+
+    .btn-login {
+      background-color: #FFC700;
+      color: #0D2860;
+      padding: 10px 22px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.95rem;
+      transition: transform 0.2s, background-color 0.2s;
+    }
+
+    .btn-login:hover {
+      background-color: #FFE066;
+      transform: translateY(-2px);
+    }
+
+    /* Contenido Principal */
+    main {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      margin-bottom: 40px;
+      text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      letter-spacing: 1px;
+    }
+
+    /* Grid de Deportes */
+    .sports-container {
+      display: flex;
+      justify-content: center;
+      gap: 35px;
+      flex-wrap: wrap;
+      margin-bottom: 50px;
+    }
+
+    .sport-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: pointer;
+      user-select: none;
+      transition: transform 0.3s ease;
+    }
+
+    .sport-card:hover {
+      transform: translateY(-8px);
+    }
+
+    /* Círculos de deportes */
+    .circle-thumb {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      border: 4px solid rgba(255, 255, 255, 0.3);
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .circle-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(20%);
+      transition: transform 0.3s ease, filter 0.3s ease;
+    }
+
+    /* Efecto al seleccionar */
+    .sport-card.selected .circle-thumb {
+      border-color: #FF6B00; /* Naranja SportX */
+      box-shadow: 0 0 25px rgba(255, 107, 0, 0.8);
+    }
+
+    .sport-card.selected .circle-thumb img {
+      filter: grayscale(0%);
+      transform: scale(1.1);
+    }
+
+    .sport-card p {
+      margin-top: 15px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      text-transform: capitalize;
+      letter-spacing: 0.5px;
+      color: #E2E8F0;
+      transition: color 0.3s ease;
+    }
+
+    .sport-card.selected p {
+      color: #FFC700;
+    }
+
+    /* Botón Siguiente */
+    .actions {
+      margin-top: 10px;
+    }
+
+    .btn-next {
+      background: linear-gradient(90deg, #FF6B00 0%, #FF8800 100%);
+      color: #FFFFFF;
+      border: none;
+      padding: 16px 48px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      border-radius: 30px;
+      cursor: pointer;
+      box-shadow: 0 6px 18px rgba(255, 107, 0, 0.4);
+      transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+    }
+
+    .btn-next:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(255, 107, 0, 0.6);
+      background: linear-gradient(90deg, #FF7700 0%, #FFA000 100%);
+    }
+
+    /* Footer decorativo */
+    footer {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      header {
+        padding: 20px 30px;
+      }
+      h1 {
+        font-size: 2rem;
+      }
+      .sports-container {
+        gap: 20px;
+      }
+      .circle-thumb {
+        width: 100px;
+        height: 100px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bg-overlay"></div>
+
+  <header>
+    <div class="logo">SPORT<span>X</span></div>
+    <a href="#" class="btn-login" onclick="event.preventDefault()">Iniciar sesión &rarr;</a>
+  </header>
+
+  <main>
+    <h1>Escoge tu deporte favorito</h1>
+
+    <div class="sports-container">
+      <div class="sport-card" onclick="toggleSelect(this)">
+        <div class="circle-thumb">
+          <img src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=400&q=80" alt="Fútbol">
+        </div>
+        <p>Fútbol</p>
+      </div>
+
+      <div class="sport-card" onclick="toggleSelect(this)">
+        <div class="circle-thumb">
+          <img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&w=400&q=80" alt="Basketball">
+        </div>
+        <p>Basketball</p>
+      </div>
+
+      <div class="sport-card" onclick="toggleSelect(this)">
+        <div class="circle-thumb">
+          <img src="https://images.unsplash.com/photo-1518834107812-67b0b7c58434?auto=format&fit=crop&w=400&q=80" alt="Ballet">
+        </div>
+        <p>Ballet</p>
+      </div>
+
+      <div class="sport-card" onclick="toggleSelect(this)">
+        <div class="circle-thumb">
+          <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=400&q=80" alt="Lucha">
+        </div>
+        <p>Lucha</p>
+      </div>
+
+      <div class="sport-card" onclick="toggleSelect(this)">
+        <div class="circle-thumb">
+          <img src="https://images.unsplash.com/photo-1612872087720-bb876e2e67d1?auto=format&fit=crop&w=400&q=80" alt="Voleybol">
+        </div>
+        <p>Voleybol</p>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button class="btn-next" onclick="event.preventDefault()">Siguiente &rarr;</button>
+    </div>
+  </main>
+
+  <footer>
+    SportX &copy; 2026 - Más que un juego
+  </footer>
+
+  <script>
+    function toggleSelect(element) {
+      element.classList.toggle('selected');
+    }
+  </script>
+
+</body>
+</html>

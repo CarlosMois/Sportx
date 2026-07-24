@@ -39,7 +39,11 @@ body {
 }
 
 img { display: block; max-width: 100%;
-border: 12px solid #007AA2; }
+border:none } 
+
+.img_logo{ display: block; max-width: 100%;
+border: none;
+}
 
 @media (prefers-reduced-motion: reduce) {
   * { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
@@ -77,6 +81,7 @@ border: 12px solid #007AA2; }
   align-items: center;
   justify-content: space-between;
   height: 150px;
+  width: 150px;
 }
 /* ============================================
    Buttons
@@ -115,7 +120,6 @@ border: 12px solid #007AA2; }
 .btn--primary:hover { transform: translateY(-2px); box-shadow: 0 14px 30px rgba(255, 106, 0, 0.45); }
 
 .btn--ghost {
-  visibility: hidden;
   background: transparent;
   color: var(--white);
   border: 1.5px solid var(--blue-line);
@@ -266,13 +270,13 @@ border: 12px solid #007AA2; }
 .gallery__frame {
   position: absolute;
   overflow: hidden;
-  border: 3px solid rgba(255, 255, 255, 0.9);
+  border: none;
   box-shadow: 0 30px 60px rgba(0, 0, 0, 0.45);
 }
 .gallery__frame img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: fill;
 }
 
 .gallery__frame--main {
@@ -395,24 +399,7 @@ visibility: hidden;
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.14);
 }
-.progress__fill {
-  position: absolute;
-  left: 0; top: 0;
-  height: 100%;
-  width: 62%;
-  border-radius: 999px;
-  background: linear-gradient(90deg, var(--orange-500), var(--yellow-400));
-}
-.progress__dot {
-  position: absolute;
-  left: 62%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 14px; height: 14px;
-  border-radius: 50%;
-  background: var(--white);
-  box-shadow: 0 0 0 4px rgba(255, 138, 31, 0.35);
-}
+
 
 /* ============================================
    Responsive
