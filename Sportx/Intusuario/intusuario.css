@@ -5,6 +5,13 @@
     font-family: 'Segoe UI', sans-serif;
 }
 
+.logosportx{
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
 body {
     background: #f5f7fa;
     color: #333;
