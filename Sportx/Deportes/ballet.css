@@ -14,10 +14,6 @@ body{
     color:#333;
 }
 
-/* ===========================
-            HERO
-=========================== */
-
 .hero{
     background:
     linear-gradient(rgba(12,28,78,.65),rgba(12,28,78,.65)),
@@ -28,7 +24,7 @@ body{
     background-repeat:no-repeat;
 
     color:white;
-    text-align:center;
+    text-align:left;
     padding:120px 20px;
 }
 
@@ -36,6 +32,7 @@ body{
     font-size:58px;
     margin-bottom:20px;
     color:#FFD700;
+    text-align:center;
 }
 
 .hero p{
@@ -43,6 +40,7 @@ body{
     max-width:900px;
     margin:auto;
     line-height:1.8;
+    text-align:center;
 }
 
 /* ===========================
