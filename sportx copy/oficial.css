@@ -30,6 +30,37 @@ body {
    HEADER
 ========================= */
 
+.inicio-btn{
+
+    background: var(--brand-yellow);
+
+    color: var(--brand-dark-blue);
+
+    padding:12px 24px;
+
+    border-radius:30px;
+
+    text-decoration:none;
+
+    font-weight:bold;
+
+    transition:.3s;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+}
+
+.inicio-btn:hover{
+
+    background:white;
+
+    transform:translateY(-2px);
+
+}
 
 .navbar-custom {
 
@@ -37,23 +68,46 @@ body {
 
 }
 
+.deportes-btn{
 
-.nav-link {
+    display:flex;
+    align-items:center;
+    gap:10px;
 
-    color: white !important;
-    font-weight: 500;
-    transition: .3s;
+    background: var(--brand-yellow);
+    color: var(--brand-dark-blue);
+
+    text-decoration:none;
+
+    padding:16px 36px;
+
+    border-radius:40px;
+
+    font-size:22px;
+    font-weight:bold;
+
+    transition:.3s;
 
 }
 
+html{
+    scroll-behavior: smooth;
+}
 
-.nav-link:hover,
-.nav-link.active {
+.deportes-btn:hover{
 
-    color: var(--brand-yellow) !important;
+    background:white;
+    color:var(--brand-dark-blue);
+
+    transform:translateY(-3px);
 
 }
 
+.deportes-btn i{
+
+    font-size:20px;
+
+}
 
 
 .user-profile {
@@ -81,6 +135,19 @@ body {
    TITULOS
 ========================= */
 
+.logoimg {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.logofooter{
+   width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
 
 h2 {
 
@@ -98,10 +165,29 @@ h2 {
 ========================= */
 
 
-.welcome-badge {
+.sportx-banner{
 
-    background-color: var(--brand-teal);
-    color: white;
+    background: linear-gradient(90deg,
+    var(--brand-dark-blue),
+    var(--brand-teal));
+
+    color:white;
+
+    text-align:center;
+
+    padding:18px;
+
+    border-radius:12px;
+
+    margin-bottom:25px;
+
+    font-size:28px;
+
+    font-weight:bold;
+
+    letter-spacing:1px;
+
+    box-shadow:0 4px 12px rgba(0,0,0,.15);
 
 }
 
@@ -360,43 +446,19 @@ footer img {
 
 
 
-.social-icons a {
+.social-icons i{
 
+    color: white;
 
-    display:inline-flex;
+    font-size: 28px;
 
-    align-items:center;
-
-    justify-content:center;
-
-    width:40px;
-
-    height:40px;
-
-    border-radius:50%;
-
-    background-color:rgba(255,255,255,.1);
-
-    color:white;
-
-    margin-left:8px;
-
-    text-decoration:none;
-
-    transition:.3s;
-
+    margin-left: 20px;
 
 }
 
+.social-icons i:hover{
 
-
-.social-icons a:hover {
-
-
-    background-color:var(--brand-yellow);
-
-    color:var(--brand-dark-blue);
-
+    color: var(--brand-yellow);
 
 }
 
