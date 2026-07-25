@@ -127,6 +127,10 @@ html{
     transform:translateY(-3px);
 
 }
+.pdeportes{
+    font-weight: 500;
+    font-size: larger;
+}
 
 .deportes-btn i{
 
