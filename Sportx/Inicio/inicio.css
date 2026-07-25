@@ -128,6 +128,22 @@ border: none;
 }
 .btn--ghost:hover { border-color: var(--white-45); background: rgba(255, 255, 255, 0.04); }
 
+.btn{
+    text-decoration: none;
+    justify-content: center;
+}
+
+
+.btn,
+.btn:visited{
+    color: inherit;
+}
+
+.btn svg{
+    flex-shrink: 0;
+}
+
+
 /* ============================================
    Hero layout
    ============================================ */

@@ -46,20 +46,23 @@
       position: relative;
       z-index: 2;
       display: flex;
-      justify-content: space-between;
+      justify-content: flex-start;
       align-items: center;
-      padding: 25px 80px;
+      padding: 15px 80px;
     }
 
-    .logo {
-      font-size: 2rem;
-      font-weight: 900;
-      letter-spacing: 1px;
-    }
+    .logo{
+    width: 130px;
+    height: auto;
+}
 
-    .logo span {
-      color: #FFC700; /* Amarillo SportX */
-    }
+.logo{
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
 
     .btn-login {
       background-color: #FFC700;
@@ -169,6 +172,9 @@
     }
 
     .btn-next {
+      display: inline-block;
+      text-decoration: none;
+      text-align: center;
       background: linear-gradient(90deg, #FF6B00 0%, #FF8800 100%);
       color: #FFFFFF;
       border: none;
@@ -220,8 +226,7 @@
   <div class="bg-overlay"></div>
 
   <header>
-    <div class="logo">SPORT<span>X</span></div>
-    <a href="#" class="btn-login" onclick="event.preventDefault()">Iniciar sesión &rarr;</a>
+    <img class="logo" src="../img/IMG-20260529-WA0008(2).jpg" alt="SportX">
   </header>
 
   <main>
@@ -265,7 +270,9 @@
     </div>
 
     <div class="actions">
-      <button class="btn-next" onclick="event.preventDefault()">Siguiente &rarr;</button>
+      <a href="" class="btn-next">
+    Siguiente →
+</a>
     </div>
   </main>
 
