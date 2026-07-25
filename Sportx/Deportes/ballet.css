@@ -17,7 +17,7 @@ body{
 .hero{
     background:
     linear-gradient(rgba(12,28,78,.65),rgba(12,28,78,.65)),
-    url("../img/fondos/ballet3.jpg");
+    url("../img/ballet3.jpg");
 
     background-size:cover;
     background-position:center;
@@ -201,7 +201,7 @@ footer{
 
     background:
     linear-gradient(rgba(12,28,78,.80),rgba(12,28,78,.80)),
-    url("../img/fondos/fondopiedepaginaballet.jpg");
+    url("../img/fondopiedepaginaballet.jpg");
 
     background-size:cover;
     background-position:center;
