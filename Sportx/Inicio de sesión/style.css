@@ -39,6 +39,7 @@ body {
       height: 100%;
       z-index: 1;
       background-image: url('../img/fondosesion.jpg');
+      background-repeat: no-repeat;
       background-size: cover;
       background-position: center;
       opacity: 0.15;
