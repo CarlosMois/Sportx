@@ -14,6 +14,13 @@
    GENERAL
 ========================= */
 
+
+.pdeportes{
+    font-size: 4pc;
+}
+
+
+
 body {
     background: linear-gradient(90deg, #007AA2 0%, #0D2860 100%);
     color: #333;
