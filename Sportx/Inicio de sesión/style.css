@@ -23,16 +23,17 @@
 }
 
 body {
-  background: linear-gradient(90deg, #007AA2 0%, #0D2860 100%);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  padding: 20px;
+    background: linear-gradient(90deg, #007AA2 0%, #0D2860 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    position: relative;
 }
 
 .divimgsesion{
-  position: absolute;
+  position: fixed;
       top: 0;
       left: 0;
       width: 100%;
