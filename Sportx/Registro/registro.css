@@ -1,6 +1,7 @@
 /* ==========================================
    VARIABLES DE COLOR (Paleta SportX)
 ========================================== */
+
 :root {
   --primary-blue: #0b1d3a;
   --secondary-blue: #183059;
@@ -12,6 +13,11 @@
   --white: #ffffff;
 }
 
+
+/* ==========================================
+   RESET Y ESTILOS BASE
+========================================== */
+
 * {
   margin: 0;
   padding: 0;
@@ -19,163 +25,335 @@
   font-family: 'Poppins', sans-serif;
 }
 
+
 body {
-  background-color: var(--bg-light);
+  background: linear-gradient(90deg, #007AA2 0%, #0D2860 100%);
+
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
-  padding: 20px;
-}
 
+  min-height: 100vh;
+
+  padding: 20px;
+
+  position: relative;
+
+  overflow-x: hidden;
+}
 
 
 /* ==========================================
-   TARJETA PRINCIPAL (LOGIN / REGISTRO)
+   IMAGEN DE FONDO
 ========================================== */
-.login-container {
-  background-color: var(--white);
+
+.divimgregistro {
+
+  position: fixed;
+
+  top: 0;
+  left: 0;
+
   width: 100%;
-  max-width: 420px;
-  padding: 35px 30px;
-  border-radius: 16px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  height: 100%;
+
+  z-index: 1;
+
+  background-image: url('../img/Multimedia.jpg');
+
+  background-repeat: no-repeat;
+
+  background-size: cover;
+
+  background-position: center;
+
+  opacity: 0.15;
+
+  mix-blend-mode: overlay;
+
+  pointer-events: none;
 }
+
+
+/* ==========================================
+   TARJETA PRINCIPAL
+========================================== */
+
+.login-container {
+
+  width: 100%;
+
+  max-width: 420px;
+
+  padding: 35px 30px;
+
+  border-radius: 16px;
+
+  background-color: rgba(11, 29, 58, 0.35);
+
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+
+  position: relative;
+
+  z-index: 2;
+}
+
 
 /* ==========================================
    SECCIÓN DEL LOGO / MARCA
 ========================================== */
+
 .brand-header {
+
   text-align: center;
+
   margin-bottom: 25px;
 }
 
-/* Contenedor del Logo */
+
+/* Contenedor del logo */
+
 .logo-icon {
+
   margin-bottom: 10px;
+
   display: flex;
+
   justify-content: center;
+
   align-items: center;
-  width: 100%;
+
+  height: 400px;
 }
 
-/* Logo adaptable más grande */
+
+/* Logo */
+
 .logo-icon img {
+
   width: auto;
-  max-width: 100%;    /* Limita la anchura al borde interior */
-  max-height: 120px;  /* Altura incrementada para mayor presencia */
+
+  max-width: 100%;
+
   height: auto;
+
   object-fit: contain;
 }
 
-.brand-title {
-  color: var(--primary-blue);
-  font-size: 1.8rem;
-  font-weight: 700;
-  letter-spacing: 1px;
-}
+
+/* ==========================================
+   SUBTÍTULO
+========================================== */
 
 .brand-subtitle {
-  color: var(--text-muted);
-  font-size: 0.9rem;
+
+
+  font-size: 2rem;
+
   margin-top: 4px;
 }
 
+
 /* ==========================================
-   FORMULARIO E INPUTS
+   FORMULARIO
 ========================================== */
+
 .login-form {
+
   display: flex;
+
   flex-direction: column;
+
   gap: 18px;
 }
 
+
+/* ==========================================
+   GRUPOS DE INPUT
+========================================== */
+
 .input-group {
+
   display: flex;
+
   flex-direction: column;
+
   gap: 6px;
 }
 
+
+/* Labels */
+
 .input-group label {
-  color: var(--primary-blue);
+
+  color: var(--white);
+
   font-size: 0.85rem;
+
   font-weight: 600;
 }
 
+
+/* Inputs */
+
 .input-group input {
+
   padding: 12px 14px;
+
   border: 1.5px solid #e1e5eb;
+
   border-radius: 8px;
+
   font-size: 0.95rem;
+
   outline: none;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
 }
+
+
+/* Input seleccionado */
 
 .input-group input:focus {
-  border-color: var(--secondary-blue);
-  box-shadow: 0 0 0 3px rgba(24, 48, 89, 0.1);
+
+  border-color: var(--accent-gold);
+
+  box-shadow:
+    0 0 0 3px rgba(243, 176, 35, 0.15);
 }
+
 
 /* ==========================================
-   OPCIONES EXTRAS Y ENLACES
+   BOTÓN DE REGISTRO
 ========================================== */
-.form-options {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 0.8rem;
-}
 
-.forgot-password {
-  color: var(--secondary-blue);
-  text-decoration: none;
-  font-weight: 500;
-}
-
-.forgot-password:hover {
-  text-decoration: underline;
-}
-
-/* ==========================================
-   BOTÓN DE ENVÍO
-========================================== */
 .btn-submit {
-  background-color: var(--accent-gold);
-  color: var(--primary-blue);
+
+  background-color: #FF6B00;
+
+  color: white;
+
   border: none;
+
   padding: 14px;
+
   border-radius: 8px;
+
   font-size: 1rem;
+
   font-weight: 700;
+
   cursor: pointer;
-  transition: background-color 0.2s ease, transform 0.1s ease;
+
+  transition:
+    background-color 0.2s ease,
+    transform 0.1s ease;
+
   margin-top: 10px;
 }
 
+
+/* Hover */
+
 .btn-submit:hover {
+
   background-color: var(--accent-gold-hover);
+
 }
+
+
+/* Click */
 
 .btn-submit:active {
+
   transform: scale(0.99);
+
 }
+
 
 /* ==========================================
-   PIE DE PÁGINA / FOOTER
+   PIE DE PÁGINA
 ========================================== */
+
 .login-footer {
+
+  color: white;
+
   text-align: center;
+
   margin-top: 25px;
+
   font-size: 0.85rem;
-  color: var(--text-muted);
 }
 
+
+/* Enlace */
+
 .login-footer a {
-  color: var(--secondary-blue);
+
+  color: white;
+
   text-decoration: none;
+
   font-weight: 600;
 }
 
+
+/* Hover del enlace */
+
 .login-footer a:hover {
+
   text-decoration: underline;
+
+}
+
+
+/* ==========================================
+   RESPONSIVE
+========================================== */
+
+@media (max-width: 768px) {
+
+  body {
+
+    padding: 15px;
+
+  }
+
+
+  .login-container {
+
+    max-width: 420px;
+
+    padding: 30px 25px;
+
+  }
+
+
+  .logo-icon {
+
+    height: 300px;
+
+  }
+
+}
+
+
+@media (max-width: 480px) {
+
+  .login-container {
+
+    padding: 25px 20px;
+
+  }
+
+
+  .logo-icon {
+
+    height: 250px;
+
+  }
+
 }
