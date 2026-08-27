@@ -159,36 +159,8 @@ border: none;
   gap: 40px;
   min-height: 640px;
 }
-
-.hero__stripe {
-  visibility: hidden;
-  position: absolute;
-  left: 0; right: 0; bottom: 0;
-  height: 130px;
-  background: linear-gradient(100deg, transparent 0%, transparent 42%, rgba(255, 138, 31, 0.16) 42%, rgba(255, 212, 0, 0.1) 100%);
-  clip-path: polygon(30% 100%, 100% 100%, 100% 0%, 55% 0%);
-  z-index: -1;
-}
-
 /* ---- Left column ---- */
 .hero__content { position: relative; }
-
-.hero__eyebrow {
-  visibility: hidden;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 12.5px;
-  font-weight: 700;
-  letter-spacing: 0.6px;
-  text-transform: uppercase;
-  color: var(--yellow-300);
-  background: rgba(255, 212, 0, 0.08);
-  border: 1px solid rgba(255, 212, 0, 0.25);
-  padding: 7px 14px 7px 10px;
-  border-radius: 999px;
-  margin-bottom: 26px;
-}
 .dot {
   width: 7px; height: 7px;
   border-radius: 50%;
