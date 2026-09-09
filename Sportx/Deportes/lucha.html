@@ -38,7 +38,7 @@
 </header>
 
 <main>
-
+    
 <section class="info-general">
 
     <h2 style="color:orange">Información General</h2>
@@ -74,6 +74,50 @@
 
     
 </section>
+
+<script>
+    const searchForm = document.getElementById('search-form');
+const searchInput = document.getElementById('search-input');
+const resultsContainer = document.getElementById('search-results');
+
+// Ejemplo de base de datos local de tu página
+const articulos = [
+  { titulo: 'Cómo crear una web', url: '/crear-web.html' },
+  { titulo: 'Aprender diseño CSS', url: '/diseno-css.html' },
+  { titulo: 'Contacto y soporte', url: '/contacto.html' }
+];
+
+searchForm.addEventListener('submit', function(e) {
+  e.preventDefault(); // Evita que la página se recargue
+  const query = searchInput.value.toLowerCase();
+  resultsContainer.innerHTML = ''; // Limpia resultados anteriores
+
+  if(query.trim() === "") return;
+
+  // Filtrar los artículos que coincidan con la búsqueda
+  const resultados = articulos.filter(item => item.titulo.toLowerCase().includes(query));
+
+  if(resultados.length > 0) {
+    resultados.forEach(item => {
+      const link = document.createElement('a');
+      link.href = item.url;
+      link.textContent = item.titulo;
+      link.style.display = 'block';
+      resultsContainer.appendChild(link);
+    });
+  } else {
+    resultsContainer.textContent = 'No se encontraron resultados.';
+  }
+});
+</script>
+
+
+<form id="search-form">
+  <input type="text" id="search-input" placeholder="Buscar en el sitio...">
+  <button type="submit">Buscar</button>
+</form>
+<div id="search-results"></div>
+
 
 <!-- Academia 1 -->
 
