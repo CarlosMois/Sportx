@@ -1,4 +1,4 @@
-javascript
+
 const formulario = document.querySelector(".login-form");
 const mensaje = document.querySelector("#mensaje");
 
