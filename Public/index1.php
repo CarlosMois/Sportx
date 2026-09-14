@@ -1,3 +1,17 @@
+<?php
+
+session_start();
+
+if (
+    !isset($_SESSION["autenticado"]) ||
+    $_SESSION["autenticado"] !== true
+) {
+    header("Location: index.html");
+    exit;
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -37,7 +51,7 @@ height="70">
 
 </div>
 <p class="Sports">
-   Sports
+   SportX
 </p>
 <div class="user-profile d-flex align-items-center">
 

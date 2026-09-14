@@ -3,53 +3,61 @@ document.addEventListener("DOMContentLoaded", () => {
     const formulario = document.querySelector(".login-form");
 
     if (!formulario) {
-        console.error("No se encontró el formulario de registro.");
+        console.error("No se encontró el formulario de inicio de sesión.");
         return;
     }
 
-    formulario.addEventListener("submit", registrarUsuario);
+    formulario.addEventListener("submit", iniciarSesion);
 
 });
 
-
-async function registrarUsuario(event) {
+async function iniciarSesion(event) {
 
     event.preventDefault();
 
     const formulario = event.target;
 
-    const nombre = document.getElementById("fullname").value.trim();
     const correo = document.getElementById("email").value.trim();
     const password = document.getElementById("password").value;
 
-    // Validación básica en JavaScript
-    if (nombre === "" || correo === "" || password === "") {
-        mostrarMensaje("Todos los campos son obligatorios.", "error");
-        return;
-    }
+    // Validaciones básicas
+    if (correo === "" || password === "") {
 
-    if (password.length < 6) {
         mostrarMensaje(
-            "La contraseña debe tener al menos 6 caracteres.",
+            "El correo y la contraseña son obligatorios.",
             "error"
         );
+
         return;
     }
 
-    // Crear FormData
+    // Validar formato del correo
+    if (!validarCorreo(correo)) {
+
+        mostrarMensaje(
+            "Ingresa un correo electrónico válido.",
+            "error"
+        );
+
+        return;
+    }
+
     const datos = new FormData();
 
-    datos.append("nombre", nombre);
     datos.append("correo", correo);
     datos.append("password", password);
 
     try {
 
-        mostrarMensaje("Registrando usuario...", "info");
+        mostrarMensaje(
+            "Iniciando sesión...",
+            "info"
+        );
 
-        const respuesta = await fetch("../registro/create.php", {
+        const respuesta = await fetch("../auth/login.php", {
             method: "POST",
-            body: datos
+            body: datos,
+            credentials: "same-origin"
         });
 
         if (!respuesta.ok) {
@@ -60,19 +68,25 @@ async function registrarUsuario(event) {
 
         if (resultado.success) {
 
-            mostrarMensaje(resultado.message, "success");
+            mostrarMensaje(
+                resultado.message,
+                "success"
+            );
 
-            // Limpiar formulario
             formulario.reset();
 
-            // Redireccionar después de registrarse
             setTimeout(() => {
-                window.location.href = "../index1.html";
+
+                window.location.href = "index1.php";
+
             }, 1000);
 
         } else {
 
-            mostrarMensaje(resultado.message, "error");
+            mostrarMensaje(
+                resultado.message,
+                "error"
+            );
 
         }
 
@@ -90,9 +104,18 @@ async function registrarUsuario(event) {
 }
 
 
+function validarCorreo(correo) {
+
+    const expresion = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    return expresion.test(correo);
+
+}
+
+
 function mostrarMensaje(mensaje, tipo) {
 
-    let contenedor = document.getElementById("mensaje-registro");
+    const contenedor = document.getElementById("mensaje-login");
 
     if (!contenedor) {
         return;
@@ -100,9 +123,7 @@ function mostrarMensaje(mensaje, tipo) {
 
     contenedor.textContent = mensaje;
 
-    contenedor.className = "";
-
-    contenedor.classList.add("mensaje-registro");
+    contenedor.className = "mensaje-login";
 
     if (tipo === "success") {
         contenedor.classList.add("mensaje-exito");
