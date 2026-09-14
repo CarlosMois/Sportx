@@ -1,0 +1,309 @@
+/* =========================
+   CONFIGURACIÓN GENERAL
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html, body{
+    overflow-x:hidden;
+}
+
+body{
+    font-family:Arial, sans-serif;
+    background:linear-gradient(90deg, #007AA2 0%, #0D2860 100%);
+    color:#222;
+}
+
+
+/* =========================
+   ENCABEZADO
+========================= */
+
+.reseñas-header{
+    min-height:350px;
+
+    background:
+        linear-gradient(rgba(13,40,96,.82), rgba(13,40,96,.82)),
+        url("../img/fondo encabezado lucha.jpg");
+
+    background-size:cover;
+    background-position:center;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+
+    position:relative;
+
+    color:white;
+}
+
+
+/* BOTÓN VOLVER */
+
+.back-container{
+    position:absolute;
+    top:45px;
+    left:50%;
+    transform:translateX(-50%);
+    z-index:10;
+}
+
+.back-btn{
+    display:inline-block;
+    background:#FFD700;
+    color:#0D2860;
+    text-decoration:none;
+
+    padding:15px 35px;
+
+    border-radius:12px;
+
+    font-size:18px;
+    font-weight:bold;
+
+    box-shadow:0 5px 15px rgba(0,0,0,.2);
+
+    transition:.3s;
+}
+
+.back-btn i{
+    margin-right:10px;
+}
+
+.back-btn:hover{
+    background:white;
+    color:#0D2860;
+    transform:translateY(-3px);
+}
+
+
+/* TEXTO DEL ENCABEZADO */
+
+.header-content{
+    width:90%;
+    max-width:1000px;
+
+    margin:auto;
+
+    text-align:center;
+
+    padding-top:50px;
+}
+
+.header-content h1{
+    font-size:45px;
+    margin-bottom:15px;
+}
+
+.header-content p{
+    font-size:19px;
+    line-height:1.6;
+}
+
+
+/* =========================
+   CONTENIDO
+========================= */
+
+main{
+    width:90%;
+    max-width:1000px;
+
+    margin:auto;
+}
+
+.lista-reseñas{
+    margin:70px 0;
+}
+
+.lista-reseñas h2{
+    color:white;
+
+    text-align:center;
+
+    font-size:36px;
+
+    margin-bottom:40px;
+}
+
+
+/* =========================
+   TARJETAS DE RESEÑAS
+========================= */
+
+.reseña-card{
+    background:white;
+
+    padding:30px;
+
+    margin-bottom:25px;
+
+    border-radius:18px;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.20);
+
+    transition:.3s;
+}
+
+.reseña-card:hover{
+    transform:translateY(-5px);
+
+    box-shadow:0 15px 30px rgba(0,0,0,.28);
+}
+
+
+/* NOMBRE Y ESTRELLAS */
+
+.reseña-header{
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:20px;
+
+    margin-bottom:15px;
+}
+
+.reseña-header h3{
+    color:#0D2860;
+
+    font-size:21px;
+}
+
+.estrellas{
+    color:#FFD700;
+
+    font-size:25px;
+
+    letter-spacing:3px;
+
+    white-space:nowrap;
+}
+
+
+/* COMENTARIO */
+
+.comentario{
+    color:#555;
+
+    font-size:17px;
+
+    line-height:1.6;
+
+    margin-bottom:18px;
+}
+
+
+/* FECHA */
+
+.fecha{
+    color:#888;
+
+    font-size:14px;
+}
+
+.fecha i{
+    margin-right:6px;
+
+    color:#007AA2;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    margin-top:80px;
+
+    min-height:180px;
+
+    background:
+        linear-gradient(rgba(13,40,96,.85), rgba(13,40,96,.85)),
+        url("../img/pie de pagina lucha.jpg");
+
+    background-size:cover;
+    background-position:center;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    color:white;
+
+    text-align:center;
+}
+
+footer p{
+    font-size:15px;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:700px){
+
+    .header-content h1{
+        font-size:32px;
+    }
+
+    .header-content p{
+        font-size:16px;
+    }
+
+    .lista-reseñas h2{
+        font-size:30px;
+    }
+
+    .reseña-card{
+        padding:25px 20px;
+    }
+
+    .reseña-header{
+        flex-direction:column;
+
+        align-items:flex-start;
+
+        gap:8px;
+    }
+
+    .estrellas{
+        font-size:23px;
+    }
+
+}
+
+@media(max-width:500px){
+
+    .back-container{
+        top:25px;
+    }
+
+    .back-btn{
+        padding:13px 25px;
+        font-size:16px;
+    }
+
+    .header-content{
+        padding-top:70px;
+    }
+
+    .header-content h1{
+        font-size:27px;
+    }
+
+    .lista-reseñas{
+        margin:50px 0;
+    }
+
+}

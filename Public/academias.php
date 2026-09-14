@@ -244,6 +244,69 @@ if (
     </main>
 
 
+
+<!-- RESEÑAS -->
+
+<section class="reseñas">
+
+    <h2>Deja tu reseña</h2>
+
+    <p class="reseñas-texto">
+        ¿Has visitado esta academia?
+        Comparte tu experiencia con otros usuarios.
+    </p>
+
+    <form class="form-reseña">
+
+        <div class="campo">
+            <label>Calificación</label>
+
+    <div class="estrellas">
+
+        <input type="radio" name="calificacion" id="estrella1" value="1">
+        <label for="estrella1">★</label>
+
+        <input type="radio" name="calificacion" id="estrella2" value="2">
+        <label for="estrella2">★</label>
+
+        <input type="radio" name="calificacion" id="estrella3" value="3">
+        <label for="estrella3">★</label>
+
+        <input type="radio" name="calificacion" id="estrella4" value="4">
+        <label for="estrella4">★</label>
+
+        <input type="radio" name="calificacion" id="estrella5" value="5">
+        <label for="estrella5">★</label>
+
+    </div>
+</div>
+        </div>
+
+        <div class="campo">
+            <label for="reseña">Tu reseña</label>
+
+            <textarea
+                id="reseña"
+                rows="5"
+                placeholder="Escribe tu experiencia..."
+            ></textarea>
+        </div>
+
+        <button type="submit" class="reseña-btn">
+            Publicar reseña
+        </button>
+
+<a href="reseñas.html" class="ver-resenas-btn">
+    Ver todas las reseñas
+</a>
+
+
+    </form>
+
+</section>
+
+
+
     <!-- PIE DE PÁGINA -->
     <footer>
 
