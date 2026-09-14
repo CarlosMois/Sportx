@@ -295,7 +295,7 @@ if (
 <header class="hero">
 
     <div class="back-container">
-        <a href="../Public/index1.php" class="back-btn">
+        <a href="/Sportx/Public/index1.php" class="back-btn">
             <i class="fa-solid fa-arrow-left"></i>
             Volver al menú
         </a>
