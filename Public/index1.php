@@ -100,7 +100,7 @@ Explore Our Sports
 
 <div class="col-md-4 col-lg">
 
-<a href="../Public/futbol.html"  class="gallery-card">
+<a href="../Public/futbol.php"  class="gallery-card">
 
 <img src="../Public/img/img futbol.jpg"
 alt="Fútbol">
@@ -123,7 +123,7 @@ Football
 
 <div class="col-md-4 col-lg">
 
-<a href="../Public/voleibol.html" class="gallery-card">
+<a href="../Public/voleibol.php" class="gallery-card">
 
 <img src="../Public/img/voleibol img.jpg"
 alt="Voleibol">
@@ -146,7 +146,7 @@ Volleyball
 
 <div class="col-md-4 col-lg">
 
-<a href="../Public/basketball.html" class="gallery-card">
+<a href="../Public/basketball.php" class="gallery-card">
 
 <img src="../Public/img/basketball img.jpg"
 alt="Baloncesto">
@@ -169,7 +169,7 @@ Basketball
 
 <div class="col-md-4 col-lg">
 
-<a href="../Public/ballet.html" class="gallery-card">
+<a href="../Public/ballet.php" class="gallery-card">
 
 <img src="../Public/img/Chopiniana_Baku.jpg"
 alt="Ballet">
@@ -192,7 +192,7 @@ Ballet
 
 <div class="col-md-4 col-lg">
 
-<a href="../Public/lucha.html" class="gallery-card">
+<a href="../Public/lucha.php" class="gallery-card">
 
 <img src="../Public/img/LUCHA-OLIMPICA.jpg"
 alt="Lucha">

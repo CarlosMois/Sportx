@@ -1,9 +1,23 @@
+<?php
+
+session_start();
+
+if (
+    !isset($_SESSION["autenticado"]) ||
+    $_SESSION["autenticado"] !== true
+) {
+    header("Location: index.html");
+    exit;
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SportX | Baloncesto</title>
+    <title>SportX | Fútbol</title>
 
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -32,7 +46,7 @@
         .hero {
             background:
             linear-gradient(rgba(13, 40, 96, 0.80), rgba(13, 40, 96, 0.80)),
-            url("/Sportx/img/basketball\ img.jpg");
+            url("/Sportx/img/img\ futbol.jpg");
 
             background-size: cover;
             background-position: center;
@@ -189,7 +203,7 @@
         footer {
             background:
             linear-gradient(rgba(13, 40, 96, 0.85), rgba(13, 40, 96, 0.85)),
-            url("/Sportx/img/basketball\ img.jpg");
+            url("/Sportx/img/img\ futbol.jpg");
 
             background-size: cover;
             background-position: center;
@@ -279,15 +293,15 @@
 <header class="hero">
 
     <div class="back-container">
-        <a href="../Home/index1.html" class="back-btn">
+        <a href="../Public/index1.php" class="back-btn">
             <i class="fa-solid fa-arrow-left"></i>
             Volver al menú
         </a>
     </div>
 
     <div class="hero-content">
-        <h1>Baloncesto</h1>
-        <p>Encuentra academias, programas de desarrollo y clubes de la Liga Mayor de Baloncesto en El Salvador.</p>
+        <h1>Fútbol</h1>
+        <p>Encuentra las mejores academias de desarrollo, escuelas de alto rendimiento y centros de entrenamiento en El Salvador.</p>
     </div>
 
 </header>
@@ -303,25 +317,25 @@
         <div class="info-box">
             <i class="fa-solid fa-location-dot"></i>
             <h3>Centros disponibles</h3>
-            <p>3 Equipos / Academias</p>
+            <p>3 Academias</p>
         </div>
 
         <div class="info-box">
             <i class="fa-solid fa-users"></i>
             <h3>Modalidad</h3>
-            <p>Formativo y Liga Mayor</p>
+            <p>Fútbol 11 y Fútbol 8</p>
         </div>
 
         <div class="info-box">
             <i class="fa-solid fa-dollar-sign"></i>
             <h3>Precio</h3>
-            <p>Desde $15 / mes</p>
+            <p>Consultar directamente</p>
         </div>
 
         <div class="info-box">
             <i class="fa-solid fa-calendar-days"></i>
             <h3>Días</h3>
-            <p>Lunes a Viernes</p>
+            <p>Lunes a Sábado</p>
         </div>
 
     </div>
@@ -332,42 +346,56 @@
 
 <section class="card">
 
-<h2>FESABAL Basketball Academy</h2>
+<h2>FESA Academia de Fútbol</h2>
 
 <p><i class="fa-solid fa-location-dot"></i>
 <strong>Ubicación:</strong><br>
-Oficinas de FESABAL, Gimnasio Nacional José Adolfo Pineda, Colonia Flor Blanca, San Salvador.
+Centro del Deportista Integral FESA Santa Tecla, Calle Julio Gaitán y final 13 Avenida Norte, Santa Tecla, La Libertad.
 </p>
 
 <p><i class="fa-solid fa-dollar-sign"></i>
 <strong>Precio:</strong><br>
-$15 mensuales.
+Información no disponible públicamente.
 </p>
 
-<p><i class="fa-solid fa-basketball"></i>
-<strong>Horarios de entrenamiento por edades:</strong><br>
-• <strong>6 a 11 años:</strong> Lunes y jueves de 3:30 p.m. a 5:00 p.m.<br>
-• <strong>12 a 16 años:</strong> Martes y viernes de 3:30 p.m. a 5:00 p.m.
+<p><i class="fa-solid fa-futbol"></i>
+<strong>Modalidad y Entrenamientos:</strong><br>
+• <strong>Modalidad:</strong> Fútbol 11 (principal) y Fútbol 8 para formación y categorías menores.<br>
+• <strong>U3:</strong> Lunes y Miércoles de 3:15 p.m. a 4:00 p.m.<br>
+• <strong>U5:</strong> Lunes y Miércoles de 3:45 p.m. a 4:45 p.m.<br>
+• <strong>U7:</strong> Lunes y Miércoles de 4:45 p.m. a 5:45 p.m.<br>
+• <strong>U9:</strong> Martes y Jueves de 4:00 p.m. a 5:15 p.m.<br>
+• <strong>U11:</strong> Martes y Jueves de 4:00 p.m. a 5:30 p.m. | Sábados de 8:30 a.m. a 10:00 a.m.<br>
+• <strong>U15:</strong> Lunes, Miércoles y Viernes de 5:30 p.m. a 7:00 p.m.<br>
+• <strong>U16:</strong> Lunes, Miércoles y Viernes de 4:00 p.m. a 5:30 p.m.<br>
+• <strong>U17:</strong> Martes y Jueves de 5:00 p.m. a 7:00 p.m. | Sábados de 8:30 a.m. a 10:30 a.m.
+</p>
+
+<p><i class="fa-solid fa-shield-halved"></i>
+<strong>Instalaciones:</strong><br>
+Cancha de fútbol 11 certificada FIFA, cancha de fútbol 8, vestidores, parqueo y seguridad privada.
 </p>
 
 <p><i class="fa-solid fa-clock"></i>
-<strong>Horario de atención administrativa:</strong><br>
-Lunes a viernes de 8:30 a.m. a 6:00 p.m.
+<strong>Horarios de atención administrativa:</strong><br>
+Lunes a viernes: 8:00 a.m. a 6:00 p.m.<br>
+Sábados: 8:00 a.m. a 12:00 p.m.<br>
+Domingos: Cerrado.
 </p>
 
 <p><i class="fa-solid fa-phone"></i>
 <strong>Teléfono:</strong><br>
-+503 2298-9209
++503 2514-3166 / +503 2514-3167
 </p>
 
 <div class="buttons">
 
-<a href="https://maps.google.com/?q=Gimnasio+Nacional+Jose+Adolfo+Pineda+San+Salvador" target="_blank" class="btn">
+<a href="https://maps.google.com/?q=Centro+del+Deportista+Integral+FESA+Santa+Tecla" target="_blank" class="btn">
     <i class="fa-solid fa-location-dot"></i>
     Ver ubicación
 </a>
 
-<a href="tel:+50322989209" class="btn">
+<a href="tel:+50325143166" class="btn">
 <i class="fa-solid fa-phone"></i>
 Llamar
 </a>
@@ -380,34 +408,39 @@ Llamar
 
 <section class="card">
 
-<h2>ITD Santa Tecla BC</h2>
+<h2>Academia Pachuca El Salvador</h2>
 
 <p><i class="fa-solid fa-location-dot"></i>
 <strong>Ubicación:</strong><br>
-Gimnasio Adolfo Pineda, Santa Tecla.
+Cancha Emiliani, Calle del Mediterráneo, Antiguo Cuscatlán.
 </p>
 
 <p><i class="fa-solid fa-dollar-sign"></i>
-<strong>Precio:</strong><br>
-Información no disponible públicamente.
+<strong>Precio y Horarios:</strong><br>
+No hay información pública disponible. Consultar directamente a través de WhatsApp.
 </p>
 
-<p><i class="fa-solid fa-basketball"></i>
-<strong>Modalidad y Categorías:</strong><br>
-• <strong>Modalidad:</strong> Baloncesto profesional, Liga Mayor de Baloncesto, desarrollo competitivo y alto rendimiento.<br>
-• <strong>Categorías:</strong> Equipo de Liga Mayor y programas de desarrollo vinculados al club.
+<p><i class="fa-solid fa-futbol"></i>
+<strong>Modalidad:</strong><br>
+• Fútbol 11.<br>
+• Entrenamiento bajo la metodología oficial del Club Pachuca.
 </p>
 
-<p><i class="fa-solid fa-clock"></i>
-<strong>Horario de atención:</strong><br>
-Lunes a viernes: 8:00 a.m. – 5:00 p.m.
+<p><i class="fa-brands fa-whatsapp"></i>
+<strong>Contacto (WhatsApp):</strong><br>
++503 7922-4076
 </p>
 
 <div class="buttons">
 
-<a href="https://maps.google.com/?q=Gimnasio+Adolfo+Pineda+Santa+Tecla" target="_blank" class="btn">
+<a href="https://maps.google.com/?q=Cancha+Emiliani+Antiguo+Cuscatlan" target="_blank" class="btn">
     <i class="fa-solid fa-location-dot"></i>
     Ver ubicación
+</a>
+
+<a href="https://wa.me/50379224076" target="_blank" class="btn">
+    <i class="fa-brands fa-whatsapp"></i>
+    WhatsApp
 </a>
 
 </div>
@@ -418,11 +451,12 @@ Lunes a viernes: 8:00 a.m. – 5:00 p.m.
 
 <section class="card">
 
-<h2>San Salvador BC</h2>
+<h2>Academia Rafa Burgos</h2>
 
 <p><i class="fa-solid fa-location-dot"></i>
-<strong>Ubicación:</strong><br>
-Gimnasio Nacional Adolfo Pineda, San Salvador.
+<strong>Sedes y Ubicación:</strong><br>
+• <strong>Sede Entre semana:</strong> Universidad Albert Einstein, Antiguo Cuscatlán.<br>
+• <strong>Sede Sábados:</strong> Canchas Multi Soccer, Boulevard Walter Thilo Deininger y Calle Antigua Ferrocarril, Antiguo Cuscatlán.
 </p>
 
 <p><i class="fa-solid fa-dollar-sign"></i>
@@ -430,23 +464,35 @@ Gimnasio Nacional Adolfo Pineda, San Salvador.
 Información no disponible públicamente.
 </p>
 
-<p><i class="fa-solid fa-basketball"></i>
-<strong>Modalidad:</strong><br>
-• Baloncesto competitivo.<br>
-• Liga Mayor.<br>
-• Desarrollo de jugadores de alto nivel.
+<p><i class="fa-solid fa-futbol"></i>
+<strong>Horarios de entrenamiento por edades:</strong><br>
+• <strong>Lunes, Miércoles y Viernes (Sede Univ. Albert Einstein):</strong><br>
+- 4 a 6 años: 4:00 p.m. – 5:00 p.m.<br>
+- 7 a 9 años: 4:00 p.m. – 5:30 p.m.<br>
+- 10 a 12 años: 4:30 p.m. – 6:00 p.m.<br>
+- 13 a 15 años: 4:30 p.m. – 6:00 p.m.<br><br>
+• <strong>Sábados (Sede Multi Soccer):</strong><br>
+- 4 a 6 años: 10:00 a.m. – 11:00 a.m.<br>
+- 7 a 9 años: 11:00 a.m. – 12:00 p.m.
 </p>
 
-<p><i class="fa-solid fa-clock"></i>
-<strong>Horarios:</strong><br>
-Información no disponible públicamente.
+<p><i class="fa-solid fa-envelope"></i>
+<strong>Contacto y Redes:</strong><br>
+• <strong>WhatsApp:</strong> +503 7540-0310<br>
+• <strong>Instagram:</strong> @academiarafaburgos<br>
+• <strong>Correo:</strong> rburgosacademia@gmail.com
 </p>
 
 <div class="buttons">
 
-<a href="https://maps.google.com/?q=Gimnasio+Nacional+Adolfo+Pineda+San+Salvador" target="_blank" class="btn">
+<a href="https://maps.google.com/?q=Universidad+Albert+Einstein+Antiguo+Cuscatlan" target="_blank" class="btn">
     <i class="fa-solid fa-location-dot"></i>
     Ver ubicación
+</a>
+
+<a href="https://wa.me/50375400310" target="_blank" class="btn">
+    <i class="fa-brands fa-whatsapp"></i>
+    WhatsApp
 </a>
 
 </div>

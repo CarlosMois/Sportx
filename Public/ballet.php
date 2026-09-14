@@ -1,3 +1,17 @@
+<?php
+
+session_start();
+
+if (
+    !isset($_SESSION["autenticado"]) ||
+    $_SESSION["autenticado"] !== true
+) {
+    header("Location: index.html");
+    exit;
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -17,7 +31,7 @@
 
     <div class="back-container">
 
-        <a href="../Public/index1.html" class="back-btn">
+        <a href="../Public/index1.php" class="back-btn">
             <i class="fa-solid fa-arrow-left"></i>
            Back to the menu
         </a>

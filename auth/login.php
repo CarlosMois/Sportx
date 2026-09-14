@@ -4,7 +4,7 @@ session_start();
 
 header('Content-Type: application/json; charset=utf-8');
 
-require_once("../config/conexion.php");
+require_once("../Config/Conexion.php");
 
 $response = [
     "success" => false,

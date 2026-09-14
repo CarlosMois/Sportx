@@ -1,3 +1,16 @@
+<?php
+
+session_start();
+
+if (
+    !isset($_SESSION["autenticado"]) ||
+    $_SESSION["autenticado"] !== true
+) {
+    header("Location: index.html");
+    exit;
+}
+
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>

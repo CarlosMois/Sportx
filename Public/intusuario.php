@@ -1,3 +1,18 @@
+<?php
+
+session_start();
+
+if (
+    !isset($_SESSION["autenticado"]) ||
+    $_SESSION["autenticado"] !== true
+) {
+    header("Location: index.html");
+    exit;
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -25,7 +40,7 @@
                 <img src="../Public/img/IMG-20260529-WA0008(2).jpg" class="logosportx" alt="Logo SportX" height="45">
             
             <div class="navbar-nav">
-                <a class="nav-link text-white fw-bold" href="../Public/index1.html">
+                <a class="nav-link text-white fw-bold" href="../Public/index1.php">
                     <i class="fa-solid fa-house me-1"></i> Home
                 </a>
             </div>
@@ -36,7 +51,7 @@
     <main class="profile-container">
 
         <!-- Botón Volver -->
-        <a href="../Public/index1.html" class="back-btn">
+        <a href="../Public/index1.php" class="back-btn">
             <i class="fa-solid fa-arrow-left me-2"></i> Back to Home
         </a>
 
