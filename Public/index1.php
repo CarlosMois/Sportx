@@ -58,7 +58,7 @@ height="70">
 <a href="../Public/intusuario.html" class="user-profile d-flex align-items-center text-decoration-none">
     <img src="../Public/img/fotoperfil.jpg" class="rounded-circle user-avatar me-2" alt="" style="width: 45px; height: 45px; object-fit: cover; border: 2px solid #FDB913;">
     <div class="user-info text-white me-3">
-        <span class="fw-bold text-warning d-block">SportX</span>
+        <span class="Cartel">SportX</span>
         <small class="d-block text-white-50">Welcome back</small>
     </div>
     <span class="btn btn-sm" style="background: #FDB913; color: #0D2860; font-weight: bold; border-radius: 8px;">
