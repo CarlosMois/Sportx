@@ -79,7 +79,7 @@ async function iniciarSesion(event) {
 
                 window.location.href = "index1.php";
 
-            }, 1000);
+            }, 3000);
 
         } else {
 

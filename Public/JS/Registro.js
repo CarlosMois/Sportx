@@ -67,7 +67,7 @@ async function registrarUsuario(event) {
 
             // Redireccionar después de registrarse
             setTimeout(() => {
-                window.location.href = "../index1.html";
+                window.location.href = "sesion.html";
             }, 1000);
 
         } else {
