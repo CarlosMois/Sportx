@@ -50,8 +50,11 @@ class="logoimg"
 height="70">
 
 </div>
-<p class="Sports">
-   SportX
+<p class="hero-title">
+   Sport
+</p>
+<p class ="hero-title-X">
+    X
 </p>
 <div class="user-profile d-flex align-items-center">
 
