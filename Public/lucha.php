@@ -371,8 +371,10 @@ Llamar
         <div class="academia-card">
 
     <img src="../Public/img/LUCHA-OLIMPICA.jpg" alt="Federación Salvadoreña de Luchas Amateurs">
+    
 
     <h3>Federación Salvadoreña de Luchas Amateurs</h3>
+    
 
     <p class="ubicacion">
         <i class="fa-solid fa-location-dot"></i>
@@ -380,10 +382,18 @@ Llamar
         Colonia Flor Blanca, San Salvador.
     </p>
 
-    <a href="academias.html" target="_blank" class="academia-btn">
-        Ver información
-        <i class="fa-solid fa-arrow-right"></i>
-    </a>
+    <div class="card-acciones">
+
+    <a href="academias.php" target="_blank" class="academia-btn"> 
+        Ver información 
+        <i class="fa-solid fa-arrow-right"></i> 
+    </a> 
+
+    <button class="favorito-btn" type="button"> 
+        <i class="fa-regular fa-heart"></i> 
+    </button>
+
+</div>
 
 </div>
 
@@ -400,10 +410,18 @@ Llamar
          </p>
 
 
-            <a href="academia.html?id=2" target="_blank" class="academia-btn">
-                Ver información
-                <i class="fa-solid fa-arrow-right"></i>
-            </a>
+           <div class="card-acciones">
+
+    <a href="academias.php" target="_blank" class="academia-btn"> 
+        Ver información 
+        <i class="fa-solid fa-arrow-right"></i> 
+    </a> 
+
+    <button class="favorito-btn" type="button"> 
+        <i class="fa-regular fa-heart"></i> 
+    </button>
+
+</div>
 
         </div>
 
@@ -420,10 +438,18 @@ Llamar
         Avenida San Miguel, San Miguel.
             </p>
 
-            <a href="academia.html?id=3" target="_blank" class="academia-btn">
-                Ver información
-                <i class="fa-solid fa-arrow-right"></i>
-            </a>
+           <div class="card-acciones">
+
+    <a href="academias.php" target="_blank" class="academia-btn"> 
+        Ver información 
+        <i class="fa-solid fa-arrow-right"></i> 
+    </a> 
+
+    <button class="favorito-btn" type="button"> 
+        <i class="fa-regular fa-heart"></i> 
+    </button>
+
+</div>
 
         </div>
 

@@ -523,3 +523,60 @@ footer p{
     }
 
 }
+
+
+
+
+.card-acciones{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 25px;
+}
+
+.academia-btn{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#0c1c4e;
+    color:white;
+    text-decoration:none;
+    padding:14px 25px;
+    border-radius:10px;
+    font-size:16px;
+    font-weight:bold;
+    transition:.3s;
+}
+
+.academia-btn i{
+    margin-left:8px;
+}
+
+.academia-btn:hover{
+    background:#FFD700;
+    color:#0c1c4e;
+}
+
+.favorito-btn{
+    width:65px;
+    height:65px;
+    flex-shrink:0;
+    border:none;
+    border-radius:12px;
+    background:#f2f2f2;
+    color:#777;
+    font-size:38px;
+    cursor:pointer;
+    transition:all .3s ease;
+}
+
+.favorito-btn:hover{
+    color:#e63946;
+    background:#ffe5e8;
+    transform:scale(1.08);
+}
+
+.favorito-btn.activo{
+    color:#e63946;
+    background:#ffe5e8;
+}
