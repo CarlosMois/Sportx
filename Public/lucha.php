@@ -380,7 +380,7 @@ Llamar
         Colonia Flor Blanca, San Salvador.
     </p>
 
-    <a href="academias.html" target="_blank" class="academia-btn">
+    <a href="academias.php" target="_blank" class="academia-btn">
         Ver información
         <i class="fa-solid fa-arrow-right"></i>
     </a>

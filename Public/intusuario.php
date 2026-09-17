@@ -129,7 +129,7 @@ if (
                     </div>
 
                     <div class="mt-4 pt-2 border-top text-end">
-                        <button class="btn btn-outline-custom">
+                        <button id = "btnCerrarSesion"  class="btn btn-outline-custom">
                             <i class="fa-solid fa-right-from-bracket me-2"></i>Sign Out
                         </button>
                     </div>
@@ -150,7 +150,7 @@ if (
 
     <!-- Bootstrap 5 JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
+    <script src = "JS/logout.js"></script>
 </body>
 
 </html>

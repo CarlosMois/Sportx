@@ -61,7 +61,7 @@ height="70">
 <a href="intusuario.php" class="user-profile d-flex align-items-center text-decoration-none">
     <img src="../Public/img/fotoperfil.jpg" class="rounded-circle user-avatar me-2" alt="" style="width: 45px; height: 45px; object-fit: cover; border: 2px solid #FDB913;">
     <div class="user-info text-white me-3">
-        <span class="Cartel">SportX</span>
+        <span id ="Cartel2"class="Cartel">SportX</span>
         <small class="d-block text-white-50">Welcome back</small>
     </div>
     <span class="btn btn-sm" style="background: #FDB913; color: #0D2860; font-weight: bold; border-radius: 8px;">
@@ -442,7 +442,7 @@ Improve Your Performance and Discipline.
 </footer>
 
 
-
+<script src="JS/inicio.js"></script>
 </body>
 
 </html>
