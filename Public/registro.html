@@ -1,1 +1,116 @@
-a
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SportX - Sign Up</title>
+
+    <link rel="stylesheet" href="../Public/CSS/registro.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+
+    
+</head>
+
+
+<body>
+
+
+<div class="divimgregistro"></div>
+
+
+<div class="divprincipal">
+
+
+    <div class="brand-header">
+
+        <div class="logo-icon">
+
+            <img src="../Public/img/logo sin fondo.png" alt="SportX Logo">
+
+        </div>
+
+        <strong><p class="brand-subtitle" style="color: orange;">
+            Your Sports Platform
+        </p></strong>
+
+    </div>
+
+
+    <form class="login-form" action="#" method="POST">
+
+
+        <div class="input-group">
+
+            <label for="fullname" style="color: white;">
+                Full Name
+            </label>
+            <input
+    type="text"
+    id="fullname"
+    name="nombre"
+    placeholder="Juan Pérez"
+    required
+>
+
+        </div>
+
+
+        <div class="input-group">
+
+            <label for="email" style="color: white;">
+                Email
+            </label>
+            <input
+    type="email"
+    id="email"
+    name="correo"
+    placeholder="example@sports.com"
+    required
+>
+
+        </div>
+
+        <div class="input-group">
+            <label for="password" style="color: white;">
+                Password
+            </label>
+           <input
+    type="password"
+    id="password"
+    name="password"
+    placeholder="••••••••"
+    required
+>
+        </div>
+
+        <div id="mensaje-registro" class="mensaje-registro"></div>
+
+        <button type="submit" class="btn-submit">
+           Sign Up
+         </button>
+
+    
+ </form>
+
+    <div id="mensaje" style="display: none;"></div>
+
+    <div class="login-footer">
+        <p>
+            Already have an account?
+            <a href="index1.php">
+                Sign In Here
+            </a>
+        </p>
+    </div>
+</div>
+<script src="JS/Registro.js"></script>
+</body>
+</html>

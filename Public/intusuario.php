@@ -59,7 +59,7 @@ if (
         <div class="profile-header-card d-flex flex-column flex-md-row align-items-center gap-4">
             <img src="../Public/img/fotoperfil.jpg" alt="" class="avatar-large">
             <div class="text-center text-md-start flex-grow-1">
-                <h1 class="profile-name mb-1">User Name</h1>
+                <h1 class="profile-name mb-1" id = "Usuario2">User Name</h1>
                 <span class="profile-tag mb-2">SportX Athlete</span>
                 <p class="text-muted mb-0"><i class="fa-solid fa-location-dot text-danger me-1"></i> San Salvador, El Salvador</p>
             </div>
@@ -151,6 +151,7 @@ if (
     <!-- Bootstrap 5 JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src = "JS/logout.js"></script>
+    <script src = "JS/perfil.js"></script>
 </body>
 
 </html>
