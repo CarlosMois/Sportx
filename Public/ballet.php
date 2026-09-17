@@ -6,7 +6,7 @@ if (
     !isset($_SESSION["autenticado"]) ||
     $_SESSION["autenticado"] !== true
 ) {
-    header("Location: index.html");
+    header("Location: sesion.html");
     exit;
 }
 
