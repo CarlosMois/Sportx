@@ -50,10 +50,7 @@ if (
     <!-- MAIN CONTENT -->
     <main class="profile-container">
 
-        <!-- Botón Volver -->
-        <a href="../Public/index1.php" class="back-btn">
-            <i class="fa-solid fa-arrow-left me-2"></i> Back to Home
-        </a>
+        
 
         <!-- PROFILE HEADER CARD -->
         <div class="profile-header-card d-flex flex-column flex-md-row align-items-center gap-4">

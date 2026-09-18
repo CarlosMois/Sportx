@@ -50,13 +50,6 @@ class="logoimg"
 height="70">
 
 </div>
-<p class="hero-title">
-   Sport
-</p>
-<p class ="hero-title-X">
-    X
-</p>
-<div class="user-profile d-flex align-items-center">
 
 <a href="intusuario.php" class="user-profile d-flex align-items-center text-decoration-none">
     <img src="../Public/img/fotoperfil.jpg" class="rounded-circle user-avatar me-2" alt="" style="width: 45px; height: 45px; object-fit: cover; border: 2px solid #FDB913;">
