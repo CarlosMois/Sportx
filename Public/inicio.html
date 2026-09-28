@@ -32,82 +32,60 @@
   </header>
 
   <main class="hero">
-    <div class="hero__stripe" aria-hidden="true"></div>
+  <!-- Columna Izquierda: Texto e Información -->
+  <div class="hero__content">
+    <p class="hero__eyebrow">
+      <span class="dot"></span> 2026 Season Now Available
+    </p>
 
-    <div class="hero__content">
-      <p class="hero__eyebrow">
-        <span class="dot"></span> 2026 Season Now Available
+    <!-- Título principal independiente y más grande -->
+    <h1 class="hero__title">
+      Sport<span class="hero__title-x">X</span>
+    </h1>
+
+    <p class="hero__desc">
+      <strong>SportX</strong>, the place where you'll find your next passion.
+    </p>
+
+    <!-- Sección Sobre SportX inmediatamente debajo del título/subtítulo -->
+    <section class="about-sportx mb-5">
+      <h2 class="fw-bold mb-3">Sobre SportX</h2>
+      <p class="papu">
+        SportX es una plataforma deportiva creada para conectar a las personas<br>
+        con diferentes disciplinas y espacios deportivos en El Salvador.<br>
+        Nuestro objetivo es facilitar el acceso a información sobre deportes,<br>
+        actividades, eventos y centros deportivos, ayudando a los usuarios a<br>
+        encontrar nuevas oportunidades para practicar y mejorar sus habilidades.
       </p>
+    </section>
 
-      <h1 class="hero__title">
-        <div class="title-container">
-          Sport<span class="hero__title-x">X</span>
-          <div class="parallelogram-img">
-            <img src="img/voleibol.jpg" alt="Sport Image 2">
-          </div>
-          <div class="parallelogram-img">
-            <img src="img/img futbol.jpg" alt="Sport Image 1">
-          </div>
-        </div>
-      </h1>
-
-      <section class="about-sportx mb-5">
-        <h2 class="fw-bold mb-3">
-          Sobre SportX
-        </h2>
-
-        <p class="papu">
-          SportX es una plataforma deportiva creada para conectar a las personas<br>
-          con diferentes disciplinas y espacios deportivos en El Salvador.<br>
-          Nuestro objetivo es facilitar el acceso a información sobre deportes,<br>
-          actividades, eventos y centros deportivos, ayudando a los usuarios a<br>
-          encontrar nuevas oportunidades para practicar y mejorar sus habilidades.
-        </p>
-      </section>
-
-      <div class="hero__tagline">
-        <span class="hero__tagline-bar"></span>
-        MORE THAN A GAME
-      </div>
-
-      <p class="hero__desc">
-        <strong>SportX</strong>, the place where you'll find your next passion.
-      </p>
-
-      <div class="hero__actions">
-        <a href="../Public/index.html" class="btn btn--primary">
-          Explore Now
-          <svg width="16" height="16" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M1 7H13M13 7L7.5 1.5M13 7L7.5 12.5"
-              stroke="currentColor"
-              stroke-width="1.8"
-              stroke-linecap="round"
-              stroke-linejoin="round"/>
-          </svg>
-        </a>
-        <a href="../Public/registro.html" class="btn btn--ghost">
-          <strong>Sign Up</strong>
-        </a>
-      </div>
-
-      <div class="hero__stats">
-        <div class="stat">
-          <span class="stat__num">+120</span>
-          <span class="stat__label">Disciplines</span>
-        </div>
-        <div class="stat__sep"></div>
-        <div class="stat">
-          <span class="stat__num">+50K</span>
-          <span class="stat__label">Active Athletes</span>
-        </div>
-        <div class="stat__sep"></div>
-        <div class="stat">
-          <span class="stat__num">24/7</span>
-          <span class="stat__label">Community</span>
-        </div>
-      </div>
+    <div class="hero__tagline">
+      <span class="hero__tagline-bar"></span>
+      MORE THAN A GAME
     </div>
-  </main>
+
+    <div class="hero__actions">
+      <a href="../Public/index.html" class="btn btn--primary">
+        Explore Now
+        <svg width="16" height="16" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M1 7H13M13 7L7.5 1.5M13 7L7.5 12.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+      <a href="../Public/registro.html" class="btn btn--ghost">
+        <strong>Sign Up</strong>
+      </a>
+    </div>
+  </div>
+
+  <!-- Columna Derecha: Video o Paralelogramos -->
+  <div class="hero__media">
+    <div class="parallelograms-group">
+      <div class="parallelogram-img parallelogram-img--top">
+        <video autoplay loop muted playsinline>
+          <source src="mp4/video-deportes.mp4" type="video/mp4">
+        </video>
+  </div>
+</main>
 
 </body>
 </html>
