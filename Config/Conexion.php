@@ -1,7 +1,6 @@
 <?php
 // Especificar que la respuesta siempre será en formato JSON
 header("Access-Control-Allow-Origin: *");
-header("Content-Type: application/json; charset=UTF-8");
 class Database
 {
 private $host = "localhost";
