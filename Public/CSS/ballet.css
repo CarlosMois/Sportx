@@ -1,6 +1,3 @@
-/* ===========================
-   SPORTX - PÁGINA DE DEPORTES
-=========================== */
 
 *{
     margin:0;
@@ -10,7 +7,7 @@
 }
 
 body{
-    background:#f5f7fa;
+    background: linear-gradient(90deg, #007AA2 0%, #0D2860 100%);
     color:#333;
 }
 
@@ -57,7 +54,7 @@ body{
 .info-general h2{
 
     text-align:center;
-    color:#0c1c4e;
+    color:orange;
     font-size:40px;
     margin-bottom:45px;
 }

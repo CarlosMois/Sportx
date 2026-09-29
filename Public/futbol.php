@@ -47,7 +47,7 @@ if (
         .hero {
             background:
             linear-gradient(rgba(13, 40, 96, 0.80), rgba(13, 40, 96, 0.80)),
-            url("/Sportx/img/img\ futbol.jpg");
+            url("/Sportx/img/");
 
             background-size: cover;
             background-position: center;

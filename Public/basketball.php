@@ -35,7 +35,7 @@ if (
         }
 
         body {
-            background: #f5f7fa;
+            background: linear-gradient(90deg, #007AA2 0%, #0D2860 100%);
             color: #333;
         }
 
@@ -82,7 +82,7 @@ if (
 
         .info-general h2 {
             text-align: center;
-            color: #0D2860;
+            color: orange ;
             font-size: 40px;
             margin-bottom: 45px;
         }
@@ -98,8 +98,6 @@ if (
             padding: 35px;
             border-radius: 18px;
             text-align: center;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
-            transition: .3s;
             border-top: 4px solid #007AA2;
         }
 
