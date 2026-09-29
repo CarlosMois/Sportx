@@ -346,28 +346,28 @@ if (
 
 <h2>FESABAL Basketball Academy</h2>
 
-<p><i class="fa-solid fa-location-dot"></i>
+<p><i class="fa-solid fa-location-dot" style="color: orange;"></i>
 <strong>Ubicación:</strong><br>
 Oficinas de FESABAL, Gimnasio Nacional José Adolfo Pineda, Colonia Flor Blanca, San Salvador.
 </p>
 
-<p><i class="fa-solid fa-dollar-sign"></i>
+<p><i class="fa-solid fa-dollar-sign" style="color: orange;     "></i>
 <strong>Precio:</strong><br>
 $15 mensuales.
 </p>
 
-<p><i class="fa-solid fa-basketball"></i>
+<p><i class="fa-solid fa-basketball" style="color: orange;  "></i>
 <strong>Horarios de entrenamiento por edades:</strong><br>
 • <strong>6 a 11 años:</strong> Lunes y jueves de 3:30 p.m. a 5:00 p.m.<br>
 • <strong>12 a 16 años:</strong> Martes y viernes de 3:30 p.m. a 5:00 p.m.
 </p>
 
-<p><i class="fa-solid fa-clock"></i>
+<p><i class="fa-solid fa-clock" style="color: orange;"></i>
 <strong>Horario de atención administrativa:</strong><br>
 Lunes a viernes de 8:30 a.m. a 6:00 p.m.
 </p>
 
-<p><i class="fa-solid fa-phone"></i>
+<p><i class="fa-solid fa-phone" style="color: orange;"></i>
 <strong>Teléfono:</strong><br>
 +503 2298-9209
 </p>
@@ -375,12 +375,12 @@ Lunes a viernes de 8:30 a.m. a 6:00 p.m.
 <div class="buttons">
 
 <a href="https://maps.google.com/?q=Gimnasio+Nacional+Jose+Adolfo+Pineda+San+Salvador" target="_blank" class="btn">
-    <i class="fa-solid fa-location-dot"></i>
+    <i class="fa-solid fa-location-dot" style="color: orange;"></i>
     Ver ubicación
 </a>
 
 <a href="tel:+50322989209" class="btn">
-<i class="fa-solid fa-phone"></i>
+<i class="fa-solid fa-phone" style="color: orange;"></i>
 Llamar
 </a>
 
@@ -394,23 +394,23 @@ Llamar
 
 <h2>ITD Santa Tecla BC</h2>
 
-<p><i class="fa-solid fa-location-dot"></i>
+<p><i class="fa-solid fa-location-dot" style="color: orange;"></i>
 <strong>Ubicación:</strong><br>
 Gimnasio Adolfo Pineda, Santa Tecla.
 </p>
 
-<p><i class="fa-solid fa-dollar-sign"></i>
+<p><i class="fa-solid fa-dollar-sign" style="color: orange;     "></i>
 <strong>Precio:</strong><br>
 Información no disponible públicamente.
 </p>
 
-<p><i class="fa-solid fa-basketball"></i>
+<p><i class="fa-solid fa-basketball" style="color: orange;  "></i>
 <strong>Modalidad y Categorías:</strong><br>
 • <strong>Modalidad:</strong> Baloncesto profesional, Liga Mayor de Baloncesto, desarrollo competitivo y alto rendimiento.<br>
 • <strong>Categorías:</strong> Equipo de Liga Mayor y programas de desarrollo vinculados al club.
 </p>
 
-<p><i class="fa-solid fa-clock"></i>
+<p><i class="fa-solid fa-clock" style="color: orange;"></i>
 <strong>Horario de atención:</strong><br>
 Lunes a viernes: 8:00 a.m. – 5:00 p.m.
 </p>
@@ -418,7 +418,7 @@ Lunes a viernes: 8:00 a.m. – 5:00 p.m.
 <div class="buttons">
 
 <a href="https://maps.google.com/?q=Gimnasio+Adolfo+Pineda+Santa+Tecla" target="_blank" class="btn">
-    <i class="fa-solid fa-location-dot"></i>
+    <i class="fa-solid fa-location-dot" style="color: orange;"></i>
     Ver ubicación
 </a>
 
@@ -432,24 +432,24 @@ Lunes a viernes: 8:00 a.m. – 5:00 p.m.
 
 <h2>San Salvador BC</h2>
 
-<p><i class="fa-solid fa-location-dot"></i>
+<p><i class="fa-solid fa-location-dot" style="color: orange;"></i>
 <strong>Ubicación:</strong><br>
 Gimnasio Nacional Adolfo Pineda, San Salvador.
 </p>
 
-<p><i class="fa-solid fa-dollar-sign"></i>
+<p><i class="fa-solid fa-dollar-sign" style="color: orange;     "></i>
 <strong>Precio:</strong><br>
 Información no disponible públicamente.
 </p>
 
-<p><i class="fa-solid fa-basketball"></i>
+<p><i class="fa-solid fa-basketball" style="color: orange;      "></i>
 <strong>Modalidad:</strong><br>
 • Baloncesto competitivo.<br>
 • Liga Mayor.<br>
 • Desarrollo de jugadores de alto nivel.
 </p>
 
-<p><i class="fa-solid fa-clock"></i>
+<p><i class="fa-solid fa-clock" style="color: orange;"></i>
 <strong>Horarios:</strong><br>
 Información no disponible públicamente.
 </p>
@@ -457,7 +457,7 @@ Información no disponible públicamente.
 <div class="buttons">
 
 <a href="https://maps.google.com/?q=Gimnasio+Nacional+Adolfo+Pineda+San+Salvador" target="_blank" class="btn">
-    <i class="fa-solid fa-location-dot"></i>
+    <i class="fa-solid fa-location-dot" style="color: orange;"></i>
     Ver ubicación
 </a>
 

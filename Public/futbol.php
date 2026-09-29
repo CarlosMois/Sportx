@@ -47,7 +47,7 @@ if (
         .hero {
             background:
             linear-gradient(rgba(13, 40, 96, 0.80), rgba(13, 40, 96, 0.80)),
-            url("/Sportx/img/");
+            url("../img/fulbol.jpg");
 
             background-size: cover;
             background-position: center;
@@ -205,7 +205,7 @@ if (
         footer {
             background:
             linear-gradient(rgba(13, 40, 96, 0.85), rgba(13, 40, 96, 0.85)),
-            url("/Sportx/img/img\ futbol.jpg");
+            url("../img/img futbol.jpg");
 
             background-size: cover;
             background-position: center;
@@ -317,25 +317,25 @@ if (
     <div class="info-grid">
 
         <div class="info-box">
-            <i class="fa-solid fa-location-dot"></i>
+            <i class="fa-solid fa-location-dot" style="color: orange;"></i> 
             <h3>Centros disponibles</h3>
             <p>3 Academias</p>
         </div>
 
         <div class="info-box">
-            <i class="fa-solid fa-users"></i>
+            <i class="fa-solid fa-users" style="color: orange;"></i>
             <h3>Modalidad</h3>
             <p>Fútbol 11 y Fútbol 8</p>
         </div>
 
         <div class="info-box">
-            <i class="fa-solid fa-dollar-sign"></i>
+            <i class="fa-solid fa-dollar-sign" style="color: orange;"></i>
             <h3>Precio</h3>
             <p>Consultar directamente</p>
         </div>
 
         <div class="info-box">
-            <i class="fa-solid fa-calendar-days"></i>
+            <i class="fa-solid fa-calendar-days" style="color: orange;"></i>
             <h3>Días</h3>
             <p>Lunes a Sábado</p>
         </div>
@@ -350,17 +350,17 @@ if (
 
 <h2>FESA Academia de Fútbol</h2>
 
-<p><i class="fa-solid fa-location-dot"></i>
+<p><i class="fa-solid fa-location-dot" style="color: orange;"></i>
 <strong>Ubicación:</strong><br>
 Centro del Deportista Integral FESA Santa Tecla, Calle Julio Gaitán y final 13 Avenida Norte, Santa Tecla, La Libertad.
 </p>
 
-<p><i class="fa-solid fa-dollar-sign"></i>
+<p><i class="fa-solid fa-dollar-sign" style="color: orange; "></i>
 <strong>Precio:</strong><br>
 Información no disponible públicamente.
 </p>
 
-<p><i class="fa-solid fa-futbol"></i>
+<p><i class="fa-solid fa-futbol" style="color: orange;"></i>
 <strong>Modalidad y Entrenamientos:</strong><br>
 • <strong>Modalidad:</strong> Fútbol 11 (principal) y Fútbol 8 para formación y categorías menores.<br>
 • <strong>U3:</strong> Lunes y Miércoles de 3:15 p.m. a 4:00 p.m.<br>
@@ -373,19 +373,19 @@ Información no disponible públicamente.
 • <strong>U17:</strong> Martes y Jueves de 5:00 p.m. a 7:00 p.m. | Sábados de 8:30 a.m. a 10:30 a.m.
 </p>
 
-<p><i class="fa-solid fa-shield-halved"></i>
+<p><i class="fa-solid fa-shield-halved" style="color: orange;"></i>
 <strong>Instalaciones:</strong><br>
 Cancha de fútbol 11 certificada FIFA, cancha de fútbol 8, vestidores, parqueo y seguridad privada.
 </p>
 
-<p><i class="fa-solid fa-clock"></i>
+<p><i class="fa-solid fa-clock" style="color: orange;   "></i>
 <strong>Horarios de atención administrativa:</strong><br>
 Lunes a viernes: 8:00 a.m. a 6:00 p.m.<br>
 Sábados: 8:00 a.m. a 12:00 p.m.<br>
 Domingos: Cerrado.
 </p>
 
-<p><i class="fa-solid fa-phone"></i>
+<p><i class="fa-solid fa-phone" style="color: orange;"></i>
 <strong>Teléfono:</strong><br>
 +503 2514-3166 / +503 2514-3167
 </p>
@@ -393,12 +393,12 @@ Domingos: Cerrado.
 <div class="buttons">
 
 <a href="https://maps.google.com/?q=Centro+del+Deportista+Integral+FESA+Santa+Tecla" target="_blank" class="btn">
-    <i class="fa-solid fa-location-dot"></i>
+    <i class="fa-solid fa-location-dot" style="color: orange;"></i>
     Ver ubicación
 </a>
 
 <a href="tel:+50325143166" class="btn">
-<i class="fa-solid fa-phone"></i>
+<i class="fa-solid fa-phone" style="color: orange;"></i>
 Llamar
 </a>
 
@@ -412,23 +412,23 @@ Llamar
 
 <h2>Academia Pachuca El Salvador</h2>
 
-<p><i class="fa-solid fa-location-dot"></i>
+<p><i class="fa-solid fa-location-dot" style="color: orange;"></i>
 <strong>Ubicación:</strong><br>
 Cancha Emiliani, Calle del Mediterráneo, Antiguo Cuscatlán.
 </p>
 
-<p><i class="fa-solid fa-dollar-sign"></i>
+<p><i class="fa-solid fa-dollar-sign" style="color: orange; "></i>
 <strong>Precio y Horarios:</strong><br>
 No hay información pública disponible. Consultar directamente a través de WhatsApp.
 </p>
 
-<p><i class="fa-solid fa-futbol"></i>
+<p><i class="fa-solid fa-futbol" style="color: orange;"></i>
 <strong>Modalidad:</strong><br>
 • Fútbol 11.<br>
 • Entrenamiento bajo la metodología oficial del Club Pachuca.
 </p>
 
-<p><i class="fa-brands fa-whatsapp"></i>
+<p><i class="fa-brands fa-whatsapp" style="color: orange;   "></i>
 <strong>Contacto (WhatsApp):</strong><br>
 +503 7922-4076
 </p>
@@ -436,12 +436,12 @@ No hay información pública disponible. Consultar directamente a través de Wha
 <div class="buttons">
 
 <a href="https://maps.google.com/?q=Cancha+Emiliani+Antiguo+Cuscatlan" target="_blank" class="btn">
-    <i class="fa-solid fa-location-dot"></i>
+    <i class="fa-solid fa-location-dot" style="color: orange;"></i>
     Ver ubicación
 </a>
 
 <a href="https://wa.me/50379224076" target="_blank" class="btn">
-    <i class="fa-brands fa-whatsapp"></i>
+    <i class="fa-brands fa-whatsapp" style="color: orange;      "></i>
     WhatsApp
 </a>
 
@@ -455,18 +455,18 @@ No hay información pública disponible. Consultar directamente a través de Wha
 
 <h2>Academia Rafa Burgos</h2>
 
-<p><i class="fa-solid fa-location-dot"></i>
+<p><i class="fa-solid fa-location-dot" style="color: orange;"></i>
 <strong>Sedes y Ubicación:</strong><br>
 • <strong>Sede Entre semana:</strong> Universidad Albert Einstein, Antiguo Cuscatlán.<br>
 • <strong>Sede Sábados:</strong> Canchas Multi Soccer, Boulevard Walter Thilo Deininger y Calle Antigua Ferrocarril, Antiguo Cuscatlán.
 </p>
 
-<p><i class="fa-solid fa-dollar-sign"></i>
+<p><i class="fa-solid fa-dollar-sign" style="color: orange; "></i>
 <strong>Precio:</strong><br>
 Información no disponible públicamente.
 </p>
 
-<p><i class="fa-solid fa-futbol"></i>
+<p><i class="fa-solid fa-futbol" style="color: orange;  "></i>
 <strong>Horarios de entrenamiento por edades:</strong><br>
 • <strong>Lunes, Miércoles y Viernes (Sede Univ. Albert Einstein):</strong><br>
 - 4 a 6 años: 4:00 p.m. – 5:00 p.m.<br>
@@ -478,7 +478,7 @@ Información no disponible públicamente.
 - 7 a 9 años: 11:00 a.m. – 12:00 p.m.
 </p>
 
-<p><i class="fa-solid fa-envelope"></i>
+<p><i class="fa-solid fa-envelope" style="color: orange;"></i>
 <strong>Contacto y Redes:</strong><br>
 • <strong>WhatsApp:</strong> +503 7540-0310<br>
 • <strong>Instagram:</strong> @academiarafaburgos<br>
@@ -488,12 +488,12 @@ Información no disponible públicamente.
 <div class="buttons">
 
 <a href="https://maps.google.com/?q=Universidad+Albert+Einstein+Antiguo+Cuscatlan" target="_blank" class="btn">
-    <i class="fa-solid fa-location-dot"></i>
+    <i class="fa-solid fa-location-dot" style="color: orange;"></i>
     Ver ubicación
 </a>
 
 <a href="https://wa.me/50375400310" target="_blank" class="btn">
-    <i class="fa-brands fa-whatsapp"></i>
+    <i class="fa-brands fa-whatsapp" style="color: orange;      "></i>
     WhatsApp
 </a>
 
