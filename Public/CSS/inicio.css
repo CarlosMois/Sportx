@@ -229,8 +229,8 @@ img {
 
 /* Ajustes a los paralelogramos */
 .parallelogram-img {
-  width: 600px;
-  height: 300px;
+  width: 550px;
+  height: 450px;
   background: var(--blue-900);
   clip-path: polygon(20% 0%, 100% 0%, 80% 100%, 0% 100%);
   position: relative;

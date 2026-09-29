@@ -158,7 +158,7 @@ searchForm.addEventListener('submit', function(e) {
 
     <div class="card-acciones">
 
-    <a href="academias.php" target="_blank" class="academia-btn"> 
+    <a href="academia_detalle.php" target="_blank" class="academia-btn"> 
         Ver información 
         <i class="fa-solid fa-arrow-right"></i> 
     </a> 
