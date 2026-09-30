@@ -381,6 +381,8 @@ footer p{
     font-weight:bold;
 
     transition:.3s;
+
+    text-align:left;
 }
 
 .back-btn:hover{

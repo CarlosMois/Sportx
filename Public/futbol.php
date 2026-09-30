@@ -244,7 +244,7 @@ if (
         }
 
         .back-btn:hover {
-            background: #007AA2;
+            background: #0c1c4e;
             color: white;
         }
 

@@ -37,6 +37,7 @@ if (
         body {
             background: linear-gradient(90deg, #007AA2 0%, #0D2860 100%);
             color: #333;
+            fond-weight: bold;
         }
 
         /* ===========================
@@ -46,7 +47,7 @@ if (
         .hero {
             background:
             linear-gradient(rgba(13, 40, 96, 0.80), rgba(13, 40, 96, 0.80)),
-            url("/Sportx/img/basketball\ img.jpg");
+            url("/Sportx/img/fondosesion.jpg");
 
             background-size: cover;
             background-position: center;
@@ -60,7 +61,7 @@ if (
         .hero h1 {
             font-size: 58px;
             margin-bottom: 20px;
-            color: #FDB913;
+            color: #FFD700;
         }
 
         .hero p {
@@ -231,7 +232,7 @@ if (
         .back-btn {
             display: inline-block;
             background: #FDB913;
-            color: #0D2860;
+            color: #0c1c4e;
             text-decoration: none;
             padding: 14px 24px;
             border-radius: 12px;
@@ -240,7 +241,7 @@ if (
         }
 
         .back-btn:hover {
-            background: #007AA2;
+            background: #0c1c4e;
             color: white;
         }
 
