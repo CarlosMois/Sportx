@@ -155,6 +155,21 @@ try {
                         <p><?php echo !empty($academia['telefono']) ? htmlspecialchars($academia['telefono']) : 'Teléfono no disponible.'; ?></p>
                     </div>
                 </div>
+                <div class="info-item">
+                    <i class="fa-solid fa-star"></i>
+                    <div class="info-text">
+                        <h3>Reseñas</h3>
+                        <p>
+                            <?php
+                            if ($stats_resenas['total'] > 0) {
+                                echo "⭐ " . round($stats_resenas['promedio'], 1) . " (" . $stats_resenas['total'] . " reseñas)";
+                            } else {
+                                echo "Aún no hay reseñas. ¡Sé el primero en calificar!";
+                            }
+                            ?>
+                        </p>
+                    </div>
+                </div>
             </div>
         </section>
 
