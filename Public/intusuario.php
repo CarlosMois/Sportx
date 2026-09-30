@@ -149,6 +149,7 @@ if (
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src = "JS/logout.js"></script>
     <script src = "JS/perfil.js"></script>
+    <script src = "JS/editarperfil.js"></script>
 </body>
 
 </html>
