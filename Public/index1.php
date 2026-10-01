@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 
 if (
@@ -10,6 +9,16 @@ if (
     exit;
 }
 
+require_once '../Config/Conexion.php';
+$database = new Database();
+$db = $database->getConnection();
+
+try {
+    $stmt = $db->query("SELECT id_deporte, nombre FROM deportes");
+    $deportes = $stmt->fetchAll(PDO::FETCH_ASSOC);
+} catch (Exception $e) {
+    $deportes = [];
+}
 ?>
 
 <!DOCTYPE html>
@@ -66,12 +75,7 @@ height="70">
 </header>
 
 
-
-
-<!-- CONTENT -->
-
 <main class="container my-5">
-
 
 
 <!-- ABOUT SPORTX -->
@@ -82,147 +86,43 @@ height="70">
 
 <section id="deportes">
 
-   
-
 <h2 class="fw-bold mb-4" style="color: #FDB913;">
 Explore Our Sports
 </h2>
 
 
-
-<div class="row g-4">
-
-
-
-<div class="col-md-4 col-lg">
-
-<a href="../Public/futbol.php"  class="gallery-card">
-
-<img src="../Public/img/img futbol.jpg"
-alt="Fútbol">
-
-<div class="gallery-overlay">
-
-<h3>
-Football
-</h3>
-
-</div>
-
-</a>
-
-</div>
-
-
-
-
-
-<div class="col-md-4 col-lg">
-
-<a href="../Public/voleibol.php" class="gallery-card">
-
-<img src="../Public/img/voleibol img.jpg"
-alt="Voleibol">
-
-<div class="gallery-overlay">
-
-<h3>
-Volleyball
-</h3>
-
-</div>
-
-</a>
-
-</div>
-
-
-
-
-
-<div class="col-md-4 col-lg">
-
-<a href="../Public/basketball.php" class="gallery-card">
-
-<img src="../Public/img/basketball img.jpg"
-alt="Baloncesto">
-
-<div class="gallery-overlay">
-
-<h3>
-Basketball
-</h3>
-
-</div>
-
-</a>
-
-</div>
-
-
-
-
-
-<div class="col-md-4 col-lg">
-
-<a href="../Public/ballet.php" class="gallery-card">
-
-<img src="../Public/img/Chopiniana_Baku.jpg"
-alt="Ballet">
-
-<div class="gallery-overlay">
-
-<h3>
-Ballet
-</h3>
-
-</div>
-
-</a>
-
-</div>
-
-
-
-
-
-<div class="col-md-4 col-lg">
-
-<a href="../Public/lucha.php" class="gallery-card">
-
-<img src="../Public/img/LUCHA-OLIMPICA.jpg"
-alt="Lucha">
-
-<div class="gallery-overlay">
-
-<h3>
-Wrestling
-</h3>
-
-</div>
-
-</a>
-
-</div>
-
-
-
-
-</div>
-
+            <div class="row g-4">
+                <?php foreach ($deportes as $deporte):
+                    $img_map = [
+                        'Fútbol' => 'img futbol.jpg',
+                        'Voleibol' => 'voleibol img.jpg',
+                        'Baloncesto' => 'basketball img.jpg',
+                        'Ballet' => 'Chopiniana_Baku.jpg',
+                        'Lucha Olímpica' => 'LUCHA-OLIMPICA.jpg'
+                    ];
+                    $img = isset($img_map[$deporte['nombre']]) ? $img_map[$deporte['nombre']] : 'default.jpg';
+                ?>
+                    <div class="col-md-4 col-lg">
+                        <a href="deporte.php?id=<?php echo $deporte['id_deporte']; ?>" class="gallery-card">
+                            <img src="../Public/img/<?php echo $img; ?>" alt="<?php echo htmlspecialchars($deporte['nombre']); ?>">
+                            <div class="gallery-overlay">
+                                <h3><?php echo htmlspecialchars($deporte['nombre']); ?></h3>
+                            </div>
+                        </a>
+                    </div>
+                <?php endforeach; ?>
+            </div>
 
 </section>
 
 <!-- FEATURED ACTIVITIES -->
 
 <section class="mb-5">
-
      <div class="sportx-banner">
 
    Discover. Train. Push Your Limits.
 
 </div>
-
 <div class="d-flex justify-content-between align-items-center mb-4">
 
 <h2 class="fw-bold" style="color: #FDB913;" >
@@ -233,9 +133,7 @@ Featured Activities
 </div>
 
 
-
 <div class="row g-4">
-
 
 <div class="col-md-4">
 
@@ -256,8 +154,6 @@ Improve Your Speed and Agility.
 </div>
 
 
-
-
 <div class="col-md-4">
 
 <div class="activity-card p-4">
@@ -269,15 +165,12 @@ Long-Distance Running
 </h4>
 
 <p>
-Improve Your Cardiovascular Endurance. 
+Improve Your Cardiovascular Endurance.
 </p>
 
 </div>
 
 </div>
-
-
-
 
 
 <div class="col-md-4">
@@ -299,9 +192,6 @@ Improve Your Muscle Strength.
 </div>
 
 
-
-
-
 <div class="col-md-4">
 
 <div class="activity-card p-4">
@@ -311,7 +201,6 @@ Improve Your Muscle Strength.
 <h4>
 Endurance Training
 </h4>
-
 <p>
 Increase Your Physical Capacity and Performance.
 </p>
@@ -319,9 +208,6 @@ Increase Your Physical Capacity and Performance.
 </div>
 
 </div>
-
-
-
 
 
 <div class="col-md-4">
@@ -343,9 +229,6 @@ Develop Your Athletic Skills.
 </div>
 
 
-
-
-
 <div class="col-md-4">
 
 <div class="activity-card p-4">
@@ -364,10 +247,7 @@ Improve Your Performance and Discipline.
 
 </div>
 
-
-
 </div>
-
 
 </section>
 
@@ -375,23 +255,14 @@ Improve Your Performance and Discipline.
 </main>
 
 
-
-
-
-
-
 <!-- FOOTER -->
 
 
 <footer class="py-4">
 
-
 <div class="container">
 
-
 <div class="row align-items-center">
-
-
 
 <div class="col-md-4 text-center">
 
@@ -401,14 +272,10 @@ Improve Your Performance and Discipline.
 
 </p>
 
-
 </div>
 
 
-
-
 <div class="col-md-4 text-center text-md-end social-icons">
-
 
 <a href="#">
 <i class="fab fa-facebook"></i>
@@ -422,18 +289,13 @@ Improve Your Performance and Discipline.
 <i class="fab fa-twitter"></i>
 </a>
 
+</div>
 
 </div>
 
-
 </div>
-
-
-</div>
-
 
 </footer>
-
 
 <script src="JS/inicio.js"></script>
 </body>
