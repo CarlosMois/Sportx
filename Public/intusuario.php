@@ -58,7 +58,7 @@ if (
             <div class="text-center text-md-start flex-grow-1">
                 <h1 class="profile-name mb-1" id = "Usuario2">User Name</h1>
                 <span class="profile-tag mb-2">SportX Athlete</span>
-                <p class="text-muted mb-0"><i class="fa-solid fa-location-dot text-danger me-1"></i> San Salvador, El Salvador</p>
+                <p class="text-muted mb-0"><i class="fa-solid fa-star text-warning me-1"></i> <span id="user-sports-desc">Favorite Sports</span></p>
             </div>
             <div>
                 <button class="btn btn-custom">

@@ -55,7 +55,7 @@ height="70">
     <img src="../Public/img/fotoperfil.jpg" id="avatar-inicio" class="rounded-circle user-avatar me-2" alt="" style="width: 45px; height: 45px; object-fit: cover; border: 2px solid #FDB913;">
     <div class="user-info text-white me-3">
         <span id ="Cartel2"class="Cartel">SportX</span>
-        <small class="d-block text-white-50">Welcome back</small>
+        <small id="user-sports-inicio" class="d-block text-white-50">Welcome back</small>
     </div>
     <span class="btn btn-sm" style="background: #FDB913; color: #0D2860; font-weight: bold; border-radius: 8px;">
         <i class="fa-solid fa-user me-1" ></i> View Profile
