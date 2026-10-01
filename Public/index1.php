@@ -52,7 +52,7 @@ height="70">
 </div>
 
 <a href="intusuario.php" class="user-profile d-flex align-items-center text-decoration-none">
-    <img src="../Public/img/fotoperfil.jpg" class="rounded-circle user-avatar me-2" alt="" style="width: 45px; height: 45px; object-fit: cover; border: 2px solid #FDB913;">
+    <img src="../Public/img/fotoperfil.jpg" id="avatar-inicio" class="rounded-circle user-avatar me-2" alt="" style="width: 45px; height: 45px; object-fit: cover; border: 2px solid #FDB913;">
     <div class="user-info text-white me-3">
         <span id ="Cartel2"class="Cartel">SportX</span>
         <small class="d-block text-white-50">Welcome back</small>
