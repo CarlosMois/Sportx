@@ -45,12 +45,7 @@ function abrirModalEditarPerfil() {
             { name: "Basketball", icon: "fa-basketball" },
             { name: "Volleyball", icon: "fa-volleyball" },
             { name: "Wrestling", icon: "fa-hand-fist" },
-            { name: "Ballet", icon: "fa-shoe-prints" },
-            { name: "Tennis", icon: "fa-table-tennis-paddle-ball" },
-            { name: "Swimming", icon: "fa-swimmer" },
-            { name: "Athletics", icon: "fa-person-running" },
-            { name: "Boxing", icon: "fa-hand-fist" },
-            { name: "Cycling", icon: "fa-bicycle" }
+            { name: "Ballet", icon: "fa-shoe-prints" }
         ];
 
         const sportsHTML = sportsList.map(sport => `
