@@ -44,6 +44,15 @@ try {
     $stmt_cost->execute([$id_centro]);
     $costos = $stmt_cost->fetchAll(PDO::FETCH_ASSOC);
 
+    // Lógica para obtener estadísticas de reseñas (promedio y total)
+    try {
+        $stmt_stats = $db->prepare("SELECT AVG(calificacion) as promedio, COUNT(*) as total FROM resenas WHERE id_centro = ?");
+        $stmt_stats->execute([$id_centro]);
+        $stats_resenas = $stmt_stats->fetch(PDO::FETCH_ASSOC);
+    } catch (Exception $e) {
+        $stats_resenas = ['promedio' => 0, 'total' => 0];
+    }
+
 } catch (Exception $e) {
     die("Error de base de datos: " . $e->getMessage());
 }
@@ -61,10 +70,38 @@ try {
 
     <header class="academia-header">
         <div class="back-container">
-            <!-- CORRECCIÓN: Volver a la página de deportes dinámica -->
+            <?php
+            // Lógica para determinar el ID del deporte al que pertenece la academia
+            try {
+                $stmt_dep_id = $db->prepare("SELECT id_deporte FROM centro_deporte WHERE id_centro = ? LIMIT 1");
+                $stmt_dep_id->execute([$id_centro]);
+                $dep_id_res = $stmt_dep_id->fetch(PDO::FETCH_ASSOC);
+
+                $url_volver = "deporte.php"; // fallback
+
+                $nombre_volver = "Deportes";
+
+                if ($dep_id_res) {
+                    $id_deporte = $dep_id_res['id_deporte'];
+                    $url_volver = "deporte.php?id=" . $id_deporte;
+
+                    // Obtener el nombre del deporte para el texto del botón
+                    $stmt_dep_name = $db->prepare("SELECT nombre FROM deportes WHERE id_deporte = ?");
+                    $stmt_dep_name->execute([$id_deporte]);
+                    $dep_name_res = $stmt_dep_name->fetch(PDO::FETCH_ASSOC);
+                    if ($dep_name_res) {
+                        $nombre_volver = $dep_name_res['nombre'];
+                    }
+                }
+            ?>
+            <a href="<?php echo $url_volver; ?>" class="back-btn">
+                <i class="fa-solid fa-arrow-left"></i> Volver a <?php echo htmlspecialchars($nombre_volver); ?>
+            </a>
+            <?php } catch (Exception $e) { ?>
             <a href="deportes.php" class="back-btn">
                 <i class="fa-solid fa-arrow-left"></i> Volver
             </a>
+            <?php } ?>
         </div>
 
         <div class="header-content">

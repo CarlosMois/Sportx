@@ -49,42 +49,88 @@ try {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <style>
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f7f6; margin: 0; padding: 0; }
-        .container { max-width: 800px; margin: 40px auto; padding: 20px; }
-        .header { text-align: center; margin-bottom: 30px; }
-        .header h1 { color: #333; font-size: 2rem; }
-        .btn-volver { display: inline-block; margin-bottom: 20px; text-decoration: none; color: #007bff; font-weight: bold; }
-        .btn-volver:hover { text-decoration: underline; }
+
+        /* Header Estilo Academia */
+        .academia-header {
+            background: linear-gradient(rgba(13, 40, 96, 0.8), rgba(13, 40, 96, 0.8)), url('img/logo sin fondo.png');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .header-content h1 { font-size: 2.5rem; margin-bottom: 10px; color: #FFD700; }
+        .header-content p { font-size: 1.1rem; opacity: 0.9; }
+
+        .back-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 20px auto;
+            text-align: center;
+        }
+        .back-btn {
+            display: inline-block;
+            background: #FFD700;
+            color: #0D2860;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-weight: bold;
+            transition: .3s;
+        }
+        .back-btn:hover { background: #0D2860; color: white; }
+
+        .container { max-width: 800px; margin: 0 auto; padding: 20px; }
 
         .resena-card {
             background: #fff;
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
             border-left: 6px solid #f1c40f;
             transition: transform 0.2s;
         }
         .resena-card:hover { transform: translateY(-5px); }
 
-        .user-info { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+        .user-info { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+        .user-profile { display: flex; align-items: center; gap: 12px; }
+        .user-avatar { width: 45px; height: 45px; border-radius: 50%; object-fit: cover; border: 2px solid #f1c40f; }
         .user-name { font-weight: bold; font-size: 1.1rem; color: #2c3e50; }
         .resena-date { font-size: 0.85rem; color: #95a5a6; }
 
-        .stars { color: #f1c40f; font-size: 1.2rem; margin-bottom: 10px; }
-        .comment { color: #555; line-height: 1.6; font-size: 1rem; }
+        .stars { color: #f1c40f; font-size: 1.3rem; margin-bottom: 12px; }
+        .comment { color: #555; line-height: 1.6; font-size: 1rem; font-style: italic; }
 
         .no-resenas { text-align: center; color: #7f8c8d; font-style: italic; margin-top: 50px; }
+
+        .main-footer {
+            background: linear-gradient(rgba(13, 40, 96, 0.9), rgba(13, 40, 96, 0.9)), url('img/logo sin fondo.png');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 50px;
+        }
     </style>
+
 </head>
 <body>
-    <div class="container">
-        <a href="academia_detalle.php?id=<?php echo $id_centro; ?>" class="btn-volver">
-            <i class="fa-solid fa-arrow-left"></i> Volver al centro
-        </a>
-
-        <div class="header">
-            <h1>Opiniones de <?php echo htmlspecialchars($centro['nombre']); ?></h1>
+    <header class="academia-header">
+        <div class="back-container">
+            <a href="academia_detalle.php?id=<?php echo $id_centro; ?>" class="back-btn">
+                <i class="fa-solid fa-arrow-left"></i> Volver al centro
+            </a>
         </div>
+
+        <div class="header-content">
+            <h1>Opiniones de <?php echo htmlspecialchars($centro['nombre']); ?></h1>
+            <p>Descubre lo que otros usuarios opinan sobre este centro deportivo</p>
+        </div>
+    </header>
+
 
         <?php if (empty($resenas)): ?>
             <div class="no-resenas">
@@ -95,9 +141,10 @@ try {
             <?php foreach ($resenas as $r): ?>
                 <div class="resena-card">
                     <div class="user-info">
-                        <span class="user-name">
-                            <i class="fa-solid fa-circle-user"></i> <?php echo htmlspecialchars($r['usuario_nombre']); ?>
-                        </span>
+                        <div class="user-profile">
+                            <img src="img/fotoperfil.jpg" alt="Perfil" class="user-avatar" id="resena-avatar">
+                            <span class="user-name"><?php echo htmlspecialchars($r['usuario_nombre']); ?></span>
+                        </div>
                         <span class="resena-date"><?php echo date('d M, Y', strtotime($r['fecha'])); ?></span>
                     </div>
 
@@ -115,6 +162,9 @@ try {
                 </div>
             <?php endforeach; ?>
         <?php endif; ?>
-    </div>
+    <footer class="main-footer">
+        <p>© 2026 SportX | Todos los derechos reservados.</p>
+    </footer>
+    <script src="JS/resenas_perfil.js"></script>
 </body>
 </html>
