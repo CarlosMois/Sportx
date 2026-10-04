@@ -1,17 +1,33 @@
 <?php
-
 session_start();
 
-if (
-    !isset($_SESSION["autenticado"]) ||
-    $_SESSION["autenticado"] !== true
-) {
-    header("Location: sesion.html");
-    exit;
+// Conexión a la base de datos
+require_once '../Config/Conexion.php';
+$database = new Database();
+$db = $database->getConnection();
+
+// Obtener ID del usuario de la sesión
+$id_usuario = isset($_SESSION['id_usuario']) ? intval($_SESSION['id_usuario']) : 0;
+
+// Obtener favoritos del usuario
+$favoritos = [];
+if ($id_usuario > 0) {
+    try {
+        $stmt = $db->prepare("
+            SELECT c.nombre, c.municipio, c.departamento, d.nombre as deporte_nombre
+            FROM Favoritos f
+            JOIN centros_deportivos c ON f.id_centro = c.id_centro
+            JOIN centro_deporte cd ON c.id_centro = cd.id_centro
+            JOIN deportes d ON cd.id_deporte = d.id_deporte
+            WHERE f.id_usuario = ?
+        ");
+        $stmt->execute([$id_usuario]);
+        $favoritos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    } catch (Exception $e) {
+        // Error handling if needed
+    }
 }
-
 ?>
-
 
 <!DOCTYPE html>
 <html lang="es">
@@ -36,9 +52,9 @@ if (
     <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg navbar-dark navbar-custom shadow-sm">
         <div class="container">
-            
+
                 <img src="../Public/img/IMG-20260529-WA0008(2).jpg" class="logosportx" alt="Logo SportX" height="45">
-            
+
             <div class="navbar-nav">
                 <a class="nav-link text-white fw-bold" href="../Public/index1.php">
                     <i class="fa-solid fa-house me-1"></i> Home
@@ -50,7 +66,7 @@ if (
     <!-- MAIN CONTENT -->
     <main class="profile-container">
 
-        
+
 
         <!-- PROFILE HEADER CARD -->
         <div class="profile-header-card d-flex flex-column flex-md-row align-items-center gap-4">
@@ -73,7 +89,7 @@ if (
             <div class="col-md-6">
                 <div class="profile-card">
                     <h3><i class="fa-solid fa-user me-2" style="color: #007AA2;"></i>Personal Information</h3>
-                    
+
                     <div class="info-group">
                         <label>Email</label>
                         <p>user@sportx.com</p>
@@ -99,31 +115,21 @@ if (
             <!-- MIS ACTIVIDADES Y FAVORITOS -->
             <div class="col-md-6">
                 <div class="profile-card">
-                    <h3><i class="fa-solid fa-star me-2" style="color: #007AA2;"></i>Saved Sports</h3>
+                    <h3><i class="fa-solid fa-heart me-2" style="color: #007AA2;"></i>Academias Favoritas</h3>
 
-                    <div class="sport-badge">
-                        <i class="fa-solid fa-futbol"></i>
-                        <div>
-                            <strong>Football</strong>
-                            <div class="text-muted small">FESA Football Academy</div>
-                        </div>
-                    </div>
-
-                    <div class="sport-badge">
-                        <i class="fa-solid fa-basketball"></i>
-                        <div>
-                            <strong>Basketball</strong>
-                            <div class="text-muted small">FESABAL Basketball Academy</div>
-                        </div>
-                    </div>
-
-                    <div class="sport-badge">
-                        <i class="fa-solid fa-volleyball"></i>
-                        <div>
-                            <strong>Volleyball</strong>
-                            <div class="text-muted small">TRUCKO Beach Academy</div>
-                        </div>
-                    </div>
+                    <?php if (empty($favoritos)): ?>
+                        <p class="text-muted">No has agregado academias a tus favoritos aún.</p>
+                    <?php else: ?>
+                        <?php foreach ($favoritos as $fav): ?>
+                            <div class="sport-badge">
+                                <i class="fa-solid fa-building"></i>
+                                <div>
+                                    <strong><?php echo htmlspecialchars($fav['nombre']); ?></strong>
+                                    <div class="text-muted small"><?php echo htmlspecialchars($fav['municipio'] . ', ' . $fav['departamento']); ?> - <?php echo htmlspecialchars($fav['deporte_nombre']); ?></div>
+                                </div>
+                            </div>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
 
                     <div class="mt-4 pt-2 border-top text-end">
                         <button id = "btnCerrarSesion"  class="btn btn-outline-custom">

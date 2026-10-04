@@ -12,6 +12,9 @@ require_once '../Config/Conexion.php';
 $database = new Database();
 $db = $database->getConnection();
 
+// Obtener ID del usuario de la sesión
+$id_usuario = isset($_SESSION['id_usuario']) ? intval($_SESSION['id_usuario']) : 0;
+
 // Obtener ID del deporte
 $id_deporte = isset($_GET['id']) ? intval($_GET['id']) : 0;
 
@@ -94,18 +97,32 @@ try {
             </div>
         </div>
     </section>
-
-    <form id="search-form">
-        <input type="text" id="search-input" placeholder="Buscar en el sitio...">
-        <button type="submit">Buscar</button>
-    </form>
-    <div id="search-results"></div>
 </main>
 
 <section class="academias">
     <h2>Academias disponibles</h2>
+
+    <form id="search-form">
+        <div class="search-input-container">
+            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+            <input type="text" id="search-input" placeholder="Buscar centro deportivo...">
+        </div>
+        <button type="submit">Buscar</button>
+    </form>
+    <div id="search-results"></div>
+
     <div class="academias-grid">
-        <?php foreach ($centros as $centro): ?>
+        <?php foreach ($centros as $centro):
+            // Verificar si el usuario ya tiene este centro en favoritos
+            $is_fav = false;
+            if ($id_usuario > 0) {
+                $stmt_fav = $db->prepare("SELECT 1 FROM Favoritos WHERE id_usuario = ? AND id_centro = ?");
+                $stmt_fav->execute([$id_usuario, $centro['id_centro']]);
+                if ($stmt_fav->fetch()) {
+                    $is_fav = true;
+                }
+            }
+        ?>
             <div class="academia-card">
                 <img src="../Public/img/LUCHA-OLIMPICA.jpg" alt="Imagen">
                 <h3><?php echo $centro['nombre']; ?></h3>
@@ -121,12 +138,65 @@ try {
                     <a href="academia_detalle.php?id=<?php echo $centro['id_centro']; ?>" class="academia-btn">
                         Ver información <i class="fa-solid fa-arrow-right"></i>
                     </a>
-                    <button class="favorito-btn"><i class="fa-regular fa-heart"></i></button>
+                    <button class="favorito-btn <?php echo $is_fav ? 'activo' : ''; ?>" data-id="<?php echo $centro['id_centro']; ?>">
+                        <i class="<?php echo $is_fav ? 'fa-solid' : 'fa-regular'; ?> fa-heart"></i>
+                    </button>
                 </div>
             </div>
         <?php endforeach; ?>
     </div>
 </section>
+
+<script>
+    document.getElementById('search-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+    });
+
+    document.getElementById('search-input').addEventListener('input', function() {
+        const searchTerm = this.value.toLowerCase();
+        const cards = document.querySelectorAll('.academia-card');
+
+        cards.forEach(card => {
+            const name = card.querySelector('h3').textContent.toLowerCase();
+            const location = card.querySelector('.ubicacion').textContent.toLowerCase();
+
+            if (name.includes(searchTerm) || location.includes(searchTerm)) {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    });
+
+    // Lógica para los Favoritos
+    document.querySelectorAll('.favorito-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const idCentro = this.getAttribute('data-id');
+            const icon = this.querySelector('i');
+
+            fetch('toggle_favorito.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: 'id_centro=' + idCentro
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    if (data.status === 'added') {
+                        this.classList.add('activo');
+                        icon.classList.replace('fa-regular', 'fa-solid');
+                    } else {
+                        this.classList.remove('activo');
+                        icon.classList.replace('fa-solid', 'fa-regular');
+                    }
+                } else {
+                    alert('Error: ' + data.message);
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        });
+    });
+</script>
 
 <footer>
     <p>© 2026 SportX | Todos los derechos reservados.</p>
