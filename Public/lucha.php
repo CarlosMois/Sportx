@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 
 if (
@@ -10,6 +9,35 @@ if (
     exit;
 }
 
+require_once '../Config/Conexion.php';
+$database = new Database();
+$db = $database->getConnection();
+
+$sport_name = "Lucha Olímpica";
+$search = $_GET['search'] ?? '';
+
+try {
+    $sql = "SELECT cd.*
+            FROM centros_deportivos cd
+            JOIN centro_deporte cdp ON cd.id_centro = cdp.id_centro
+            JOIN deportes d ON cdp.id_deporte = d.id_deporte
+            WHERE d.nombre = :sport_name";
+
+    if (!empty($search)) {
+        $sql .= " AND (cd.nombre LIKE :search OR cd.direccion LIKE :search)";
+    }
+
+    $stmt = $db->prepare($sql);
+    $stmt->bindParam(':sport_name', $sport_name);
+    if (!empty($search)) {
+        $search_param = "%$search%";
+        $stmt->bindParam(':search', $search_param);
+    }
+    $stmt->execute();
+    $centros = $stmt->fetchAll(PDO::FETCH_ASSOC);
+} catch (Exception $e) {
+    $centros = [];
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -22,6 +50,54 @@ if (
 
     <link rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    <style>
+        /* Estilos para la barra de búsqueda naranja */
+        .search-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 30px auto;
+            text-align: center;
+        }
+        .search-form {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        .search-input {
+            width: 60%;
+            padding: 15px 20px;
+            font-size: 1.2rem;
+            border: 3px solid #FDB913;
+            border-radius: 10px;
+            outline: none;
+            transition: 0.3s;
+        }
+        .search-input:focus {
+            box-shadow: 0 0 10px rgba(253, 185, 19, 0.5);
+            border-color: #e69500;
+        }
+        .search-btn {
+            background: #FDB913;
+            color: #0D2860;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .search-btn:hover {
+            background: #e69500;
+            color: white;
+        }
+        @media(max-width: 768px) {
+            .search-input {
+                width: 70%;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -50,7 +126,7 @@ if (
 </header>
 
 <main>
-    
+
 <section class="info-general">
 
     <h2 style="color:orange">Información General</h2>
@@ -60,7 +136,7 @@ if (
         <div class="info-box">
             <i class="fa-solid fa-location-dot"></i>
             <h3>Centros disponibles</h3>
-            <p>3</p>
+            <p><?php echo count($centros); ?></p>
         </div>
 
         <div class="info-box">
@@ -83,156 +159,54 @@ if (
 
     </div>
 
-
-    
 </section>
 
-<script>
-    const searchForm = document.getElementById('search-form');
-const searchInput = document.getElementById('search-input');
-const resultsContainer = document.getElementById('search-results');
-
-// Ejemplo de base de datos local de tu página
-const articulos = [
-  { titulo: 'Cómo crear una web', url: '/crear-web.html' },
-  { titulo: 'Aprender diseño CSS', url: '/diseno-css.html' },
-  { titulo: 'Contacto y soporte', url: '/contacto.html' }
-];
-
-searchForm.addEventListener('submit', function(e) {
-  e.preventDefault(); // Evita que la página se recargue
-  const query = searchInput.value.toLowerCase();
-  resultsContainer.innerHTML = ''; // Limpia resultados anteriores
-
-  if(query.trim() === "") return;
-
-  // Filtrar los artículos que coincidan con la búsqueda
-  const resultados = articulos.filter(item => item.titulo.toLowerCase().includes(query));
-
-  if(resultados.length > 0) {
-    resultados.forEach(item => {
-      const link = document.createElement('a');
-      link.href = item.url;
-      link.textContent = item.titulo;
-      link.style.display = 'block';
-      resultsContainer.appendChild(link);
-    });
-  } else {
-    resultsContainer.textContent = 'No se encontraron resultados.';
-  }
-});
-</script>
-
-
-<form id="search-form">
-  <input type="text" id="search-input" placeholder="Buscar en el sitio...">
-  <button type="submit">Buscar</button>
-</form>
-<div id="search-results"></div>
-</main>
-
-<!-- ===========================
-     TARJETAS DE ACADEMIAS
-=========================== -->
-
-<section class="academias">
-
-    <h2>Academias disponibles</h2>
-
-    <div class="academias-grid">
-
-        <!-- Academia 1 -->
-        <div class="academia-card">
-
-    <img src="../Public/img/LUCHA-OLIMPICA.jpg" alt="Federación Salvadoreña de Luchas Amateurs">
-    
-
-    <h3>Federación Salvadoreña de Luchas Amateurs</h3>
-    
-
-    <p class="ubicacion">
-        <i class="fa-solid fa-location-dot"></i>
-        Prolongación Calle Arce, entre la 45ª y 47ª Avenida Norte #2429,
-        Colonia Flor Blanca, San Salvador.
-    </p>
-
-    <div class="card-acciones">
-
-    <a href="academia_detalle.php" target="_blank" class="academia-btn"> 
-        Ver información 
-        <i class="fa-solid fa-arrow-right"></i> 
-    </a> 
-
-    <button class="favorito-btn" type="button"> 
-        <i class="fa-regular fa-heart"></i> 
-    </button>
-
+<!-- BARRA DE BÚSQUEDA -->
+<div class="search-container">
+    <form action="" method="GET" class="search-form">
+        <input type="text" name="search" class="search-input" placeholder="Buscar centro deportivo..." value="<?php echo htmlspecialchars($search); ?>">
+        <button type="submit" class="search-btn">
+            <i class="fa-solid fa-magnifying-glass"></i> Buscar
+        </button>
+    </form>
 </div>
 
-</div>
-
-        <!-- Academia 2 -->
-        <div class="academia-card">
-
-            <img src="../Public/img/IMG-20260529-WA0008(2).jpg" alt="MMA Authority Training Center">
-
-            <h3>MMA Authority Training Center</h3>
-
-         <p class="ubicacion">
-        <i class="fa-solid fa-location-dot"></i>
-        Calle La Mascota #503, Colonia San Benito, San Salvador.
-         </p>
-
-
-           <div class="card-acciones">
-
-    <a href="academias.php" target="_blank" class="academia-btn"> 
-        Ver información 
-        <i class="fa-solid fa-arrow-right"></i> 
-    </a> 
-
-    <button class="favorito-btn" type="button"> 
-        <i class="fa-regular fa-heart"></i> 
-    </button>
-
-</div>
-
-        </div>
-
-
-        <!-- Academia 3 -->
-        <div class="academia-card">
-
-            <img src="../Public/img/fondo encabezado lucha.jpg" alt="Complejo Deportivo INDES San Miguel">
-
-            <h3>Complejo Deportivo INDES San Miguel</h3>
-
-            <p class="ubicacion">
-        <i class="fa-solid fa-location-dot"></i>
-        Avenida San Miguel, San Miguel.
-            </p>
-
-           <div class="card-acciones">
-
-    <a href="academias.php" target="_blank" class="academia-btn"> 
-        Ver información 
-        <i class="fa-solid fa-arrow-right"></i> 
-    </a> 
-
-    <button class="favorito-btn" type="button"> 
-        <i class="fa-regular fa-heart"></i> 
-    </button>
-
-</div>
-
-        </div>
-
+<?php if (!empty($search) && empty($centros)): ?>
+    <div class="text-center my-5" style="text-align: center; margin: 50px 0;">
+        <h3 style="color: red;">Centro deportivo no disponible :(</h3>
     </div>
+<?php elseif (empty($centros)): ?>
+    <div class="text-center my-5" style="text-align: center; margin: 50px 0;">
+        <h3>No se encontraron centros deportivos que coincidan con tu búsqueda.</h3>
+    </div>
+<?php else: ?>
+    <section class="academias">
+        <h2 style="text-align: center; margin-bottom: 30px;">Academias disponibles</h2>
+        <div class="academias-grid">
+            <?php foreach ($centros as $centro): ?>
+            <div class="academia-card">
+                <img src="../Public/img/LUCHA-OLIMPICA.jpg" alt="<?php echo htmlspecialchars($centro['nombre']); ?>">
+                <h3><?php echo htmlspecialchars($centro['nombre']); ?></h3>
+                <p class="ubicacion">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <?php echo htmlspecialchars($centro['direccion']); ?>
+                </p>
+                <div class="card-acciones">
+                    <a href="academias.php" target="_blank" class="academia-btn">
+                        Ver información
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                    <button class="favorito-btn" type="button">
+                        <i class="fa-regular fa-heart"></i>
+                    </button>
+                </div>
+            </div>
+            <?php endforeach; ?>
+        </div>
+    </section>
+<?php endif; ?>
 
-</section>
-
-
-
+</main>
 
 <footer>
 

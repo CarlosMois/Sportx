@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 
 if (
@@ -10,10 +9,40 @@ if (
     exit;
 }
 
+require_once '../Config/Conexion.php';
+$database = new Database();
+$db = $database->getConnection();
+
+$sport_name = "Fútbol";
+$search = $_GET['search'] ?? '';
+
+try {
+    $sql = "SELECT cd.*
+            FROM centros_deportivos cd
+            JOIN centro_deporte cdp ON cd.id_centro = cdp.id_centro
+            JOIN deportes d ON cdp.id_deporte = d.id_deporte
+            WHERE d.nombre = :sport_name";
+
+    if (!empty($search)) {
+        $sql .= " AND (cd.nombre LIKE :search OR cd.direccion LIKE :search)";
+    }
+
+    $stmt = $db->prepare($sql);
+    $stmt->bindParam(':sport_name', $sport_name);
+    if (!empty($search)) {
+        $search_param = "%$search%";
+        $stmt->bindParam(':search', $search_param);
+    }
+    $stmt->execute();
+    $centros = $stmt->fetchAll(PDO::FETCH_ASSOC);
+} catch (Exception $e) {
+    $centros = [];
+}
 ?>
 
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -40,19 +69,13 @@ if (
             background:linear-gradient(90deg, #007AA2 0%, #0D2860 100%)
         }
 
-        /* ===========================
-                  HERO
-        =========================== */
-
         .hero {
             background:
             linear-gradient(rgba(13, 40, 96, 0.80), rgba(13, 40, 96, 0.80)),
             url("../img/fulbol.jpg");
-
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-
             color: white;
             text-align: center;
             padding: 120px 20px;
@@ -71,15 +94,10 @@ if (
             line-height: 1.8;
         }
 
-        /* ===========================
-              INFORMACIÓN GENERAL
-        =========================== */
-
         .info-general {
             width: 90%;
             max-width: 1200px;
             margin: 60px auto;
-            
         }
 
         .info-general h2 {
@@ -105,10 +123,6 @@ if (
             border-top: 4px solid #007AA2;
         }
 
-        .info-box:hover {
-            transform: translateY(-5px);
-        }
-
         .info-box i {
             font-size: 45px;
             color: #FDB913;
@@ -121,13 +135,38 @@ if (
             font-size: 24px;
         }
 
-        .info-box p {
-            font-size: 18px;
-        }
-
         /* ===========================
-                  TARJETAS
+                  BARRA DE BÚSQUEDA (NARANJA)
         =========================== */
+        .search-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 30px auto;
+            text-align: center;
+        }
+        .search-form {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        .search-input {
+            width: 60%;
+            padding: 15px 20px;
+            font-size: 1.2rem;
+            border: 3px solid #FDB913 !important;
+            border-radius: 10px;
+            outline: none;
+        }
+        .search-btn {
+            background-color: #FDB913 !important;
+            color: #0D2860 !important;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-radius: 10px;
+            cursor: pointer;
+        }
 
         .card {
             width: 90%;
@@ -137,7 +176,6 @@ if (
             padding: 40px;
             border-radius: 20px;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
-            border: none;
         }
 
         .card h2 {
@@ -147,26 +185,6 @@ if (
             padding-left: 18px;
             margin-bottom: 35px;
         }
-
-        .card p {
-            margin: 22px 0;
-            line-height: 1.9;
-            font-size: 19px;
-        }
-
-        .card strong {
-            color: #0D2860;
-        }
-
-        .card i {
-            color: #007AA2;
-            width: 28px;
-            font-size: 20px;
-        }
-
-        /* ===========================
-                  BOTONES
-        =========================== */
 
         .buttons {
             margin-top: 40px;
@@ -182,54 +200,15 @@ if (
             margin-right: 15px;
             transition: .3s;
             font-size: 18px;
-            border: none;
         }
-
-        .btn i {
-            color: #FDB913;
-        }
-
-        .btn:hover {
-            background: #FDB913;
-            color: #0D2860;
-        }
-
-        .btn:hover i {
-            color: #0D2860;
-        }
-
-        /* ===========================
-                  FOOTER
-        =========================== */
 
         footer {
-            background:
-            linear-gradient(rgba(13, 40, 96, 0.85), rgba(13, 40, 96, 0.85)),
-            url("../img/img futbol.jpg");
-
+            background: linear-gradient(rgba(13, 40, 96, 0.85), rgba(13, 40, 96, 0.85)), url("../img/img futbol.jpg");
             background-size: cover;
-            background-position: center;
-
             color: white;
             text-align: center;
             padding: 60px 20px;
             margin-top: 70px;
-        }
-
-        footer p {
-            font-size: 20px;
-            font-weight: bold;
-        }
-
-        /* ===========================
-                BOTÓN VOLVER
-        =========================== */
-
-        .back-container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 25px auto;
-            text-align: left;
         }
 
         .back-btn {
@@ -240,52 +219,6 @@ if (
             padding: 14px 24px;
             border-radius: 12px;
             font-weight: bold;
-            transition: .3s;
-        }
-
-        .back-btn:hover {
-            background: #0c1c4e;
-            color: white;
-        }
-
-        /* ===========================
-                RESPONSIVE
-        =========================== */
-
-        @media(max-width: 768px) {
-            .hero {
-                padding: 60px 20px;
-            }
-
-            .hero h1 {
-                font-size: 40px;
-            }
-
-            .hero p {
-                font-size: 18px;
-            }
-
-            .info-general h2 {
-                font-size: 32px;
-            }
-
-            .card {
-                padding: 25px;
-            }
-
-            .card h2 {
-                font-size: 28px;
-            }
-
-            .card p {
-                font-size: 17px;
-            }
-
-            .btn {
-                display: block;
-                text-align: center;
-                margin: 12px 0;
-            }
         }
     </style>
 </head>
@@ -293,224 +226,81 @@ if (
 <body>
 
 <header class="hero">
-
-    <div class="back-container">
+    <div class="back-container" style="width: 90%; max-width: 1200px; margin: 25px auto; text-align: left;">
         <a href="/Sportx/Public/index1.php" class="back-btn">
-            <i class="fa-solid fa-arrow-left"></i>
-            Volver al menú
+            <i class="fa-solid fa-arrow-left"></i> Volver al menú
         </a>
     </div>
-
     <div class="hero-content">
         <h1>Fútbol</h1>
         <p>Encuentra las mejores academias de desarrollo, escuelas de alto rendimiento y centros de entrenamiento en El Salvador.</p>
     </div>
-
 </header>
 
 <main>
-
-<section class="info-general">
-
-    <h2>Información General</h2>
-
-    <div class="info-grid">
-
-        <div class="info-box">
-            <i class="fa-solid fa-location-dot" style="color: orange;"></i> 
-            <h3>Centros disponibles</h3>
-            <p>3 Academias</p>
+    <section class="info-general">
+        <h2>Información General</h2>
+        <div class="info-grid">
+            <div class="info-box">
+                <i class="fa-solid fa-location-dot" style="color: orange;"></i>
+                <h3>Centros disponibles</h3>
+                <p><?php echo count($centros); ?> Academias</p>
+            </div>
+            <div class="info-box">
+                <i class="fa-solid fa-users" style="color: orange;"></i>
+                <h3>Modalidad</h3>
+                <p>Fútbol 11 y Fútbol 8</p>
+            </div>
+            <div class="info-box">
+                <i class="fa-solid fa-dollar-sign" style="color: orange;"></i>
+                <h3>Precio</h3>
+                <p>Consultar directamente</p>
+            </div>
+            <div class="info-box">
+                <i class="fa-solid fa-calendar-days" style="color: orange;"></i>
+                <h3>Días</h3>
+                <p>Lunes a Sábado</p>
+            </div>
         </div>
+    </section>
 
-        <div class="info-box">
-            <i class="fa-solid fa-users" style="color: orange;"></i>
-            <h3>Modalidad</h3>
-            <p>Fútbol 11 y Fútbol 8</p>
-        </div>
-
-        <div class="info-box">
-            <i class="fa-solid fa-dollar-sign" style="color: orange;"></i>
-            <h3>Precio</h3>
-            <p>Consultar directamente</p>
-        </div>
-
-        <div class="info-box">
-            <i class="fa-solid fa-calendar-days" style="color: orange;"></i>
-            <h3>Días</h3>
-            <p>Lunes a Sábado</p>
-        </div>
-
+    <div class="search-container">
+        <form action="" method="GET" class="search-form">
+            <input type="text" name="search" class="search-input" placeholder="Buscar centro deportivo..." value="<?php echo htmlspecialchars($search); ?>">
+            <button type="submit" class="search-btn">
+                <i class="fa-solid fa-magnifying-glass"></i> Buscar
+            </button>
+        </form>
     </div>
 
-</section>
-
-<!-- Academia 1 -->
-
-<section class="card">
-
-<h2>FESA Academia de Fútbol</h2>
-
-<p><i class="fa-solid fa-location-dot" style="color: orange;"></i>
-<strong>Ubicación:</strong><br>
-Centro del Deportista Integral FESA Santa Tecla, Calle Julio Gaitán y final 13 Avenida Norte, Santa Tecla, La Libertad.
-</p>
-
-<p><i class="fa-solid fa-dollar-sign" style="color: orange; "></i>
-<strong>Precio:</strong><br>
-Información no disponible públicamente.
-</p>
-
-<p><i class="fa-solid fa-futbol" style="color: orange;"></i>
-<strong>Modalidad y Entrenamientos:</strong><br>
-• <strong>Modalidad:</strong> Fútbol 11 (principal) y Fútbol 8 para formación y categorías menores.<br>
-• <strong>U3:</strong> Lunes y Miércoles de 3:15 p.m. a 4:00 p.m.<br>
-• <strong>U5:</strong> Lunes y Miércoles de 3:45 p.m. a 4:45 p.m.<br>
-• <strong>U7:</strong> Lunes y Miércoles de 4:45 p.m. a 5:45 p.m.<br>
-• <strong>U9:</strong> Martes y Jueves de 4:00 p.m. a 5:15 p.m.<br>
-• <strong>U11:</strong> Martes y Jueves de 4:00 p.m. a 5:30 p.m. | Sábados de 8:30 a.m. a 10:00 a.m.<br>
-• <strong>U15:</strong> Lunes, Miércoles y Viernes de 5:30 p.m. a 7:00 p.m.<br>
-• <strong>U16:</strong> Lunes, Miércoles y Viernes de 4:00 p.m. a 5:30 p.m.<br>
-• <strong>U17:</strong> Martes y Jueves de 5:00 p.m. a 7:00 p.m. | Sábados de 8:30 a.m. a 10:30 a.m.
-</p>
-
-<p><i class="fa-solid fa-shield-halved" style="color: orange;"></i>
-<strong>Instalaciones:</strong><br>
-Cancha de fútbol 11 certificada FIFA, cancha de fútbol 8, vestidores, parqueo y seguridad privada.
-</p>
-
-<p><i class="fa-solid fa-clock" style="color: orange;   "></i>
-<strong>Horarios de atención administrativa:</strong><br>
-Lunes a viernes: 8:00 a.m. a 6:00 p.m.<br>
-Sábados: 8:00 a.m. a 12:00 p.m.<br>
-Domingos: Cerrado.
-</p>
-
-<p><i class="fa-solid fa-phone" style="color: orange;"></i>
-<strong>Teléfono:</strong><br>
-+503 2514-3166 / +503 2514-3167
-</p>
-
-<div class="buttons">
-
-<a href="https://maps.google.com/?q=Centro+del+Deportista+Integral+FESA+Santa+Tecla" target="_blank" class="btn">
-    <i class="fa-solid fa-location-dot" style="color: orange;"></i>
-    Ver ubicación
-</a>
-
-<a href="tel:+50325143166" class="btn">
-<i class="fa-solid fa-phone" style="color: orange;"></i>
-Llamar
-</a>
-
-</div>
-
-</section>
-
-<!-- Academia 2 -->
-
-<section class="card">
-
-<h2>Academia Pachuca El Salvador</h2>
-
-<p><i class="fa-solid fa-location-dot" style="color: orange;"></i>
-<strong>Ubicación:</strong><br>
-Cancha Emiliani, Calle del Mediterráneo, Antiguo Cuscatlán.
-</p>
-
-<p><i class="fa-solid fa-dollar-sign" style="color: orange; "></i>
-<strong>Precio y Horarios:</strong><br>
-No hay información pública disponible. Consultar directamente a través de WhatsApp.
-</p>
-
-<p><i class="fa-solid fa-futbol" style="color: orange;"></i>
-<strong>Modalidad:</strong><br>
-• Fútbol 11.<br>
-• Entrenamiento bajo la metodología oficial del Club Pachuca.
-</p>
-
-<p><i class="fa-brands fa-whatsapp" style="color: orange;   "></i>
-<strong>Contacto (WhatsApp):</strong><br>
-+503 7922-4076
-</p>
-
-<div class="buttons">
-
-<a href="https://maps.google.com/?q=Cancha+Emiliani+Antiguo+Cuscatlan" target="_blank" class="btn">
-    <i class="fa-solid fa-location-dot" style="color: orange;"></i>
-    Ver ubicación
-</a>
-
-<a href="https://wa.me/50379224076" target="_blank" class="btn">
-    <i class="fa-brands fa-whatsapp" style="color: orange;      "></i>
-    WhatsApp
-</a>
-
-</div>
-
-</section>
-
-<!-- Academia 3 -->
-
-<section class="card">
-
-<h2>Academia Rafa Burgos</h2>
-
-<p><i class="fa-solid fa-location-dot" style="color: orange;"></i>
-<strong>Sedes y Ubicación:</strong><br>
-• <strong>Sede Entre semana:</strong> Universidad Albert Einstein, Antiguo Cuscatlán.<br>
-• <strong>Sede Sábados:</strong> Canchas Multi Soccer, Boulevard Walter Thilo Deininger y Calle Antigua Ferrocarril, Antiguo Cuscatlán.
-</p>
-
-<p><i class="fa-solid fa-dollar-sign" style="color: orange; "></i>
-<strong>Precio:</strong><br>
-Información no disponible públicamente.
-</p>
-
-<p><i class="fa-solid fa-futbol" style="color: orange;  "></i>
-<strong>Horarios de entrenamiento por edades:</strong><br>
-• <strong>Lunes, Miércoles y Viernes (Sede Univ. Albert Einstein):</strong><br>
-- 4 a 6 años: 4:00 p.m. – 5:00 p.m.<br>
-- 7 a 9 años: 4:00 p.m. – 5:30 p.m.<br>
-- 10 a 12 años: 4:30 p.m. – 6:00 p.m.<br>
-- 13 a 15 años: 4:30 p.m. – 6:00 p.m.<br><br>
-• <strong>Sábados (Sede Multi Soccer):</strong><br>
-- 4 a 6 años: 10:00 a.m. – 11:00 a.m.<br>
-- 7 a 9 años: 11:00 a.m. – 12:00 p.m.
-</p>
-
-<p><i class="fa-solid fa-envelope" style="color: orange;"></i>
-<strong>Contacto y Redes:</strong><br>
-• <strong>WhatsApp:</strong> +503 7540-0310<br>
-• <strong>Instagram:</strong> @academiarafaburgos<br>
-• <strong>Correo:</strong> rburgosacademia@gmail.com
-</p>
-
-<div class="buttons">
-
-<a href="https://maps.google.com/?q=Universidad+Albert+Einstein+Antiguo+Cuscatlan" target="_blank" class="btn">
-    <i class="fa-solid fa-location-dot" style="color: orange;"></i>
-    Ver ubicación
-</a>
-
-<a href="https://wa.me/50375400310" target="_blank" class="btn">
-    <i class="fa-brands fa-whatsapp" style="color: orange;      "></i>
-    WhatsApp
-</a>
-
-</div>
-
-</section>
-
+    <?php if (!empty($search) && empty($centros)): ?>
+        <div style="text-align: center; margin: 50px 0;">
+            <h3 style="color: red; font-weight: bold; font-size: 2rem;">Centro deportivo no disponible :(</h3>
+        </div>
+    <?php elseif (empty($centros)): ?>
+        <div style="text-align: center; margin: 50px 0;">
+            <h3>No se encontraron centros deportivos.</h3>
+        </div>
+    <?php else: ?>
+        <?php foreach ($centros as $centro): ?>
+        <section class="card">
+            <h2><?php echo htmlspecialchars($centro['nombre']); ?></h2>
+            <p><i class="fa-solid fa-location-dot" style="color: orange;"></i> <strong>Ubicación:</strong><br><?php echo htmlspecialchars($centro['direccion']); ?></p>
+            <p><i class="fa-solid fa-info-circle" style="color: orange;"></i> <strong>Descripción:</strong><br><?php echo htmlspecialchars($centro['descripcion'] ?? 'Información no disponible'); ?></p>
+            <p><i class="fa-solid fa-phone" style="color: orange;"></i> <strong>Teléfono:</strong><br><?php echo htmlspecialchars($centro['telefono'] ?? 'No disponible'); ?></p>
+            <div class="buttons">
+                <a href="https://maps.google.com/?q=<?php echo urlencode($centro['nombre']); ?>" target="_blank" class="btn">Ver ubicación</a>
+                <a href="tel:<?php echo $centro['telefono']; ?>" class="btn">Llamar</a>
+            </div>
+        </section>
+        <?php endforeach; ?>
+    <?php endif; ?>
 </main>
 
 <footer>
-
-<p>© 2026 SportX | Todos los derechos reservados.</p>
-
+    <p>© 2026 SportX | Todos los derechos reservados.</p>
 </footer>
 
-<!-- Bootstrap 5 JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
 </body>
 </html>

@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 
 if (
@@ -10,6 +9,35 @@ if (
     exit;
 }
 
+require_once '../Config/Conexion.php';
+$database = new Database();
+$db = $database->getConnection();
+
+$sport_name = "Ballet";
+$search = $_GET['search'] ?? '';
+
+try {
+    $sql = "SELECT cd.*
+            FROM centros_deportivos cd
+            JOIN centro_deporte cdp ON cd.id_centro = cdp.id_centro
+            JOIN deportes d ON cdp.id_deporte = d.id_deporte
+            WHERE d.nombre = :sport_name";
+
+    if (!empty($search)) {
+        $sql .= " AND (cd.nombre LIKE :search OR cd.direccion LIKE :search)";
+    }
+
+    $stmt = $db->prepare($sql);
+    $stmt->bindParam(':sport_name', $sport_name);
+    if (!empty($search)) {
+        $search_param = "%$search%";
+        $stmt->bindParam(':search', $search_param);
+    }
+    $stmt->execute();
+    $centros = $stmt->fetchAll(PDO::FETCH_ASSOC);
+} catch (Exception $e) {
+    $centros = [];
+}
 ?>
 
 <!DOCTYPE html>
@@ -23,6 +51,43 @@ if (
 
     <link rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    <style>
+        .search-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 30px auto;
+            text-align: center;
+        }
+        .search-form {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        .search-input {
+            width: 60%;
+            padding: 15px 20px;
+            font-size: 1.2rem;
+            border: 3px solid #FDB913 !important;
+            border-radius: 10px;
+            outline: none;
+        }
+        .search-btn {
+            background-color: #FDB913 !important;
+            color: #0D2860 !important;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        @media(max-width: 768px) {
+            .search-input {
+                width: 70%;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -55,7 +120,7 @@ if (
 <h2>General Information</h2>
 
  <div>
-    
+
 <i class="heart fa icon-heart"></i>
 </div>
 
@@ -64,7 +129,7 @@ if (
 <div class="info-box">
 <i class="fa-solid fa-location-dot"></i>
 <h3>Available Centers</h3>
-<p>4 Academies</p>
+<p><?php echo count($centros); ?> Academies</p>
 </div>
 
 <div class="info-box">
@@ -89,364 +154,71 @@ if (
 
 </section>
 
-<!--Academy 1 -->
-
-<section class="card">
-
-<h2>National School of Dance Morena Celarié</h2>
-
-<p>
-<i class="fa-solid fa-location-dot"></i>
-<strong>Location:</strong><br>
-1233 1st West Street, San Salvador.
-</p>
-
-<p>
-<i class="fa-solid fa-dollar-sign"></i>
-<strong>Price:</strong><br>
-Free (Ministry of Culture).
-</p>
-
-<p>
-<i class="fa-solid fa-shoe-prints"></i>
-<strong>Specialties:</strong><br>
-
-Classical Ballet<br>
-Contemporary Dance<br>
- Folk Dance<br>
- Open Enrollment Courses
-
-</p>
-
-<p>
-<i class="fa-solid fa-clock"></i>
-<strong>Schedule:</strong><br>
-
-Monday to Friday.<br>
-
-8:00 a.m. - 12:00 m.<br>
-
-1:30 p.m. - 4:30 p.m.<br><br>
-
-Saturday.
-
-8:00 a.m. - 12:00 m.
-
-</p>
-
-<p>
-
-<i class="fa-solid fa-phone"></i>
-
-<strong>Phone:</strong><br>
-
-+503 2103-1903
-
-</p>
-
-<div class="buttons">
-
-<a href="https://maps.google.com/?q=Escuela+Nacional+de+Danza+Morena+Celarie+San+Salvador"
-target="_blank"
-class="btn">
-
-<i class="fa-solid fa-location-dot"></i>
-
-View Location
-
-</a>
-
-<a href="tel:+50321031903" class="btn">
-
-<i class="fa-solid fa-phone"></i>
-
-Call
-
-</a>
-
+<!-- BARRA DE BÚSQUEDA -->
+<div class="search-container">
+    <form action="" method="GET" class="search-form">
+        <input type="text" name="search" class="search-input" placeholder="Buscar centro deportivo..." value="<?php echo htmlspecialchars($search); ?>">
+        <button type="submit" class="search-btn">
+            <i class="fa-solid fa-magnifying-glass"></i> Buscar
+        </button>
+    </form>
 </div>
 
-</section>
-
-<!-- Academia 2 -->
-
-<section class="card">
-
-<h2>Ballet Academy of El Salvador</h2>
-
-<p>
-
-<i class="fa-solid fa-location-dot"></i>
-
-<strong>Location:</strong><br>
-
-75th North Avenue,
- Escalón Neighborhood,
- San Salvador.
-
-</p>
-
-<p>
-
-<i class="fa-solid fa-dollar-sign"></i>
-
-<strong>Price:</strong><br>
-
-$35 - $50 per month.
-
-</p>
-
-<p>
-
-<i class="fa-solid fa-shoe-prints"></i>
-
-<strong>Specialties:</strong><br>
-
-• Classical Ballet<br>
-• Pointe Technique<br>
-• Classical Repertoire<br>
-• Contemporary Dance
-
-</p>
-
-<p>
-
-<i class="fa-solid fa-clock"></i>
-
-<strong>Schedule:</strong><br>
-
-Monday to Friday.
-
-4:00 p.m. - 8:00 p.m.
-
-<br><br>
-
-Saturday
-
-9:00 a.m. - 12:00 m.
-
-</p>
-
-<p>
-
-<i class="fa-solid fa-phone"></i>
-
-<strong>Phone:</strong><br>
-
-+503 2263-4567
-
-</p>
-
-<div class="buttons">
-
-<a href="https://maps.google.com/?q=75+Avenida+Norte+Colonia+Escalon+San+Salvador"
-
-target="_blank"
-
-class="btn">
-
-<i class="fa-solid fa-location-dot"></i>
-
-View Location
-
-</a>
-
-<a href="tel:+50322634567" class="btn">
-
-<i class="fa-solid fa-phone"></i>
-
-Call
-
-</a>
-
-</div>
-
-</section>
-
-<!-- Academia 3 -->
-
-<section class="card">
-
-<h2>Studio Ballet Dance Center</h2>
-
-<p>
-<i class="fa-solid fa-location-dot"></i>
-<strong>Location:</strong><br>
-321 El Mirador Street,<br>
- Antiguo Cuscatlán.
-</p>
-
-<p>
-<i class="fa-solid fa-dollar-sign"></i>
-<strong>Price:</strong><br>
-$40 - $60 per month.
-</p>
-
-<p>
-<i class="fa-solid fa-shoe-prints"></i>
-<strong>Specialties:</strong><br>
-
-Classical Ballet<br>
-Modern Ballet<br>
-Jazz<br>
-Performance Preparation
-
-</p>
-
-<p>
-
-<i class="fa-solid fa-clock"></i>
-
-<strong>Schedule:</strong><br>
-
-Monday to Friday
-
-4:00 p.m. - 8:00 p.m.
-
-<br><br>
-
-Saturday
-
-9:00 a.m. - 12:00 m.
-
-</p>
-
-<p>
-
-<i class="fa-solid fa-phone"></i>
-
-<strong>Phone:</strong><br>
-
-+503 2520-7890
-
-</p>
-
-<div class="buttons">
-
-<a href="https://maps.google.com/?q=Calle+El+Mirador+321+Antiguo+Cuscatlan"
-
-target="_blank"
-
-class="btn">
-
-<i class="fa-solid fa-location-dot"></i>
-
-View Ubication 
-
-</a>
-
-<a href="tel:+50325207890" class="btn">
-
-<i class="fa-solid fa-phone"></i>
-
-Call
-
-</a>
-
-</div>
-
-</section>
-
-<!-- Academia 4 -->
-
-<section class="card">
-
-<h2>Academy of Dance Sol y Luna</h2>
-
-<p>
-
-<i class="fa-solid fa-location-dot"></i>
-
-<strong>Ubication:</strong><br>
-22 4th East Street,<br>
- Santa Tecla,<br>
- La Libertad.
-
-</p>
-
-<p>
-
-<i class="fa-solid fa-dollar-sign"></i>
-
-<strong>Price:</strong><br>
-
-$30 - $45 per month.
-
-</p>
-
-<p>
-
-<i class="fa-solid fa-shoe-prints"></i>
-
-<strong>Specialties:</strong><br>
-
-Children's Classical Ballet<br>
- Youth Ballet<br>
- Creative Ballet<br>
- Contemporary Dance
-
-</p>
-
-<p>
-
-<i class="fa-solid fa-clock"></i>
-
-<strong>Schedule:</strong><br>
-
-Monday to Friday
-
-3:00 p.m. - 7:00 p.m.
-
-<br><br>
-
-Saturday
-
-9:00 a.m. - 12:00 m.
-
-</p>
-
-<p>
-
-<i class="fa-solid fa-phone"></i>
-
-<strong>Phone:</strong><br>
-
-+503 2288-1122
-
-</p>
-
-<div class="buttons">
-
-<a href="https://maps.google.com/?q=4a+Calle+Oriente+22+Santa+Tecla+La+Libertad"
-
-target="_blank"
-
-class="btn">
-
-<i class="fa-solid fa-location-dot"></i>
-
-View Location
-
-</a>
-
-<a href="tel:+50322881122" class="btn">
-
-<i class="fa-solid fa-phone"></i>
-
-Call
-
-</a>
-
-</div>
-
-</section>
+<?php if (!empty($search) && empty($centros)): ?>
+    <div style="text-align: center; margin: 50px 0;">
+        <h3 style="color: red; font-weight: bold; font-size: 2rem;">Centro deportivo no disponible :(</h3>
+    </div>
+<?php elseif (empty($centros)): ?>
+    <div style="text-align: center; margin: 50px 0;">
+        <h3>No se encontraron centros deportivos.</h3>
+    </div>
+<?php else: ?>
+    <?php foreach ($centros as $centro): ?>
+    <section class="card">
+        <h2><?php echo htmlspecialchars($centro['nombre']); ?></h2>
+
+        <p>
+        <i class="fa-solid fa-location-dot"></i>
+        <strong>Location:</strong><br>
+        <?php echo htmlspecialchars($centro['direccion']); ?>
+        </p>
+
+        <p>
+        <i class="fa-solid fa-info-circle"></i>
+        <strong>Description:</strong><br>
+        <?php echo htmlspecialchars($centro['descripcion'] ?? 'Información no disponible'); ?>
+        </p>
+
+        <p>
+        <i class="fa-solid fa-phone"></i>
+        <strong>Phone:</strong><br>
+        <?php echo htmlspecialchars($centro['telefono'] ?? 'No disponible'); ?>
+        </p>
+
+        <p>
+        <i class="fa-solid fa-envelope"></i>
+        <strong>Email:</strong><br>
+        <?php echo htmlspecialchars($centro['correo'] ?? 'No disponible'); ?>
+        </p>
+
+        <div class="buttons">
+            <a href="https://maps.google.com/?q=<?php echo urlencode($centro['nombre']); ?>" target="_blank" class="btn">
+                <i class="fa-solid fa-location-dot"></i>
+                View Location
+            </a>
+            <a href="tel:<?php echo $centro['telefono']; ?>" class="btn">
+                <i class="fa-solid fa-phone"></i>
+                Call
+            </a>
+        </div>
+    </section>
+    <?php endforeach; ?>
+<?php endif; ?>
 
 </main>
 
 <footer>
-
 <p>©2026 SportX | All Rights Reserved.</p>
-
 </footer>
 
 </body>

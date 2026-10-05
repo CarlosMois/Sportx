@@ -22,7 +22,7 @@ try {
 ?>
 
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -94,11 +94,11 @@ Explore Our Sports
             <div class="row g-4">
                 <?php foreach ($deportes as $deporte):
                     $img_map = [
-                        'Fútbol' => 'img futbol.jpg',
-                        'Voleibol' => 'voleibol img.jpg',
-                        'Baloncesto' => 'basketball img.jpg',
+                        'Soccer' => 'img futbol.jpg',
+                        'Volleyball' => 'voleibol img.jpg',
+                        'Basketball' => 'basketball img.jpg',
                         'Ballet' => 'Chopiniana_Baku.jpg',
-                        'Lucha Olímpica' => 'LUCHA-OLIMPICA.jpg'
+                        'Olympic Wrestling' => 'LUCHA-OLIMPICA.jpg'
                     ];
                     $img = isset($img_map[$deporte['nombre']]) ? $img_map[$deporte['nombre']] : 'default.jpg';
                 ?>

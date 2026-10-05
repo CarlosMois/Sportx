@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 
 if (
@@ -10,6 +9,35 @@ if (
     exit;
 }
 
+require_once '../Config/Conexion.php';
+$database = new Database();
+$db = $database->getConnection();
+
+$sport_name = "Voleibol";
+$search = $_GET['search'] ?? '';
+
+try {
+    $sql = "SELECT cd.*
+            FROM centros_deportivos cd
+            JOIN centro_deporte cdp ON cd.id_centro = cdp.id_centro
+            JOIN deportes d ON cdp.id_deporte = d.id_deporte
+            WHERE d.nombre = :sport_name";
+
+    if (!empty($search)) {
+        $sql .= " AND (cd.nombre LIKE :search OR cd.direccion LIKE :search)";
+    }
+
+    $stmt = $db->prepare($sql);
+    $stmt->bindParam(':sport_name', $sport_name);
+    if (!empty($search)) {
+        $search_param = "%$search%";
+        $stmt->bindParam(':search', $search_param);
+    }
+    $stmt->execute();
+    $centros = $stmt->fetchAll(PDO::FETCH_ASSOC);
+} catch (Exception $e) {
+    $centros = [];
+}
 ?>
 
 <!DOCTYPE html>
@@ -23,6 +51,54 @@ if (
 
     <link rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    <style>
+        /* Estilos para la barra de búsqueda naranja */
+        .search-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 30px auto;
+            text-align: center;
+        }
+        .search-form {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        .search-input {
+            width: 60%;
+            padding: 15px 20px;
+            font-size: 1.2rem;
+            border: 3px solid #FDB913;
+            border-radius: 10px;
+            outline: none;
+            transition: 0.3s;
+        }
+        .search-input:focus {
+            box-shadow: 0 0 10px rgba(253, 185, 19, 0.5);
+            border-color: #e69500;
+        }
+        .search-btn {
+            background: #FDB913;
+            color: #0D2860;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .search-btn:hover {
+            background: #e69500;
+            color: white;
+        }
+        @media(max-width: 768px) {
+            .search-input {
+                width: 70%;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -30,23 +106,15 @@ if (
 <header class="hero">
 
     <div class="back-container">
-
         <a href="../Public/index1.php" class="back-btn">
-
             <i class="fa-solid fa-arrow-left"></i>
-
             Volver al menú
-
         </a>
-
     </div>
 
     <div class="hero-content">
-
         <h1>Voleibol</h1>
-
         <p>Encuentra las mejores academias y centros para practicar voleibol en El Salvador.</p>
-
     </div>
 
 </header>
@@ -62,7 +130,7 @@ if (
         <div class="info-box">
             <i class="fa-solid fa-location-dot"></i>
             <h3>Centros disponibles</h3>
-            <p>3</p>
+            <p><?php echo count($centros); ?></p>
         </div>
 
         <div class="info-box">
@@ -87,294 +155,66 @@ if (
 
 </section>
 
-<!-- Academia 1 -->
-
-<section class="card">
-
-<h2>Federación Salvadoreña de Voleibol (FESAVOL)</h2>
-
-<p>
-<i class="fa-solid fa-location-dot"></i>
-<strong>Ubicación:</strong><br>
-
-Gimnasio Nacional Adolfo Pineda, contiguo a 6-10 Calle Poniente, San Salvador.
-
-</p>
-
-<p>
-
-<i class="fa-solid fa-dollar-sign"></i>
-
-<strong>Precio:</strong><br>
-
-Inscripción entre $10 y $15.<br>
-Mensualidad entre $15 y $25 según modalidad y categoría.
-
-</p>
-
-<p>
-
-<i class="fa-solid fa-volleyball"></i>
-
-<strong>Modalidades:</strong><br>
-
-• Voleibol Sala (6 vs 6).<br>
-• Voleibol Playa (2 vs 2).
-
-</p>
-
-<p>
-
-<i class="fa-solid fa-users"></i>
-
-<strong>Programas:</strong><br>
-
-• Escuela de formación desde los 8 años.<br>
-• Categorías Sub-12, Sub-15 y Sub-18.<br>
-• Entrenamiento competitivo para adultos.
-
-</p>
-
-<p>
-
-<i class="fa-solid fa-clock"></i>
-
-<strong>Horario:</strong><br>
-
-Lunes a Domingo<br>
-
-5:00 a.m. - 11:00 p.m.
-
-</p>
-
-<p>
-
-<i class="fa-solid fa-phone"></i>
-
-<strong>Teléfono:</strong><br>
-
-2298-8701
-
-</p>
-
-<div class="buttons">
-
-<a href="https://maps.google.com/?q=Gimnasio+Nacional+Adolfo+Pineda+San+Salvador" target="_blank" class="btn">
-
-<i class="fa-solid fa-location-dot"></i>
-
-Ver ubicación
-
-</a>
-
-<a href="tel:+50322988701" class="btn">
-
-<i class="fa-solid fa-phone"></i>
-
-Llamar
-
-</a>
-
+<!-- BARRA DE BÚSQUEDA -->
+<div class="search-container">
+    <form action="" method="GET" class="search-form">
+        <input type="text" name="search" class="search-input" placeholder="Buscar centro deportivo..." value="<?php echo htmlspecialchars($search); ?>">
+        <button type="submit" class="search-btn">
+            <i class="fa-solid fa-magnifying-glass"></i> Buscar
+        </button>
+    </form>
 </div>
 
-</section>
-
-<!-- Academia 2 -->
-
-<section class="card">
-
-<h2>Academia TRUCKO de Voleibol de Playa</h2>
-
-<p>
-
-<i class="fa-solid fa-location-dot"></i>
-
-<strong>Ubicación:</strong><br>
-
-Universidad Evangélica de El Salvador (UEES), Prolongación Alameda Juan Pablo II,
-Colonia Escalón Norte, San Salvador.
-
-</p>
-
-<p>
-
-<i class="fa-solid fa-dollar-sign"></i>
-
-<strong>Precio:</strong><br>
-
-Entre $15 y $25 mensuales aproximadamente.<br>
-Las cuotas pueden variar según el programa y la edad.
-
-</p>
-
-<p>
-
-<i class="fa-solid fa-volleyball"></i>
-
-<strong>Especialidad:</strong><br>
-
-• Voleibol de Playa.<br>
-• Entrenamiento para niños, jóvenes y adultos.<br>
-• Participación en torneos nacionales e internacionales.<br>
-• Formación técnica, física y táctica en arena.
-
-</p>
-
-<p>
-
-<i class="fa-solid fa-users"></i>
-
-<strong>Categorías:</strong><br>
-
-• Sub-12 (8 a 12 años).<br>
-• Sub-18 (13 a 18 años).<br>
-• Adultos recreativos y competitivos.
-
-</p>
-
-<p>
-
-<i class="fa-solid fa-clock"></i>
-
-<strong>Horarios:</strong><br>
-
-Lunes: 5:30 p.m. - 7:00 p.m.<br>
-Martes: 3:00 p.m. - 5:00 p.m.<br>
-Miércoles: 5:30 p.m. - 7:00 p.m.<br>
-Jueves: 3:00 p.m. - 5:00 p.m.<br>
-Viernes: Cerrado.<br>
-Sábado: 8:00 a.m. - 12:00 m. y 3:30 p.m. - 5:30 p.m.<br>
-Domingo: 9:00 a.m. - 11:00 a.m.
-
-</p>
-
-<p>
-
-<i class="fa-solid fa-phone"></i>
-
-<strong>Teléfono:</strong><br>
-
-7007-3110
-
-</p>
-
-<div class="buttons">
-
-<a href="https://maps.google.com/?q=Universidad+Evangelica+de+El+Salvador" target="_blank" class="btn">
-
-<i class="fa-solid fa-location-dot"></i>
-
-Ver ubicación
-
-</a>
-
-<a href="tel:+50370073110" class="btn">
-
-<i class="fa-solid fa-phone"></i>
-
-Llamar
-
-</a>
-
-</div>
-
-</section>
-
-<!-- Academia 3 -->
-
-<section class="card">
-
-<h2>Sports Evolution Academy (SEA)</h2>
-
-<p>
-
-<i class="fa-solid fa-location-dot"></i>
-
-<strong>Ubicación:</strong><br>
-
-Centro Escolar José Simeón Cañas,
-San Jacinto, San Salvador.
-
-</p>
-
-<p>
-
-<i class="fa-solid fa-dollar-sign"></i>
-
-<strong>Precio:</strong><br>
-
-Inscripción entre $10 y $15.<br>
-Mensualidad entre $15 y $25.
-
-</p>
-
-<p>
-
-<i class="fa-solid fa-volleyball"></i>
-
-<strong>Especialidad:</strong><br>
-
-• Voleibol Sala.<br>
-• Formación juvenil.<br>
-• Entrenamiento competitivo.<br>
-• Preparación física, técnica y táctica.<br>
-• Participación en torneos locales.
-
-</p>
-
-<p>
-
-<i class="fa-solid fa-users"></i>
-
-<strong>Categorías:</strong><br>
-
-Sub-12, Sub-15, Sub-18 y Adultos.
-
-</p>
-
-<p>
-
-<i class="fa-solid fa-clock"></i>
-
-<strong>Horario de atención:</strong><br>
-
-Lunes a Sábado<br>
-
-9:00 a.m. - 5:00 p.m.
-
-</p>
-
-<p>
-
-<i class="fa-solid fa-phone"></i>
-
-<strong>Teléfono:</strong><br>
-
-7305-2616
-
-</p>
-
-<div class="buttons">
-
-<a href="https://maps.google.com/?q=Centro+Escolar+Jose+Simeon+Canas+San+Jacinto+San+Salvador" target="_blank" class="btn">
-
-<i class="fa-solid fa-location-dot"></i>
-
-Ver ubicación
-
-</a>
-
-<a href="tel:+50373052616" class="btn">
-
-<i class="fa-solid fa-phone"></i>
-
-Llamar
-
-</a>
-
-</div>
-
-</section>
+<?php if (!empty($search) && empty($centros)): ?>
+    <div class="text-center my-5" style="text-align: center; margin: 50px 0;">
+        <h3 style="color: red;">Centro deportivo no disponible :(</h3>
+    </div>
+<?php elseif (empty($centros)): ?>
+    <div class="text-center my-5" style="text-align: center; margin: 50px 0;">
+        <h3>No se encontraron centros deportivos que coincidan con tu búsqueda.</h3>
+    </div>
+<?php else: ?>
+    <?php foreach ($centros as $centro): ?>
+    <section class="card">
+        <h2><?php echo htmlspecialchars($centro['nombre']); ?></h2>
+
+        <p>
+        <i class="fa-solid fa-location-dot" style="color: orange;"></i>
+        <strong>Ubicación:</strong><br>
+        <?php echo htmlspecialchars($centro['direccion']); ?>
+        </p>
+
+        <p>
+        <i class="fa-solid fa-info-circle" style="color: orange;"></i>
+        <strong>Descripción:</strong><br>
+        <?php echo htmlspecialchars($centro['descripcion'] ?? 'Información no disponible'); ?>
+        </p>
+
+        <p>
+        <i class="fa-solid fa-phone" style="color: orange;"></i>
+        <strong>Teléfono:</strong><br>
+        <?php echo htmlspecialchars($centro['telefono'] ?? 'No disponible'); ?>
+        </p>
+
+        <p>
+        <i class="fa-solid fa-envelope" style="color: orange;"></i>
+        <strong>Correo:</strong><br>
+        <?php echo htmlspecialchars($centro['correo'] ?? 'No disponible'); ?>
+        </p>
+
+        <div class="buttons">
+            <a href="https://maps.google.com/?q=<?php echo urlencode($centro['nombre']); ?>" target="_blank" class="btn">
+                <i class="fa-solid fa-location-dot" style="color: orange;"></i>
+                Ver ubicación
+            </a>
+            <a href="tel:<?php echo $centro['telefono']; ?>" class="btn">
+                <i class="fa-solid fa-phone" style="color: orange;"></i>
+                Llamar
+            </a>
+        </div>
+    </section>
+    <?php endforeach; ?>
+<?php endif; ?>
 
 </main>
 

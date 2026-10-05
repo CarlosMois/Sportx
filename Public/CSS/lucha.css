@@ -77,7 +77,7 @@ body{
 
 /* Efecto al pasar el mouse por el botón */
 #search-form button:hover {
-  background-color: #005bb5;
+  background-color:orange;
   border-color: #005bb5;
 }
 

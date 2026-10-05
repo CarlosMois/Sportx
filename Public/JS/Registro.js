@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const formulario = document.querySelector(".login-form");
 
     if (!formulario) {
-        console.error("No se encontró el formulario de registro.");
+        console.error("Registration form not found.");
         return;
     }
 
@@ -24,13 +24,13 @@ async function registrarUsuario(event) {
 
     // Validación básica en JavaScript
     if (nombre === "" || correo === "" || password === "") {
-        mostrarMensaje("Todos los campos son obligatorios.", "error");
+        mostrarMensaje("All fields are mandatory.", "error");
         return;
     }
 
     if (password.length < 6) {
         mostrarMensaje(
-            "La contraseña debe tener al menos 6 caracteres.",
+            "Password must be at least 6 characters long.",
             "error"
         );
         return;
@@ -45,7 +45,7 @@ async function registrarUsuario(event) {
 
     try {
 
-        mostrarMensaje("Registrando usuario...", "info");
+        mostrarMensaje("Registering user...", "info");
 
         const respuesta = await fetch("../registro/create.php", {
             method: "POST",
@@ -81,7 +81,7 @@ async function registrarUsuario(event) {
         console.error("Error:", error);
 
         mostrarMensaje(
-            "No fue posible conectar con el servidor.",
+            "Unable to connect to the server.",
             "error"
         );
 
