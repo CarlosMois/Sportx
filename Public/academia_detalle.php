@@ -1,5 +1,6 @@
 <?php
 session_start();
+require_once 'includes/lang.php';
 
 // Verificación de sesión
 if (!isset($_SESSION["autenticado"]) || $_SESSION["autenticado"] !== true) {
@@ -58,7 +59,7 @@ try {
 }
 ?>
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -95,11 +96,11 @@ try {
                 }
             ?>
             <a href="<?php echo $url_volver; ?>" class="back-btn">
-                <i class="fa-solid fa-arrow-left"></i> Volver a <?php echo htmlspecialchars($nombre_volver); ?>
+                <i class="fa-solid fa-arrow-left"></i> <?php echo __t('ui_general.back'); ?> <?php echo htmlspecialchars($nombre_volver); ?>
             </a>
             <?php } catch (Exception $e) { ?>
             <a href="deportes.php" class="back-btn">
-                <i class="fa-solid fa-arrow-left"></i> Volver
+                <i class="fa-solid fa-arrow-left"></i> <?php echo __t('ui_general.back'); ?>
             </a>
             <?php } ?>
         </div>
@@ -112,7 +113,7 @@ try {
 
     <main>
         <section class="galeria">
-            <h2>Galería</h2>
+            <h2><?php echo __t('ui_academy.gallery'); ?></h2>
             <div class="carrusel">
                 <div class="carrusel-track">
                     <?php if (count($imagenes) > 0): ?>
@@ -131,28 +132,28 @@ try {
         </section>
 
         <section class="informacion">
-            <h2>Información de la academia</h2>
+            <h2><?php echo __t('ui_academy.academy_info'); ?></h2>
             <div class="info-grid">
                 <div class="info-item">
                     <i class="fa-solid fa-location-dot"></i>
                     <div class="info-text">
-                        <h3>Ubicación</h3>
-                        <p><?php echo !empty($academia['direccion']) ? htmlspecialchars($academia['direccion'] . ', ' . $academia['municipio'] . ', ' . $academia['departamento']) : 'Ubicación no especificada.'; ?></p>
+                        <h3><?php echo __t('ui_general.location'); ?></h3>
+                        <p><?php echo !empty($academia['direccion']) ? htmlspecialchars($academia['direccion'] . ', ' . $academia['municipio'] . ', ' . $academia['departamento']) : __t('ui_general.location_not_specified'); ?></p>
                     </div>
                 </div>
 
                 <div class="info-item">
                     <i class="fa-solid fa-dollar-sign"></i>
                     <div class="info-text">
-                        <h3>Precio</h3>
+                        <h3>Price</h3>
                         <p>
                             <?php
                             if (count($costos) > 0) {
                                 foreach ($costos as $c) {
-                                    echo htmlspecialchars($c['nombre_costo']) . ": $" . $c['precio'] . " (" . $c['unidad'] . ")<br>";
+                                    echo htmlspecialchars($c['nombre_costo']) . ": $" . $c['precio'] . " (" . __t($c['unidad']) . ")<br>";
                                 }
                             } else {
-                                echo "Consulta los precios actualizados directamente con la administración.";
+                                echo __t('ui_academy.check_prices');
                             }
                             ?>
                         </p>
@@ -162,23 +163,23 @@ try {
                 <div class="info-item">
                     <i class="fa-solid fa-dumbbell"></i>
                     <div class="info-text">
-                        <h3>Especialidades</h3>
-                        <p>Contamos con diversas disciplinas adaptadas a todas las edades y niveles.</p>
+                        <h3>Specialties</h3>
+                        <p>We have various disciplines adapted to all ages and levels.</p>
                     </div>
                 </div>
 
                 <div class="info-item">
                     <i class="fa-solid fa-clock"></i>
                     <div class="info-text">
-                        <h3>Horarios</h3>
+                        <h3>Schedules</h3>
                         <p>
                             <?php
                             if (count($horarios) > 0) {
                                 foreach ($horarios as $h) {
-                                    echo htmlspecialchars(ucfirst($h['dia_semana'])) . ": " . $h['hora_apertura'] . " - " . $h['hora_cierre'] . "<br>";
+                                    echo __t($h['dia_semana']) . ": " . $h['hora_apertura'] . " - " . $h['hora_cierre'] . "<br>";
                                 }
                             } else {
-                                echo "Horarios disponibles de Lunes a Viernes. Consulta disponibilidad.";
+                                echo "Schedules available Monday to Friday. Please check availability.";
                             }
                             ?>
                         </p>
@@ -188,50 +189,52 @@ try {
                 <div class="info-item">
                     <i class="fa-solid fa-phone"></i>
                     <div class="info-text">
-                        <h3>Teléfono</h3>
-                        <p><?php echo !empty($academia['telefono']) ? htmlspecialchars($academia['telefono']) : 'Teléfono no disponible.'; ?></p>
+                        <h3><?php echo __t('ui_general.phone'); ?></h3>
+                        <p><?php echo !empty($academia['telefono']) ? htmlspecialchars($academia['telefono']) : __t('ui_general.phone_not_available'); ?></p>
                     </div>
+                </div>
                 </div>
                 <div class="info-item">
                     <i class="fa-solid fa-star"></i>
                     <div class="info-text">
-                        <h3>Reseñas</h3>
+                        <h3><?php echo __t('ui_academy.reviews'); ?></h3>
                         <p>
                             <?php
                             if ($stats_resenas['total'] > 0) {
-                                echo "⭐ " . round($stats_resenas['promedio'], 1) . " (" . $stats_resenas['total'] . " reseñas)";
+                                echo "⭐ " . round($stats_resenas['promedio'], 1) . " (" . $stats_resenas['total'] . " reviews)";
                             } else {
-                                echo "Aún no hay reseñas. ¡Sé el primero en calificar!";
+                                echo __t('ui_academy.no_reviews');
                             }
                             ?>
                         </p>
                     </div>
+                </div>
                 </div>
             </div>
         </section>
 
         <section class="acciones">
             <a href="https://www.google.com/maps/search/?api=1&query=<?php echo urlencode($academia['nombre'] . ' ' . $academia['direccion']); ?>" target="_blank" class="action-btn">
-                <i class="fa-solid fa-location-dot"></i> Ver ubicación
+                <i class="fa-solid fa-location-dot"></i> <?php echo __t('ui_general.view_location'); ?>
             </a>
             <a href="tel:<?php echo $academia['telefono']; ?>" class="action-btn">
-                <i class="fa-solid fa-phone"></i> Llamar
+                <i class="fa-solid fa-phone"></i> Call
             </a>
         </section>
 
         <section class="sobre-academia">
-            <h2>Sobre esta academia</h2>
-            <p><?php echo !empty($academia['descripcion']) ? htmlspecialchars($academia['descripcion']) : 'Un espacio comprometido con el deporte y la salud, brindando entrenamiento de alta calidad para todas las edades.'; ?></p>
+            <h2>About this academy</h2>
+            <p><?php echo !empty($academia['descripcion']) ? htmlspecialchars($academia['descripcion']) : 'A space committed to sports and health, providing high-quality training for all ages.'; ?></p>
         </section>
     </main>
 
     <section class="reseñas">
-        <h2>Deja tu reseña</h2>
-        <p class="reseñas-texto">¿Has visitado esta academia? Comparte tu experiencia con otros usuarios.</p>
+        <h2><?php echo __t('ui_academy.leave_review'); ?></h2>
+        <p class="reseñas-texto"><?php echo __t('ui_academy.review_prompt'); ?></p>
         <form class="form-reseña" action="procesar_resena.php" method="POST">
             <input type="hidden" name="id_centro" value="<?php echo $id_centro; ?>">
             <div class="campo">
-                <label>Calificación</label>
+                <label><?php echo __t('ui_academy.rating'); ?></label>
                 <div class="estrellas">
                     <input type="radio" name="calificacion" id="est1" value="1"><label for="est1">★</label>
                     <input type="radio" name="calificacion" id="est2" value="2"><label for="est2">★</label>
@@ -241,16 +244,16 @@ try {
                 </div>
             </div>
             <div class="campo">
-                <label for="reseña">Tu reseña</label>
-                <textarea id="reseña" name="comentario" rows="5" placeholder="Escribe tu experiencia..."></textarea>
+                <label for="reseña"><?php echo __t('ui_academy.your_review'); ?></label>
+                <textarea id="reseña" name="comentario" rows="5" placeholder="<?php echo __t('ui_academy.review_placeholder'); ?>"></textarea>
             </div>
-            <button type="submit" class="reseña-btn">Publicar reseña</button>
-            <a href="resenas_lista.php?id=<?php echo $id_centro; ?>" class="ver-resenas-btn">Ver todas las reseñas</a>
+            <button type="submit" class="reseña-btn"><?php echo __t('ui_academy.post_review'); ?></button>
+            <a href="resenas_lista.php?id=<?php echo $id_centro; ?>" class="ver-resenas-btn"><?php echo __t('ui_academy.view_all_reviews'); ?></a>
         </form>
     </section>
 
     <footer>
-        <p>© 2026 SportX | Todos los derechos reservados.</p>
+        <p>© 2026 SportX | All rights reserved.</p>
     </footer>
 
 </body>
