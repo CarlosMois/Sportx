@@ -14,14 +14,14 @@
 }
 
 body {
-    background: linear-gradient(90deg, #007AA2 0%, #0D2860 80%);
-    color: #333;
-    background-image: url('../img/volley.jpg'); 
-    background-size: cover;          
-    background-repeat: no-repeat;    
-    background-position: center;     
-    background-attachment: fixed;   
-    min-height: 100vh;  
+    background: 
+        linear-gradient(90deg, #007AA2 0%, #0D2860 80%),
+        url('../img/volley.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 100vh;
 }
 
 /* ===========================
