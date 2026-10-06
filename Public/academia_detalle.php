@@ -193,7 +193,6 @@ try {
                         <p><?php echo !empty($academia['telefono']) ? htmlspecialchars($academia['telefono']) : __t('ui_general.phone_not_available'); ?></p>
                     </div>
                 </div>
-                </div>
                 <div class="info-item">
                     <i class="fa-solid fa-star"></i>
                     <div class="info-text">
@@ -209,7 +208,7 @@ try {
                         </p>
                     </div>
                 </div>
-                </div>
+            </div>
             </div>
         </section>
 
