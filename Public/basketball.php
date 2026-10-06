@@ -75,7 +75,7 @@ try {
         .hero {
             background:
             linear-gradient(rgba(13, 40, 96, 0.80), rgba(13, 40, 96, 0.80)),
-            url("/Sportx/img/fondosesion.jpg");
+            url("../img/basquet/basquet1.jpg");
 
             background-size: cover;
             background-position: center;

@@ -34,6 +34,22 @@ try {
         exit;
     }
 
+    // LÓGICA DE IMAGEN PARA EL ENCABEZADO (HERO)
+    $nombre_deporte = $deporte['nombre'];
+    $hero_img = '../Public/img/logo sin fondo.png'; // Default
+
+    if (stripos($nombre_deporte, 'Soccer') !== false || stripos($nombre_deporte, 'Futbol') !== false || stripos($nombre_deporte, 'Fútbol') !== false) {
+        $hero_img = '../Public/img/Futbol/futbol1.jpg';
+    } elseif (stripos($nombre_deporte, 'Volleyball') !== false || stripos($nombre_deporte, 'Voleibol') !== false) {
+        $hero_img = '../Public/img/Bole/voleibol10.jpg';
+    } elseif (stripos($nombre_deporte, 'Basketball') !== false || stripos($nombre_deporte, 'Basquet') !== false || stripos($nombre_deporte, 'Baloncesto') !== false) {
+        $hero_img = '../Public/img/basquet/basquet1.jpg';
+    } elseif (stripos($nombre_deporte, 'Ballet') !== false) {
+        $hero_img = '../Public/img/Chopiniana_Baku.jpg';
+    } elseif (stripos($nombre_deporte, 'Wrestling') !== false || stripos($nombre_deporte, 'Lucha') !== false) {
+        $hero_img = '../Public/img/lucha/lucha1.jpeg';
+    }
+
     // Obtener centros (Usando GROUP BY para evitar duplicados)
     $stmt_c = $db->prepare("
         SELECT c.*
@@ -59,7 +75,7 @@ try {
 </head>
 <body>
 
-<header class="hero" style="background-image: linear-gradient(rgba(13,40,96,.78), rgba(13,40,96,.78)), url('<?php echo !empty($deporte['icono']) ? '../' . $deporte['icono'] : '../Public/img/logo sin fondo.png'; ?>'); background-size: cover; background-position: center;">
+<header class="hero" style="background-image: linear-gradient(rgba(13,40,96,.78), rgba(13,40,96,.78)), url('<?php echo $hero_img; ?>'); background-size: cover; background-position: center;">
     <div class="back-container">
         <a href="../Public/index1.php" class="back-btn">
             <i class="fa-solid fa-arrow-left"></i> Volver al menú
@@ -70,6 +86,7 @@ try {
         <p><?php echo $deporte['descripcion']; ?></p>
     </div>
 </header>
+
 
 <main>
     <section class="info-general">

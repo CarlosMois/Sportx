@@ -72,7 +72,7 @@ try {
         .hero {
             background:
             linear-gradient(rgba(13, 40, 96, 0.80), rgba(13, 40, 96, 0.80)),
-            url("../img/fulbol.jpg");
+            url("../img/Futbol/futbol1.jpg");
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;

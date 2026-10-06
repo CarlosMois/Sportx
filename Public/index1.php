@@ -93,18 +93,24 @@ Explore Our Sports
 
             <div class="row g-4">
                 <?php foreach ($deportes as $deporte):
-                    $img_map = [
-                        'Soccer' => 'img futbol.jpg',
-                        'Volleyball' => 'voleibol img.jpg',
-                        'Basketball' => 'basketball img.jpg',
-                        'Ballet' => 'Chopiniana_Baku.jpg',
-                        'Olympic Wrestling' => 'LUCHA-OLIMPICA.jpg'
-                    ];
-                    $img = isset($img_map[$deporte['nombre']]) ? $img_map[$deporte['nombre']] : 'default.jpg';
+                    $nombre = $deporte['nombre'];
+                    $img = 'default.jpg';
+
+                    if (stripos($nombre, 'Soccer') !== false || stripos($nombre, 'Futbol') !== false || stripos($nombre, 'Fútbol') !== false) {
+                        $img = 'Futbol/futbol1.jpg';
+                    } elseif (stripos($nombre, 'Volleyball') !== false || stripos($nombre, 'Voleibol') !== false) {
+                        $img = 'Bole/voleibol10.jpg';
+                    } elseif (stripos($nombre, 'Basketball') !== false || stripos($nombre, 'Basquet') !== false || stripos($nombre, 'Baloncesto') !== false) {
+                        $img = 'basquet/basquet1.jpg';
+                    } elseif (stripos($nombre, 'Ballet') !== false) {
+                        $img = 'Chopiniana_Baku.jpg';
+                    } elseif (stripos($nombre, 'Wrestling') !== false || stripos($nombre, 'Lucha') !== false) {
+                        $img = 'lucha/lucha1.jpeg';
+                    }
                 ?>
                     <div class="col-md-4 col-lg">
                         <a href="deporte.php?id=<?php echo $deporte['id_deporte']; ?>" class="gallery-card">
-                            <img src="../Public/img/<?php echo $img; ?>" alt="<?php echo htmlspecialchars($deporte['nombre']); ?>">
+                            <img src="../Public/img/<?php echo $img; ?>" alt="<?php echo htmlspecialchars($deporte['nombre']); ?>" style="width: 100%; height: 100%; object-fit: cover;">
                             <div class="gallery-overlay">
                                 <h3><?php echo htmlspecialchars($deporte['nombre']); ?></h3>
                             </div>

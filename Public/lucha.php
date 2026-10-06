@@ -53,6 +53,14 @@ try {
 
     <style>
         /* Estilos para la barra de búsqueda naranja */
+        .hero {
+            background:
+            linear-gradient(rgba(13, 40, 96, 0.80), rgba(13, 40, 96, 0.80)),
+            url("../img/lucha/lucha1.jpeg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
         .search-container {
             width: 90%;
             max-width: 1200px;
