@@ -78,7 +78,7 @@ try {
 <header class="hero" style="background-image: linear-gradient(rgba(13,40,96,.78), rgba(13,40,96,.78)), url('<?php echo $hero_img; ?>'); background-size: cover; background-position: center;">
     <div class="back-container">
         <a href="../Public/index1.php" class="back-btn">
-            <i class="fa-solid fa-arrow-left"></i> Volver al menú
+            <i class="fa-solid fa-arrow-left"></i> Back to Menu
         </a>
     </div>
     <div class="hero-content">
@@ -90,41 +90,41 @@ try {
 
 <main>
     <section class="info-general">
-        <h2 style="color:orange">Información General</h2>
+        <h2 style="color:orange">General Information</h2>
         <div class="info-grid">
             <div class="info-box">
                 <i class="fa-solid fa-location-dot"></i>
-                <h3>Centros disponibles</h3>
+                <h3>Available Centers</h3>
                 <p><?php echo count($centros); ?></p>
             </div>
             <div class="info-box">
                 <i class="fa-solid fa-users"></i>
-                <h3>Modalidad</h3>
-                <p>Masculino y Femenino</p>
+                <h3>Modality</h3>
+                <p>Male and Female</p>
             </div>
             <div class="info-box">
                 <i class="fa-solid fa-dollar-sign"></i>
-                <h3>Precio</h3>
+                <h3>Price</h3>
                 <p>Variable</p>
             </div>
             <div class="info-box">
                 <i class="fa-solid fa-calendar-days"></i>
-                <h3>Días</h3>
-                <p>Consulta el centro</p>
+                <h3>Days</h3>
+                <p>Check with the center</p>
             </div>
         </div>
     </section>
 </main>
 
 <section class="academias">
-    <h2>Academias disponibles</h2>
+    <h2>Available Academies</h2>
 
     <form id="search-form">
         <div class="search-input-container">
             <i class="fa-solid fa-magnifying-glass search-icon"></i>
-            <input type="text" id="search-input" placeholder="Buscar centro deportivo...">
+            <input type="text" id="search-input" placeholder="Search sports center...">
         </div>
-        <button type="submit">Buscar</button>
+        <button type="submit">Search</button>
     </form>
     <div id="search-results"></div>
 
@@ -149,7 +149,7 @@ try {
             $img_path = $img_res ? $img_res['imagen_url'] : '../Public/img/logo sin fondo.png';
         ?>
             <div class="academia-card">
-                <img src="../<?php echo $img_path; ?>" alt="Imagen">
+                <img src="../<?php echo $img_path; ?>" alt="Image" style="width: 100%; height: 200px; object-fit: cover; object-position: center; image-rendering: -webkit-optimize-contrast;">
                 <h3><?php echo $centro['nombre']; ?></h3>
                 <p class="ubicacion">
                     <i class="fa-solid fa-location-dot"></i>
@@ -160,7 +160,7 @@ try {
                 </p>
                 <div class="card-acciones">
                     <a href="academia_detalle.php?id=<?php echo $centro['id_centro']; ?>" class="academia-btn">
-                        Ver información <i class="fa-solid fa-arrow-right"></i>
+                        View information <i class="fa-solid fa-arrow-right"></i>
                     </a>
                     <button class="favorito-btn <?php echo $is_fav ? 'activo' : ''; ?>" data-id="<?php echo $centro['id_centro']; ?>">
                         <i class="<?php echo $is_fav ? 'fa-solid' : 'fa-regular'; ?> fa-heart"></i>
@@ -223,7 +223,7 @@ try {
 </script>
 
 <footer>
-    <p>© 2026 SportX | Todos los derechos reservados.</p>
+    <p>© 2026 SportX | All rights reserved.</p>
 </footer>
 
 </body>

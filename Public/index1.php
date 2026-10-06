@@ -93,26 +93,34 @@ Explore Our Sports
 
             <div class="row g-4">
                 <?php foreach ($deportes as $deporte):
-                    $nombre = $deporte['nombre'];
-                    $img = 'default.jpg';
+                    $nombre_original = $deporte['nombre'];
+                    $nombre_ingles = $nombre_original;
 
-                    if (stripos($nombre, 'Soccer') !== false || stripos($nombre, 'Futbol') !== false || stripos($nombre, 'Fútbol') !== false) {
+                    // Traducción de nombres de deportes para la vista
+                    if (stripos($nombre_original, 'Soccer') !== false || stripos($nombre_original, 'Futbol') !== false || stripos($nombre_original, 'Fútbol') !== false) {
+                        $nombre_ingles = 'Soccer';
                         $img = 'Futbol/futbol1.jpg';
-                    } elseif (stripos($nombre, 'Volleyball') !== false || stripos($nombre, 'Voleibol') !== false) {
+                    } elseif (stripos($nombre_original, 'Volleyball') !== false || stripos($nombre_original, 'Voleibol') !== false) {
+                        $nombre_ingles = 'Volleyball';
                         $img = 'Bole/voleibol10.jpg';
-                    } elseif (stripos($nombre, 'Basketball') !== false || stripos($nombre, 'Basquet') !== false || stripos($nombre, 'Baloncesto') !== false) {
+                    } elseif (stripos($nombre_original, 'Basketball') !== false || stripos($nombre_original, 'Basquet') !== false || stripos($nombre_original, 'Baloncesto') !== false) {
+                        $nombre_ingles = 'Basketball';
                         $img = 'basquet/basquet1.jpg';
-                    } elseif (stripos($nombre, 'Ballet') !== false) {
+                    } elseif (stripos($nombre_original, 'Ballet') !== false) {
+                        $nombre_ingles = 'Ballet';
                         $img = 'Chopiniana_Baku.jpg';
-                    } elseif (stripos($nombre, 'Wrestling') !== false || stripos($nombre, 'Lucha') !== false) {
+                    } elseif (stripos($nombre_original, 'Wrestling') !== false || stripos($nombre_original, 'Lucha') !== false) {
+                        $nombre_ingles = 'Olympic Wrestling';
                         $img = 'lucha/lucha1.jpeg';
+                    } else {
+                        $img = 'default.jpg';
                     }
                 ?>
                     <div class="col-md-4 col-lg">
                         <a href="deporte.php?id=<?php echo $deporte['id_deporte']; ?>" class="gallery-card">
-                            <img src="../Public/img/<?php echo $img; ?>" alt="<?php echo htmlspecialchars($deporte['nombre']); ?>" style="width: 100%; height: 100%; object-fit: cover;">
+                            <img src="../Public/img/<?php echo $img; ?>" alt="<?php echo htmlspecialchars($nombre_ingles); ?>" style="width: 100%; height: 100%; object-fit: cover;">
                             <div class="gallery-overlay">
-                                <h3><?php echo htmlspecialchars($deporte['nombre']); ?></h3>
+                                <h3><?php echo htmlspecialchars($nombre_ingles); ?></h3>
                             </div>
                         </a>
                     </div>

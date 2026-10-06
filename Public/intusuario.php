@@ -112,13 +112,12 @@ if ($id_usuario > 0) {
                 </div>
             </div>
 
-            <!-- MIS ACTIVIDADES Y FAVORITOS -->
-            <div class="col-md-6">
+<div class="col-md-6">
                 <div class="profile-card">
-                    <h3><i class="fa-solid fa-heart me-2" style="color: #007AA2;"></i>Academias Favoritas</h3>
+                    <h3><i class="fa-solid fa-heart me-2" style="color: #007AA2;"></i>Favorite Academies</h3>
 
                     <?php if (empty($favoritos)): ?>
-                        <p class="text-muted">No has agregado academias a tus favoritos aún.</p>
+                        <p class="text-muted">You haven't added any academies to your favorites yet.</p>
                     <?php else: ?>
                         <?php foreach ($favoritos as $fav): ?>
                             <div class="sport-badge">

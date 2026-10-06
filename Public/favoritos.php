@@ -249,14 +249,14 @@ if (
   </header>
 
   <main>
-    <h1>Escoge tu deporte favorito</h1>
+    <h1>Choose your favorite sport</h1>
 
     <div class="sports-container">
       <div class="sport-card" onclick="toggleSelect(this)">
         <div class="circle-thumb">
-          <img src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=400&q=80" alt="Fútbol">
+          <img src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=400&q=80" alt="Soccer">
         </div>
-        <p>Fútbol</p>
+        <p>Soccer</p>
       </div>
 
       <div class="sport-card" onclick="toggleSelect(this)">
@@ -275,28 +275,28 @@ if (
 
       <div class="sport-card" onclick="toggleSelect(this)">
         <div class="circle-thumb">
-          <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=400&q=80" alt="Lucha">
+          <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=400&q=80" alt="Wrestling">
         </div>
-        <p>Lucha</p>
+        <p>Wrestling</p>
       </div>
 
       <div class="sport-card" onclick="toggleSelect(this)">
         <div class="circle-thumb">
-          <img src="https://images.unsplash.com/photo-1612872087720-bb876e2e67d1?auto=format&fit=crop&w=400&q=80" alt="Voleybol">
+          <img src="https://images.unsplash.com/photo-1612872087720-bb876e2e67d1?auto=format&fit=crop&w=400&q=80" alt="Volleyball">
         </div>
-        <p>Voleybol</p>
+        <p>Volleyball</p>
       </div>
     </div>
 
     <div class="actions">
       <a href="../Public/index1.html" class="btn-next">
-    Siguiente →
+    Next →
 </a>
     </div>
   </main>
 
   <footer>
-    SportX &copy; 2026 - Más que un juego
+    SportX &copy; 2026 - More than a game
   </footer>
 
   <script>
