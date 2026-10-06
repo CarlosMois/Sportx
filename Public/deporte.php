@@ -59,7 +59,7 @@ try {
 </head>
 <body>
 
-<header class="hero">
+<header class="hero" style="background-image: linear-gradient(rgba(13,40,96,.78), rgba(13,40,96,.78)), url('<?php echo !empty($deporte['icono']) ? '../' . $deporte['icono'] : '../Public/img/logo sin fondo.png'; ?>'); background-size: cover; background-position: center;">
     <div class="back-container">
         <a href="../Public/index1.php" class="back-btn">
             <i class="fa-solid fa-arrow-left"></i> Volver al menú
@@ -122,14 +122,21 @@ try {
                     $is_fav = true;
                 }
             }
+
+            // OBTENER IMAGEN DINÁMICA DE LA BASE DE DATOS
+            $stmt_img = $db->prepare("SELECT imagen_url FROM imagenes WHERE id_centro = ? LIMIT 1");
+            $stmt_img->execute([$centro['id_centro']]);
+            $img_res = $stmt_img->fetch(PDO::FETCH_ASSOC);
+
+            // Si no hay imagen en la BD, usar una por defecto
+            $img_path = $img_res ? $img_res['imagen_url'] : '../Public/img/logo sin fondo.png';
         ?>
             <div class="academia-card">
-                <img src="../Public/img/LUCHA-OLIMPICA.jpg" alt="Imagen">
+                <img src="../<?php echo $img_path; ?>" alt="Imagen">
                 <h3><?php echo $centro['nombre']; ?></h3>
                 <p class="ubicacion">
                     <i class="fa-solid fa-location-dot"></i>
                     <?php
-                        // CORRECCIÓN: Asegurar que la ubicación siempre se muestre completa y limpia
                         $ubicacion = trim($centro['direccion'] . ', ' . $centro['municipio'] . ', ' . $centro['departamento']);
                         echo htmlspecialchars($ubicacion);
                     ?>

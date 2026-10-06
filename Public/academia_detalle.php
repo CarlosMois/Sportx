@@ -69,7 +69,7 @@ try {
 </head>
 <body>
 
-    <header class="academia-header">
+    <header class="academia-header" style="background-image: linear-gradient(rgba(13,40,96,.78), rgba(13,40,96,.78)), url('<?php echo !empty($imagenes[0]['imagen_url']) ? "../" . $imagenes[0]['imagen_url'] : "../Public/img/logo sin fondo.png"; ?>'); background-size: cover; background-position: center;">
         <div class="back-container">
             <?php
             // Lógica para determinar el ID del deporte al que pertenece la academia
@@ -119,12 +119,12 @@ try {
                     <?php if (count($imagenes) > 0): ?>
                         <?php foreach ($imagenes as $img): ?>
                             <div class="imagen-carrusel">
-                                <img src="<?php echo htmlspecialchars($img['imagen_url']); ?>" alt="Imagen">
+                                <img src="../<?php echo htmlspecialchars($img['imagen_url']); ?>" alt="Imagen">
                             </div>
                         <?php endforeach; ?>
                     <?php else: ?>
                         <div class="imagen-carrusel">
-                            <img src="../Public/img/LUCHA-OLIMPICA.jpg" alt="Imagen por defecto">
+                            <img src="../Public/img/logo sin fondo.png" alt="Imagen por defecto">
                         </div>
                     <?php endif; ?>
                 </div>
