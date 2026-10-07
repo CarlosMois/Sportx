@@ -64,7 +64,7 @@ if ($id_usuario > 0) {
     </nav>
 
     <!-- MAIN CONTENT -->
-    <main class="profile-container">
+    <main class="profile-container" style="background-image: url('img/volley.jpg') !important; background-size: cover !important; background-position: center !important; background-repeat: no-repeat !important; width: 100% !important; min-height: calc(100vh - 150px) !important; padding: 40px 0 !important; display: flex !important; flex-direction: column !important; align-items: center !important;">
 
 
 
