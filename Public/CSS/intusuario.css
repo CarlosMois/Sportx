@@ -14,31 +14,20 @@
 }
 
 body {
-    background: 
-        linear-gradient(90deg, #007AA2 0%, #0D2860 80%),
-        url('../img/volley.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-attachment: fixed;
+    background: white;
     min-height: 100vh;
 }
 
-/* ===========================
-          HEADER / NAV
-=========================== */
-.navbar-custom {
-    background-color: #0D2860;
-    padding: 15px 0;
-}
-
-/* ===========================
-        PERFIL CONTAINER
-=========================== */
 .profile-container {
     width: 90%;
     max-width: 1100px;
     margin: 40px auto;
+    background-image: url('../img/volley.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 40px;
+    border-radius: 30px;
 }
 
 /* Card Principal de Perfil */

@@ -163,7 +163,7 @@ try {
             <?php endforeach; ?>
         <?php endif; ?>
     <footer class="main-footer">
-        <p>© 2026 SportX | Todos los derechos reservados.</p>
+        <p>© 2026 SportX | All rights reserved.</p>
     </footer>
     <script src="JS/resenas_perfil.js"></script>
 </body>

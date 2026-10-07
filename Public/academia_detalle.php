@@ -235,11 +235,11 @@ try {
             <div class="campo">
                 <label><?php echo __t('ui_academy.rating'); ?></label>
                 <div class="estrellas">
-                    <input type="radio" name="calificacion" id="est1" value="1"><label for="est1">★</label>
-                    <input type="radio" name="calificacion" id="est2" value="2"><label for="est2">★</label>
-                    <input type="radio" name="calificacion" id="est3" value="3"><label for="est3">★</label>
-                    <input type="radio" name="calificacion" id="est4" value="4"><label for="est4">★</label>
                     <input type="radio" name="calificacion" id="est5" value="5"><label for="est5">★</label>
+                    <input type="radio" name="calificacion" id="est4" value="4"><label for="est4">★</label>
+                    <input type="radio" name="calificacion" id="est3" value="3"><label for="est3">★</label>
+                    <input type="radio" name="calificacion" id="est2" value="2"><label for="est2">★</label>
+                    <input type="radio" name="calificacion" id="est1" value="1"><label for="est1">★</label>
                 </div>
             </div>
             <div class="campo">
